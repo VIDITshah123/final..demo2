@@ -3,11 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { FloatingShowcase } from './components/FloatingShowcase';
 import { InteractiveStudio } from './components/InteractiveStudio';
-import { TheDifference } from './components/TheDifference';
-import { ConnectedWorkflow } from './components/ConnectedWorkflow';
-import { TurnkeyVelocity } from './components/TurnkeyVelocity';
-import { ImmersiveEmblem } from './components/ImmersiveEmblem';
-import { OneVisionEverySpace } from './components/OneVisionEverySpace';
+import { HorizontalExperience } from './components/HorizontalExperience';
 import { ProjectEnquiries } from './components/ProjectEnquiries';
 import { Footer } from './components/Footer';
 
@@ -17,33 +13,27 @@ export const App: React.FC = () => {
       {/* Global Luxury Navigation */}
       <Navbar />
 
-      {/* Main Content Sections matching user references exactly */}
+      {/* Main Content Sections */}
       <main className="w-full">
-        {/* Hero Section (Atmospheric glows, dynamic tokens, live console) */}
+        {/* 1. Hero Section (Atmospheric glows, dynamic tokens, interactive prompt console) */}
         <Hero />
 
-        {/* Section 2: Floating Architectural Showcase (Pinned 3-stage constellation) */}
+        {/* 2. Floating Architectural Showcase (Pinned 3-stage constellation) */}
         <FloatingShowcase />
 
-        {/* Interactive Studio (Real-time spatial visualization canvas) */}
+        {/* 3. Interactive Studio (Spatial visualization workspace) */}
         <InteractiveStudio />
 
-        {/* The Difference (Comparison engine with 4-dot vertical selector) */}
-        <TheDifference />
+        {/* 4. Horizontal Experience (Seamless scroll-driven horizontal track hosting:
+            - Slide 1: The Difference (Comparison engine with 4-dot selector)
+            - Slide 2: Materiality & Specs Kit ("Your aesthetic, built in." where the Green Line starts)
+            - Slide 3: Turnkey Velocity ("More precision. Zero burnout." with continuous Green Ribbon)
+            - Slide 4: Immersive Chronograph Dial (Where the Green Line tapers)
+            - Slide 5: One Vision Every Space (Interactive tabbed gallery)
+        ) */}
+        <HorizontalExperience />
 
-        {/* Connected Specifications & Materiality Kit (SVG bezier curve cables) */}
-        <ConnectedWorkflow />
-
-        {/* Turnkey Velocity (Sweeping green curved architectural ribbon & capacity metrics) */}
-        <TurnkeyVelocity />
-
-        {/* Immersive Chronograph Dial & Floating Constellation */}
-        <ImmersiveEmblem />
-
-        {/* One Vision, Every Space (Interactive tabbed architectural portfolio) */}
-        <OneVisionEverySpace />
-
-        {/* Turnkey FAQ Accordion & Project Engagement Tiers */}
+        {/* 5. Turnkey FAQ Accordion & Project Engagement Tiers */}
         <ProjectEnquiries />
       </main>
 

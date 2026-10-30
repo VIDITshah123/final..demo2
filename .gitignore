@@ -26,6 +26,10 @@ extracted_recording/
 extracted_section3/
 take_screenshots.py
 verification_shots/
+inspect_video.py
+extracted_hscroll/
+verify_hscroll.py
+hscroll_shots/
 
 # Environment variables
 .env
