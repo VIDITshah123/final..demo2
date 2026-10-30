@@ -152,70 +152,6 @@ const comparisonData: ComparisonState[] = [
 ];
 
 /* =========================================================================
-   SLIDE 4: IMMERSIVE EMBLEM DATA
-   ========================================================================= */
-
-interface ShowcaseImage {
-  id: string;
-  src: string;
-  title: string;
-  tag: string;
-  position: string;
-  size: string;
-}
-
-const emblemImages: ShowcaseImage[] = [
-  {
-    id: 'ie-1',
-    src: '/images/P46.jpeg',
-    title: 'TEXTURED FLUTING',
-    tag: 'JOINERY',
-    position: 'top-[6%] left-[8%]',
-    size: 'w-[180px] sm:w-[220px] aspect-[4/5]',
-  },
-  {
-    id: 'ie-2',
-    src: '/images/P47.jpeg',
-    title: 'CONTEMPORARY FOYER',
-    tag: 'ENTRANCE',
-    position: 'top-[5%] right-[8%]',
-    size: 'w-[190px] sm:w-[230px] aspect-[1/1]',
-  },
-  {
-    id: 'ie-3',
-    src: '/images/P48.jpeg',
-    title: 'PRIVATE ELEVATION',
-    tag: 'ARCHITECTURE',
-    position: 'bottom-[12%] left-[6%]',
-    size: 'w-[190px] sm:w-[230px] aspect-[3/4]',
-  },
-  {
-    id: 'ie-4',
-    src: '/images/P49.jpeg',
-    title: 'BESPOKE BATHROOM SUITE',
-    tag: 'WELLNESS',
-    position: 'bottom-[14%] right-[6%]',
-    size: 'w-[190px] sm:w-[230px] aspect-[3/4]',
-  },
-  {
-    id: 'ie-5',
-    src: '/images/P02.jpeg',
-    title: 'MARBLE ATELIER',
-    tag: 'MATERIALS',
-    position: 'top-[40%] left-[3%]',
-    size: 'w-[140px] sm:w-[170px] aspect-[3/4]',
-  },
-  {
-    id: 'ie-6',
-    src: '/images/P03.jpeg',
-    title: 'BESPOKE LOUNGE',
-    tag: 'INTERIORS',
-    position: 'top-[40%] right-[3%]',
-    size: 'w-[140px] sm:w-[170px] aspect-[3/4]',
-  },
-];
-
-/* =========================================================================
    SLIDE 5: ONE VISION EVERY SPACE DATA
    ========================================================================= */
 
@@ -408,20 +344,20 @@ export const HorizontalExperience: React.FC = () => {
   }, []);
 
   // Translation calculation: 4 slides = 400vw total width. Max translate is 300vw
-  const translateX = scrollProgress * 400; // in vw units
+  const translateX = scrollProgress * 300; // in vw units (4 slides = 300vw max translate)
 
   // Dynamic green ribbon progression tied directly to scroll movement:
   // Starts entering as user moves into Slide 2 (around 0.20),
   // sweeps dynamically through Slide 3, and finishes at Slide 4 (around 0.90).
   const ribbonStart = 0.16;
-  const ribbonEnd = 0.78;
+  const ribbonEnd = 0.72;
   const ribbonProgress = Math.min(1, Math.max(0, (scrollProgress - ribbonStart) / (ribbonEnd - ribbonStart)));
   const strokeDashoffset = pathLength * (1 - ribbonProgress);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[520vh] bg-[#070707] selection:bg-[#D6B779]/25"
+      className="relative w-full h-[420vh] bg-[#070707] selection:bg-[#D6B779]/25"
     >
       {/* ===== CINEMATIC AMBIENT LIGHTING ===== */}
       <AmbientBackground variant="horizontal" />
@@ -432,7 +368,7 @@ export const HorizontalExperience: React.FC = () => {
         {/* ================= HORIZONTAL SCROLL TRACK (400vw Total Width) ================= */}
         <div
           ref={trackRef}
-          className="flex h-full w-[500vw] will-change-transform relative"
+          className="flex h-full w-[400vw] will-change-transform relative"
           style={{
             transform: `translate3d(-${translateX}vw, 0, 0)`,
             transition: 'transform 0.06s ease-out',
@@ -443,8 +379,8 @@ export const HorizontalExperience: React.FC = () => {
              Starts at "Your aesthetic, built in." and advances into Turnkey Velocity & Emblem
              ========================================================================= */}
           <svg
-            className="absolute top-0 left-0 w-[500vw] h-full pointer-events-none z-0"
-            viewBox="0 0 5000 1000"
+            className="absolute top-0 left-0 w-[400vw] h-full pointer-events-none z-0"
+            viewBox="0 0 4000 1000"
             fill="none"
             preserveAspectRatio="none"
           >
@@ -1246,133 +1182,6 @@ export const HorizontalExperience: React.FC = () => {
               </div>
 
             </div>
-          </section>
-
-          {/* =========================================================================
-             SLIDE 4: IMMERSIVE EMBLEM & CHRONOGRAPH DIAL (Frames 7-8 Reference)
-             * The Green Ribbon gently tapers and terminates here!
-             ========================================================================= */}
-          <section className="w-screen min-w-[100vw] h-screen shrink-0 relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 overflow-hidden select-none">
-            {/* Ambient light for emblem slide */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full" style={{background: 'radial-gradient(circle, rgba(16,185,129,0.12) 0%, rgba(234,88,12,0.07) 50%, transparent 75%)', filter: 'blur(40px)', animation: 'hxEmeraldA 14s ease-in-out infinite'}} />
-              <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full" style={{background: 'radial-gradient(circle, rgba(234,88,12,0.09) 0%, transparent 70%)', filter: 'blur(30px)', animation: 'hxAmberA 18s ease-in-out infinite 3s'}} />
-            </div>
-            
-            {/* Floating Perimeter Cards */}
-            <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
-              {emblemImages.map((img) => (
-                <div
-                  key={img.id}
-                  className={`absolute ${img.position} ${img.size} pointer-events-auto transition-transform duration-500`}
-                >
-                  <div className="w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-[#11100E] ios-glass-card group hover:border-[#10B981]/50 transition-all relative">
-                    <img
-                      src={img.src}
-                      alt={img.title}
-                      className="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition-all duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
-                    <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/60 text-[#10B981] text-[9px] font-mono border border-white/10">
-                      {img.tag}
-                    </div>
-                    <div className="absolute bottom-2.5 left-2.5 right-2.5">
-                      <p className="font-bold text-[11px] text-white uppercase truncate">
-                        {img.title}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Central Chronograph Radar Dial */}
-            <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-auto my-auto">
-              <div className="relative w-[260px] sm:w-[360px] md:w-[440px] h-[260px] sm:h-[360px] md:h-[440px] flex items-center justify-center">
-
-                {/* Ambient glow behind dial */}
-                <div className="absolute inset-0 rounded-full pointer-events-none" style={{background: 'radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(234,88,12,0.08) 45%, transparent 75%)', filter: 'blur(18px)'}} />
-
-                {/* Outer static ring */}
-                <div className="absolute inset-[-18px] sm:inset-[-22px] rounded-full border border-white/[0.05] pointer-events-none" />
-                {/* Mid-outer static ring */}
-                <div className="absolute inset-[-6px] sm:inset-[-8px] rounded-full border border-white/[0.07] pointer-events-none" />
-                {/* Main inner ring */}
-                <div className="absolute inset-0 rounded-full border border-white/[0.08] pointer-events-none" />
-                {/* Inner accent ring */}
-                <div className="absolute inset-[22px] sm:inset-[28px] rounded-full border border-[#10B981]/[0.18] pointer-events-none" style={{animation: 'emblemRingPulse 4s ease-in-out infinite'}} />
-                {/* Innermost gold ring */}
-                <div className="absolute inset-[44px] sm:inset-[56px] rounded-full border border-[#D6B779]/[0.15] pointer-events-none" style={{animation: 'emblemRingPulse 6s ease-in-out infinite 1s'}} />
-
-                {/* SVG Radial Tick Marks & Compass Points */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none transform -rotate-90 animate-spin-slow"
-                  viewBox="0 0 440 440"
-                >
-                  {Array.from({ length: 120 }).map((_, i) => {
-                    const angle = (i * 360) / 120;
-                    const isMajor = i % 15 === 0;
-                    const r1 = isMajor ? 175 : 182;
-                    const r2 = 195;
-                    const rad = (angle * Math.PI) / 180;
-                    const x1 = 220 + r1 * Math.cos(rad);
-                    const y1 = 220 + r1 * Math.sin(rad);
-                    const x2 = 220 + r2 * Math.cos(rad);
-                    const y2 = 220 + r2 * Math.sin(rad);
-
-                    return (
-                      <line
-                        key={i}
-                        x1={x1}
-                        y1={y1}
-                        x2={x2}
-                        y2={y2}
-                        stroke={isMajor ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.15)'}
-                        strokeWidth={isMajor ? '1.5' : '1'}
-                      />
-                    );
-                  })}
-
-                  {/* 8 Compass Points */}
-                  {Array.from({ length: 8 }).map((_, i) => {
-                    const angle = (i * 360) / 8;
-                    const rad = (angle * Math.PI) / 180;
-                    const cx = 220 + 160 * Math.cos(rad);
-                    const cy = 220 + 160 * Math.sin(rad);
-
-                    return (
-                      <circle
-                        key={`dot-${i}`}
-                        cx={cx}
-                        cy={cy}
-                        r="3"
-                        fill="rgba(255, 255, 255, 0.6)"
-                      />
-                    );
-                  })}
-                </svg>
-
-                {/* Central Monogram */}
-                <div className="relative z-10 w-24 h-24 flex items-center justify-center">
-                  <svg
-                    className="w-16 h-16 text-white fill-current filter drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
-                    viewBox="0 0 100 100"
-                  >
-                    <path d="M 20 60 C 20 40, 40 30, 70 30 C 80 30, 85 35, 80 40 C 55 40, 35 48, 35 65 C 35 70, 25 72, 20 60 Z" />
-                    <path d="M 30 75 C 30 55, 50 45, 80 45 C 90 45, 95 50, 90 55 C 65 55, 45 63, 45 80 C 45 85, 35 87, 30 75 Z" />
-                    <path d="M 50 88 C 50 78, 62 70, 85 70 C 92 70, 96 75, 92 80 C 75 80, 62 85, 62 92 C 62 96, 52 97, 50 88 Z" />
-                  </svg>
-                </div>
-
-              </div>
-
-              <div className="mt-4 max-w-sm mx-auto">
-                <p className="text-[11px] sm:text-xs text-neutral-400 font-light tracking-widest uppercase">
-                  Turnkey Architectural Excellence · Dubai
-                </p>
-              </div>
-            </div>
-
           </section>
 
           {/* =========================================================================
