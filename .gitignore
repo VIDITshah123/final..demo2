@@ -32,6 +32,8 @@ verify_hscroll.py
 hscroll_shots/
 verify_ribbon_motion.py
 ribbon_shots/
+verify_removal.py
+removed_section_shots/
 
 # Environment variables
 .env
