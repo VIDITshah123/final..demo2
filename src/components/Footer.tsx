@@ -1,4 +1,5 @@
 import React from 'react';
+import { AmbientBackground } from './AmbientBackground';
 import { ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -8,6 +9,9 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="relative w-full bg-[#050505] border-t border-white/10 text-neutral-400 text-xs py-16 px-6 sm:px-8 lg:px-12 select-none">
+      {/* ===== CINEMATIC AMBIENT LIGHTING ===== */}
+      <AmbientBackground variant="footer" />
+
       <div className="max-w-[1400px] mx-auto flex flex-col justify-between space-y-12">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-white/5">
           {/* Brand */}

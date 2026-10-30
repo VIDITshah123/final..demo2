@@ -88,53 +88,91 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-between items-center bg-[#070707] overflow-hidden pt-28 pb-10 px-4 sm:px-6 lg:px-8 select-none">
-      {/* ================= CALM ATMOSPHERIC AMBIENT LIGHT BLOOMS (MATCHING REFERENCE VIDEO) ================= */}
+      {/* ================= CINEMATIC AMBIENT ORB SYSTEM — 5 independent layers ================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-        {/* 1. Luminous Amber-Gold Atmospheric Beam (Top-Left, Slowly Sweeping & Breathing) */}
+        {/* LAYER A — Amber/Orange beacon, upper-left, slow sweeping drift */}
         <div
-          className="absolute -top-[10%] -left-[10%] w-[72vw] h-[72vw] max-w-[980px] max-h-[980px] rounded-full ambient-glow-lg animate-hero-amber"
+          className="ambient-orb ambient-orb-amber-hero"
           style={{
+            width: '78vw',
+            height: '78vw',
+            maxWidth: 1040,
+            maxHeight: 1040,
+            top: '-14%',
+            left: '-14%',
             background:
-              'radial-gradient(ellipse 75% 65% at 32% 28%, rgba(245, 158, 11, 0.82) 0%, rgba(234, 88, 12, 0.6) 35%, rgba(180, 83, 9, 0.3) 60%, transparent 82%)',
+              'radial-gradient(ellipse 72% 62% at 35% 30%, rgba(245,158,11,0.82) 0%, rgba(234,88,12,0.58) 34%, rgba(180,83,9,0.28) 60%, transparent 82%)',
           }}
         />
 
-        {/* 2. Serene Emerald-Teal Calming Pool (Lower-Left, Counterbalancing Amber) */}
+        {/* LAYER B — Emerald pool, lower-left, rising arc */}
         <div
-          className="absolute -bottom-[14%] -left-[10%] w-[65vw] h-[65vw] max-w-[880px] max-h-[880px] rounded-full ambient-glow-lg animate-hero-emerald"
+          className="ambient-orb ambient-orb-emerald-hero"
           style={{
+            width: '72vw',
+            height: '72vw',
+            maxWidth: 980,
+            maxHeight: 980,
+            bottom: '-20%',
+            left: '-10%',
             background:
-              'radial-gradient(circle 620px at 35% 72%, rgba(16, 185, 129, 0.65) 0%, rgba(5, 150, 105, 0.42) 38%, rgba(4, 120, 87, 0.18) 65%, transparent 82%)',
+              'radial-gradient(circle 640px at 38% 68%, rgba(16,185,129,0.64) 0%, rgba(5,150,105,0.40) 40%, rgba(4,120,87,0.16) 66%, transparent 84%)',
           }}
         />
 
-        {/* 3. Far-Right Warm Bronze & Honey Glow (Blooms Gently across Top-Right) */}
+        {/* LAYER C — Bronze/champagne, upper-right, counter to amber */}
         <div
-          className="absolute -top-[8%] -right-[10%] w-[66vw] h-[66vw] max-w-[900px] max-h-[900px] rounded-full ambient-glow-lg animate-hero-bronze"
+          className="ambient-orb ambient-orb-bronze-hero"
           style={{
+            width: '70vw',
+            height: '70vw',
+            maxWidth: 960,
+            maxHeight: 960,
+            top: '-12%',
+            right: '-14%',
             background:
-              'radial-gradient(circle 650px at 72% 30%, rgba(214, 183, 121, 0.52) 0%, rgba(234, 88, 12, 0.35) 45%, rgba(152, 106, 60, 0.15) 70%, transparent 85%)',
+              'radial-gradient(circle 660px at 72% 32%, rgba(214,183,121,0.52) 0%, rgba(234,88,12,0.33) 46%, rgba(152,106,60,0.14) 70%, transparent 86%)',
           }}
         />
 
-        {/* 4. Bottom Center Warm Glow Reflection */}
+        {/* LAYER D — Secondary green, lower-center, slow meander */}
         <div
-          className="absolute -bottom-[16%] left-[22%] right-[22%] h-[42vw] max-h-[500px] rounded-full ambient-glow-lg animate-hero-amber"
+          className="ambient-orb ambient-orb-green2-hero"
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(214, 140, 50, 0.35) 0%, rgba(16, 185, 129, 0.2) 45%, transparent 80%)',
+            width: '56vw',
+            height: '56vw',
+            maxWidth: 720,
+            maxHeight: 720,
+            bottom: '-22%',
+            left: '18%',
+            background:
+              'radial-gradient(ellipse at center, rgba(20,158,110,0.34) 0%, rgba(16,185,129,0.18) 45%, transparent 80%)',
           }}
         />
 
-        {/* Center Vignette: Darkens behind central text for 100% contrast, while letting perimeter glows radiate */}
+        {/* LAYER E — Warm central veil (text contrast preserved) */}
+        <div
+          className="ambient-orb ambient-orb-center-hero"
+          style={{
+            width: '64vw',
+            height: '64vw',
+            maxWidth: 820,
+            maxHeight: 820,
+            top: '8%',
+            left: '18%',
+            background:
+              'radial-gradient(ellipse at center, rgba(180,83,9,0.14) 0%, rgba(214,140,50,0.08) 50%, transparent 78%)',
+          }}
+        />
+
+        {/* Deep center vignette — headline stays readable */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse 880px 580px at center, rgba(7, 7, 7, 0.78) 0%, rgba(7, 7, 7, 0.45) 55%, transparent 95%)',
+            background: 'radial-gradient(ellipse 900px 600px at center, rgba(7,7,7,0.76) 0%, rgba(7,7,7,0.42) 55%, transparent 95%)',
           }}
         />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-[#070707]/30 via-transparent to-[#070707]/60 pointer-events-none"
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/28 via-transparent to-[#070707]/58 pointer-events-none" />
       </div>
 
       {/* ================= HERO MAIN CONTENT ================= */}

@@ -28,7 +28,7 @@
   }
 }
 
-/* Atmospheric Lighting Glows */
+/* Atmospheric Lighting Glows — legacy classes kept for backward compat */
 .ambient-glow {
   filter: blur(80px);
   will-change: transform, opacity;
@@ -73,7 +73,7 @@
   box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.9), 0 0 28px -4px rgba(214, 183, 121, 0.18);
 }
 
-/* Ambient Light Drift Animations */
+/* Ambient Light Drift Animations — legacy */
 @keyframes ambientDrift1 {
   0%, 100% {
     transform: translate(0, 0) scale(1);
@@ -137,7 +137,8 @@
 .animate-drift-4 {
   animation: ambientDrift4 32s ease-in-out infinite;
 }
-/* ================= CALM LUXURY ATMOSPHERIC DRIFT CYCLES ================= */
+
+/* ================= CALM LUXURY ATMOSPHERIC DRIFT CYCLES — legacy hero ================= */
 @keyframes heroCalmAmber {
   0% {
     transform: translate(0%, 0%) scale(1) rotate(0deg);
@@ -291,6 +292,198 @@
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   CINEMATIC AMBIENT ORB SYSTEM — independent multi-layer animation engine
+   Each .ambient-orb is an absolutely-positioned gradient div.
+   Individual named animations give each orb its own path, timing, and scale.
+   All animations use only transform+opacity (GPU composited, zero layout).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .ambient-orb {
+    filter: blur(60px);
+  }
+}
+
+/* ─── HERO LAYERS ─────────────────────────────────────────────────────────── */
+/* A  Amber/Orange beacon — sweeps across upper-left → center-right */
+@keyframes heroAmberA {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.80; }
+  15%  { transform: translate(6%,   -3%)   scale(1.06); opacity: 0.88; }
+  32%  { transform: translate(14%,   2%)   scale(1.12); opacity: 0.92; }
+  50%  { transform: translate(18%,   8%)   scale(1.08); opacity: 0.84; }
+  68%  { transform: translate(10%,  12%)   scale(1.04); opacity: 0.78; }
+  82%  { transform: translate(3%,    6%)   scale(1.02); opacity: 0.76; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.80; }
+}
+.ambient-orb-amber-hero {
+  animation: heroAmberA 32s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* B  Emerald pool — rises from lower-left, arcs toward center-bottom */
+@keyframes heroEmeraldB {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.65; }
+  20%  { transform: translate(8%,   -5%)   scale(1.10); opacity: 0.74; }
+  42%  { transform: translate(16%, -10%)   scale(1.18); opacity: 0.80; }
+  60%  { transform: translate(12%,  -6%)   scale(1.12); opacity: 0.72; }
+  78%  { transform: translate(4%,    2%)   scale(1.05); opacity: 0.62; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.65; }
+}
+.ambient-orb-emerald-hero {
+  animation: heroEmeraldB 40s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+/* C  Bronze upper-right — counter-sweeps opposite to amber */
+@keyframes heroBronzeC {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.56; }
+  25%  { transform: translate(-8%,   5%)   scale(1.10); opacity: 0.70; }
+  50%  { transform: translate(-14%, -3%)   scale(1.20); opacity: 0.82; }
+  75%  { transform: translate(-6%,  -8%)   scale(1.08); opacity: 0.64; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.56; }
+}
+.ambient-orb-bronze-hero {
+  animation: heroBronzeC 36s ease-in-out infinite;
+}
+
+/* D  Secondary green — lower-center, slow pulse & meander */
+@keyframes heroGreen2D {
+  0%   { transform: translate(0%,    0%)   scale(0.95); opacity: 0.40; }
+  30%  { transform: translate(-6%,  -8%)   scale(1.08); opacity: 0.52; }
+  55%  { transform: translate(8%,   -4%)   scale(1.14); opacity: 0.46; }
+  80%  { transform: translate(3%,    4%)   scale(1.00); opacity: 0.38; }
+  100% { transform: translate(0%,    0%)   scale(0.95); opacity: 0.40; }
+}
+.ambient-orb-green2-hero {
+  animation: heroGreen2D 46s ease-in-out infinite;
+}
+
+/* E  Central ambient warm veil — very gentle breathing */
+@keyframes heroCenterE {
+  0%   { transform: translate(0%,  0%)   scale(1.00); opacity: 0.30; }
+  50%  { transform: translate(4%, -4%)   scale(1.12); opacity: 0.46; }
+  100% { transform: translate(0%,  0%)   scale(1.00); opacity: 0.30; }
+}
+.ambient-orb-center-hero {
+  animation: heroCenterE 28s ease-in-out infinite;
+}
+
+/* ─── SHOWCASE LAYERS ─────────────────────────────────────────────────────── */
+@keyframes showAmber {
+  0%   { transform: translate(0%,   0%)   scale(1.00); opacity: 0.54; }
+  35%  { transform: translate(10%, -6%)   scale(1.12); opacity: 0.66; }
+  70%  { transform: translate(18%,  4%)   scale(1.08); opacity: 0.58; }
+  100% { transform: translate(0%,   0%)   scale(1.00); opacity: 0.54; }
+}
+.ambient-orb-amber-show { animation: showAmber 38s ease-in-out infinite; }
+
+@keyframes showEmerald {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.40; }
+  40%  { transform: translate(-10%, -8%)   scale(1.15); opacity: 0.52; }
+  80%  { transform: translate(-4%,   4%)   scale(1.06); opacity: 0.38; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.40; }
+}
+.ambient-orb-emerald-show { animation: showEmerald 44s ease-in-out infinite; }
+
+@keyframes showBronze {
+  0%   { transform: translate(0%,   0%)   scale(1.00); opacity: 0.32; }
+  50%  { transform: translate(-8%,  6%)   scale(1.10); opacity: 0.44; }
+  100% { transform: translate(0%,   0%)   scale(1.00); opacity: 0.32; }
+}
+.ambient-orb-bronze-show { animation: showBronze 30s ease-in-out infinite; }
+
+/* ─── HORIZONTAL EXPERIENCE LAYERS ───────────────────────────────────────── */
+@keyframes hxAmber {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.56; }
+  28%  { transform: translate(12%,  -4%)   scale(1.14); opacity: 0.68; }
+  58%  { transform: translate(8%,    6%)   scale(1.08); opacity: 0.60; }
+  85%  { transform: translate(2%,    2%)   scale(1.02); opacity: 0.52; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.56; }
+}
+.ambient-orb-amber-hx { animation: hxAmber 34s ease-in-out infinite; }
+
+@keyframes hxEmerald {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.70; }
+  35%  { transform: translate(-8%,  -6%)   scale(1.16); opacity: 0.84; }
+  65%  { transform: translate(-4%,   4%)   scale(1.08); opacity: 0.74; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.70; }
+}
+.ambient-orb-emerald-hx { animation: hxEmerald 42s ease-in-out infinite; }
+
+@keyframes hxOlive {
+  0%   { transform: translate(0%,   0%)   scale(1.00); opacity: 0.38; }
+  50%  { transform: translate(6%,  -6%)   scale(1.12); opacity: 0.52; }
+  100% { transform: translate(0%,   0%)   scale(1.00); opacity: 0.38; }
+}
+.ambient-orb-olive-hx { animation: hxOlive 28s ease-in-out infinite; }
+
+/* ─── ENQUIRIES LAYERS ────────────────────────────────────────────────────── */
+@keyframes enqAmber {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.60; }
+  30%  { transform: translate(10%,  -4%)   scale(1.12); opacity: 0.72; }
+  62%  { transform: translate(16%,   5%)   scale(1.08); opacity: 0.64; }
+  85%  { transform: translate(4%,    8%)   scale(1.04); opacity: 0.56; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.60; }
+}
+.ambient-orb-amber-enq { animation: enqAmber 36s ease-in-out infinite; }
+
+@keyframes enqEmerald {
+  0%   { transform: translate(0%,   0%)   scale(1.00); opacity: 0.54; }
+  38%  { transform: translate(12%, -8%)   scale(1.18); opacity: 0.68; }
+  72%  { transform: translate(6%,   2%)   scale(1.10); opacity: 0.58; }
+  100% { transform: translate(0%,   0%)   scale(1.00); opacity: 0.54; }
+}
+.ambient-orb-emerald-enq { animation: enqEmerald 48s ease-in-out infinite; }
+
+@keyframes enqBronze {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.36; }
+  45%  { transform: translate(-8%,   6%)   scale(1.14); opacity: 0.50; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.36; }
+}
+.ambient-orb-bronze-enq { animation: enqBronze 30s ease-in-out infinite; }
+
+/* ─── FOOTER LAYERS ───────────────────────────────────────────────────────── */
+@keyframes footerAmber {
+  0%   { transform: translate(0%,   0%)   scale(1.00); opacity: 0.30; }
+  50%  { transform: translate(6%,  -4%)   scale(1.10); opacity: 0.42; }
+  100% { transform: translate(0%,   0%)   scale(1.00); opacity: 0.30; }
+}
+.ambient-orb-amber-footer { animation: footerAmber 34s ease-in-out infinite; }
+
+@keyframes footerEmerald {
+  0%   { transform: translate(0%,   0%)   scale(1.00); opacity: 0.32; }
+  50%  { transform: translate(-5%,  5%)   scale(1.10); opacity: 0.44; }
+  100% { transform: translate(0%,   0%)   scale(1.00); opacity: 0.32; }
+}
+.ambient-orb-emerald-footer { animation: footerEmerald 40s ease-in-out infinite; }
+
+/* ─── DEFAULT/GENERIC ─────────────────────────────────────────────────────── */
+@keyframes defAmber {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.50; }
+  50%  { transform: translate(10%,  -5%)   scale(1.12); opacity: 0.64; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.50; }
+}
+.ambient-orb-amber-def { animation: defAmber 30s ease-in-out infinite; }
+
+@keyframes defEmerald {
+  0%   { transform: translate(0%,    0%)   scale(1.00); opacity: 0.36; }
+  50%  { transform: translate(-8%,  -6%)   scale(1.14); opacity: 0.50; }
+  100% { transform: translate(0%,    0%)   scale(1.00); opacity: 0.36; }
+}
+.ambient-orb-emerald-def { animation: defEmerald 38s ease-in-out infinite; }
+
+/* ─── GLOBAL TRANSITION ───────────────────────────────────────────────────── */
+.ambient-section-transition {
+  transition: background-color 1.2s ease;
+}
+
 /* Prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -305,7 +498,7 @@
   }
   .animate-drift-1, .animate-drift-2, .animate-drift-3, .animate-drift-4,
   .anim-float-a, .anim-float-b, .anim-float-c, .anim-float-d,
-  .luxury-card {
+  .luxury-card, .ambient-orb {
     animation: none !important;
   }
 }

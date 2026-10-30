@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AmbientBackground } from './AmbientBackground';
 import { ChevronDown, ArrowUpRight, ShieldCheck, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
 
 interface FaqItem {
@@ -94,6 +95,9 @@ export const ProjectEnquiries: React.FC = () => {
       id="contact"
       className="relative w-full bg-[#070707] py-28 sm:py-36 px-4 sm:px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden select-none border-t border-white/5"
     >
+      {/* ===== CINEMATIC AMBIENT LIGHTING ===== */}
+      <AmbientBackground variant="enquiries" />
+
       {/* Background Soft Amber & Bronze Glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
         <div

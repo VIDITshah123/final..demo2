@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { AmbientBackground } from './AmbientBackground';
 import {
   AlertTriangle,
   CheckCircle2,
@@ -406,6 +407,9 @@ export const HorizontalExperience: React.FC = () => {
       ref={containerRef}
       className="relative w-full h-[520vh] bg-[#070707] selection:bg-[#D6B779]/25"
     >
+      {/* ===== CINEMATIC AMBIENT LIGHTING ===== */}
+      <AmbientBackground variant="horizontal" />
+
       {/* ================= PINNED STICKY VIEWPORT CONTAINER ================= */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center bg-[#070707]">
         

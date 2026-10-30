@@ -463,47 +463,63 @@ export const FloatingShowcase: React.FC = () => {
       {/* ================= PINNED STICKY CONTAINER ================= */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#070707] select-none px-4">
         
-        {/* ================= CALM BACKGROUND ATMOSPHERIC LIGHTING ================= */}
+        {/* ================= CINEMATIC AMBIENT ORB SYSTEM ================= */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-          {/* Top-Left Ambient Emerald/Amber Drift */}
+          {/* LAYER A — Stage-responsive amber/emerald top-left (independent drift) */}
           <div
-            className="absolute -top-[12%] -left-[10%] w-[68vw] h-[68vw] max-w-[920px] max-h-[920px] rounded-full ambient-glow-lg animate-hero-emerald transition-all duration-1000"
+            className="ambient-orb ambient-orb-amber-show transition-[background] duration-1000"
             style={{
+              width: '72vw',
+              height: '72vw',
+              maxWidth: 960,
+              maxHeight: 960,
+              top: '-14%',
+              left: '-12%',
               background:
                 stageIndex === 0
-                  ? 'radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, rgba(5, 150, 105, 0.25) 40%, transparent 75%)'
+                  ? 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(16,185,129,0.58) 0%, rgba(5,150,105,0.32) 45%, transparent 78%)'
                   : stageIndex === 1
-                  ? 'radial-gradient(circle, rgba(234, 88, 12, 0.45) 0%, rgba(16, 185, 129, 0.28) 45%, transparent 75%)'
-                  : 'radial-gradient(circle, rgba(214, 183, 121, 0.42) 0%, rgba(234, 88, 12, 0.28) 45%, transparent 75%)',
+                  ? 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(234,88,12,0.58) 0%, rgba(16,185,129,0.30) 48%, transparent 78%)'
+                  : 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(217,120,41,0.58) 0%, rgba(234,88,12,0.32) 48%, transparent 78%)',
             }}
           />
 
-          {/* Top-Right Warm Honey / Amber Bloom */}
+          {/* LAYER B — Warm honey/amber, upper-right, independent path */}
           <div
-            className="absolute -top-[8%] -right-[12%] w-[66vw] h-[66vw] max-w-[900px] max-h-[900px] rounded-full ambient-glow-lg animate-hero-amber"
+            className="ambient-orb ambient-orb-bronze-show"
             style={{
-              background: 'radial-gradient(circle, rgba(245, 158, 11, 0.48) 0%, rgba(196, 130, 63, 0.28) 45%, transparent 80%)',
+              width: '68vw',
+              height: '68vw',
+              maxWidth: 920,
+              maxHeight: 920,
+              top: '-10%',
+              right: '-14%',
+              background: 'radial-gradient(circle at 68% 30%, rgba(245,158,11,0.48) 0%, rgba(196,130,63,0.26) 46%, transparent 82%)',
             }}
           />
 
-          {/* Bottom Center Calming Floor Reflection */}
+          {/* LAYER C — Emerald floor reflection, lower-center */}
           <div
-            className="absolute -bottom-[16%] left-[20%] right-[20%] h-[42vw] max-h-[500px] rounded-full ambient-glow-lg animate-hero-bronze"
+            className="ambient-orb ambient-orb-emerald-show"
             style={{
-              background: 'radial-gradient(ellipse at center, rgba(16, 185, 129, 0.35) 0%, rgba(214, 183, 121, 0.22) 45%, transparent 75%)',
+              width: '54vw',
+              height: '54vw',
+              maxWidth: 720,
+              maxHeight: 720,
+              bottom: '-18%',
+              left: '18%',
+              background: 'radial-gradient(ellipse at center, rgba(16,185,129,0.36) 0%, rgba(214,183,121,0.20) 48%, transparent 78%)',
             }}
           />
 
-          {/* Center Contrast Vignette */}
+          {/* Deep center vignette */}
           <div
             className="absolute inset-0"
             style={{
-              background: 'radial-gradient(ellipse 880px 580px at center, rgba(7, 7, 7, 0.8) 0%, rgba(7, 7, 7, 0.45) 55%, transparent 95%)',
+              background: 'radial-gradient(ellipse 900px 600px at center, rgba(7,7,7,0.80) 0%, rgba(7,7,7,0.44) 55%, transparent 95%)',
             }}
           />
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-[#070707]/30 via-transparent to-[#070707]/60 pointer-events-none"
-          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/28 via-transparent to-[#070707]/58 pointer-events-none" />
         </div>
 
         {/* ================= 9 PRECISELY POSITIONED FLOATING CARDS (DESKTOP ONLY: 768px+) ================= */}
