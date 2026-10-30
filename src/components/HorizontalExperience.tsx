@@ -768,7 +768,7 @@ export const HorizontalExperience: React.FC = () => {
                     </div>
 
                     {/* Spec Kit Tablet */}
-                    <div className="relative z-20 mx-auto w-full max-w-[320px] rounded-[26px] ios-glass border border-white/15 border-t-white/30 p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.28),0_30px_70px_rgba(0,0,0,0.9),0_0_40px_rgba(16,185,129,0.16)]">
+                    <div className="relative z-20 mx-auto w-full max-w-[320px] rounded-[26px] liquid-glass p-4">
                       <div className="flex items-center justify-between pb-2 border-b border-white/10 mb-2">
                         <div className="flex items-center space-x-1.5">
                           <span className="text-[11px] font-bold uppercase tracking-wider text-white">
@@ -995,7 +995,7 @@ export const HorizontalExperience: React.FC = () => {
                     </div>
 
                     {/* Spec Kit Tablet on Mobile */}
-                    <div className="w-full max-w-[340px] mx-auto rounded-2xl ios-glass border border-white/15 p-3.5 shadow-xl">
+                    <div className="w-full max-w-[340px] mx-auto rounded-2xl liquid-glass p-3.5">
                       <div className="flex items-center justify-between pb-1.5 border-b border-white/10 mb-2">
                         <div className="flex items-center space-x-1">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-white">Material Kit</span>
@@ -1023,14 +1023,14 @@ export const HorizontalExperience: React.FC = () => {
 
                     {/* Dual Preview Cards on Mobile */}
                     <div className="grid grid-cols-2 gap-2 max-w-[340px] mx-auto">
-                      <div className="rounded-xl ios-glass p-2 border border-white/10">
+                      <div className="rounded-xl ios-glass-card p-2">
                         <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-1 relative">
                           <img src="/images/P22.jpeg" alt="Palm Beachfront Villa" className="w-full h-full object-cover" />
                         </div>
                         <p className="text-[10px] font-bold text-white truncate">Palm Villa</p>
                         <p className="text-[8px] text-neutral-400">Principal Lead</p>
                       </div>
-                      <div className="rounded-xl ios-glass p-2 border border-white/10">
+                      <div className="rounded-xl ios-glass-card p-2">
                         <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-1 relative">
                           <img src="/images/P09.jpeg" alt="Grand Living Salon" className="w-full h-full object-cover" />
                         </div>

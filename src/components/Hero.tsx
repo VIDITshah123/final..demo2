@@ -226,7 +226,7 @@ export const Hero: React.FC = () => {
         <div className="w-full max-w-2xl mt-8 sm:mt-10">
           <form
             onSubmit={handleSubmit}
-            className="relative w-full rounded-[24px] sm:rounded-[32px] ios-glass border border-white/[0.14] hover:border-white/25 transition-all duration-500 p-4 sm:p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.22),0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(234,88,12,0.12)] flex flex-col justify-between min-h-[155px] sm:min-h-[195px] text-left group"
+            className="relative w-full rounded-[24px] sm:rounded-[32px] liquid-glass hover:border-white/30 transition-all duration-500 p-4 sm:p-7 flex flex-col justify-between min-h-[155px] sm:min-h-[195px] text-left group"
           >
             {/* Inner Content Area */}
             <div className="w-full pr-12">

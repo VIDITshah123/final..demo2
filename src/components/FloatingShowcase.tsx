@@ -542,7 +542,7 @@ export const FloatingShowcase: React.FC = () => {
               >
                 {/* Architectural Card Container with iOS Glass Edge & Refined Corners */}
                 <div
-                  className="w-full rounded-2xl overflow-hidden ios-glass border border-white/12 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-[#11100E] relative group hover:border-white/35 transition-all duration-500"
+                  className="w-full rounded-2xl overflow-hidden ios-glass-card bg-[#11100E] relative group transition-all duration-700"
                   style={{
                     aspectRatio: card.aspectRatio,
                   }}
@@ -659,7 +659,7 @@ export const FloatingShowcase: React.FC = () => {
               {currentStage.cards.slice(0, 3).map((card) => (
                 <div
                   key={card.id}
-                  className="w-[185px] sm:w-[210px] shrink-0 snap-center rounded-2xl overflow-hidden ios-glass border border-white/15 bg-[#121110] shadow-xl"
+                  className="w-[185px] sm:w-[210px] shrink-0 snap-center rounded-2xl overflow-hidden ios-glass-card bg-[#121110]"
                 >
                   <div className="w-full aspect-[4/3] relative">
                     <img

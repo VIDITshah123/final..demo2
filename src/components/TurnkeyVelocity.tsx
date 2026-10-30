@@ -125,7 +125,7 @@ export const TurnkeyVelocity: React.FC = () => {
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-2xl bg-white/[0.04] border border-white/10 p-3 flex flex-col space-y-1.5 backdrop-blur-sm"
+                  className="rounded-2xl glass-surface p-3 flex flex-col space-y-1.5"
                 >
                   <div className="flex items-center space-x-1.5" style={{ color: s.color }}>
                     {s.icon}
@@ -159,7 +159,7 @@ export const TurnkeyVelocity: React.FC = () => {
           <div className="grid grid-cols-2 gap-4 sm:gap-5">
 
             {/* CARD 1: OTHERS */}
-            <div className="rounded-[24px] bg-[#0E0D0C]/90 backdrop-blur-xl border border-white/[0.08] p-5 shadow-[0_24px_60px_rgba(0,0,0,0.9)] flex flex-col">
+            <div className="rounded-[24px] ios-glass-card p-5 flex flex-col">
               {/* Header */}
               <div className="pb-3 border-b border-white/[0.07]">
                 <h3 className="text-[13px] font-semibold text-neutral-300 tracking-wide">Others</h3>
@@ -224,7 +224,7 @@ export const TurnkeyVelocity: React.FC = () => {
             </div>
 
             {/* CARD 2: ALTIMATE */}
-            <div className="rounded-[24px] bg-[#0A1410]/90 backdrop-blur-xl border border-emerald-500/20 p-5 shadow-[0_24px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(16,185,129,0.08)] flex flex-col relative group hover:border-emerald-500/40 transition-all duration-500">
+            <div className="rounded-[24px] ios-glass-card ios-glass-glow-emerald p-5 flex flex-col relative group hover:border-emerald-500/40 transition-all duration-500">
               {/* Green edge glow */}
               <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-emerald-500/[0.04] to-transparent pointer-events-none" />
 
