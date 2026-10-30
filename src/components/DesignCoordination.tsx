@@ -96,7 +96,7 @@ export const DesignCoordination: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.08] mb-6">
+          <h2 className="text-4xl sm:text-4xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.08] mb-6">
             Every Detail. <br />
             Under Control.
           </h2>

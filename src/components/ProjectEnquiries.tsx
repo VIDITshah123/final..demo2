@@ -171,7 +171,7 @@ export const ProjectEnquiries: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.05]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.05]">
             Let's Create
             <br />
             <span className="italic font-serif font-light text-transparent bg-clip-text bg-gradient-to-r from-[#D6B779] via-[#F4F0E8] to-[#EA580C]">

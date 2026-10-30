@@ -34,7 +34,7 @@ const stages: StageData[] = [
       // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
         id: 's1-inner-left',
-        src: '/images/P04.jpeg',
+        src: '/images/P09.jpeg',
         title: 'VILLA LUMIÈRE',
         subtitle: 'Palm Jumeirah Beachfront Estate',
         tag: 'ARCHITECTURE',
@@ -46,7 +46,7 @@ const stages: StageData[] = [
       // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
         id: 's1-inner-right',
-        src: '/images/P14.jpeg',
+        src: '/images/P11.jpeg',
         title: 'GRAND SALON',
         subtitle: 'Double-Height Dining & Ambient Lighting',
         tag: 'INTERIORS',
@@ -58,7 +58,7 @@ const stages: StageData[] = [
       // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
       {
         id: 's1-edge-mid-left',
-        src: '/images/P02.jpeg',
+        src: '/images/P33.jpeg',
         title: 'COASTAL MONOLITH',
         subtitle: 'Exterior Facade & Screen Architecture',
         tag: 'RESIDENTIAL',
@@ -71,7 +71,7 @@ const stages: StageData[] = [
       // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
       {
         id: 's1-edge-top-left',
-        src: '/images/P21.jpeg',
+        src: '/images/P35.jpeg',
         title: 'FACADE INTEGRATION',
         subtitle: 'Perimeter Terrace & Architectural Pergola',
         tag: 'EXTERIOR',
@@ -84,7 +84,7 @@ const stages: StageData[] = [
       // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
       {
         id: 's1-edge-bottom-left',
-        src: '/images/P01.jpeg',
+        src: '/images/P31.jpeg',
         title: 'THE AZURE SUITE',
         subtitle: 'Penthouse Living with Panoramic Skyline',
         tag: 'FIT-OUT',
@@ -97,7 +97,7 @@ const stages: StageData[] = [
       // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
       {
         id: 's1-edge-bottom-mid',
-        src: '/images/P12.jpeg',
+        src: '/images/P13.jpeg',
         title: 'CALACATTA GALLERY',
         subtitle: 'Bookmatched Marble Entrance Foyer',
         tag: 'STONEWORK',
@@ -110,7 +110,7 @@ const stages: StageData[] = [
       // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
       {
         id: 's1-edge-mid-right',
-        src: '/images/P05.jpeg',
+        src: '/images/P44.jpeg',
         title: 'SKYLINE PENTHOUSE',
         subtitle: 'Triplex Living at Downtown Dubai',
         tag: 'PENTHOUSE',
@@ -123,7 +123,7 @@ const stages: StageData[] = [
       // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
       {
         id: 's1-edge-top-right',
-        src: '/images/P03.jpeg',
+        src: '/images/P08.jpeg',
         title: 'SANCTUARY BAY',
         subtitle: 'Intimate Lighting & Italian Travertine',
         tag: 'MATERIALITY',
@@ -136,7 +136,7 @@ const stages: StageData[] = [
       // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
       {
         id: 's1-edge-bottom-right',
-        src: '/images/P23.jpeg',
+        src: '/images/P46.jpeg',
         title: 'PRIVATE ATELIER',
         subtitle: 'Executive Study with Bronze Millwork',
         tag: 'BESPOKE',
@@ -160,7 +160,7 @@ const stages: StageData[] = [
       // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
         id: 's2-inner-left',
-        src: '/images/P07.jpeg',
+        src: '/images/P22.jpeg',
         title: 'MARINA SHORES',
         subtitle: 'Contemporary Villa Living & Lounge Space',
         tag: 'LIVING ROOM',
@@ -172,7 +172,7 @@ const stages: StageData[] = [
       // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
         id: 's2-inner-right',
-        src: '/images/P16.jpeg',
+        src: '/images/P24.jpeg',
         title: 'BRONZE ACCENTS',
         subtitle: 'Fluted Wall Panels & Concealed Illumination',
         tag: 'JOINERY',
@@ -184,7 +184,7 @@ const stages: StageData[] = [
       // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
       {
         id: 's2-edge-mid-left',
-        src: '/images/P20.jpeg',
+        src: '/images/P41.jpeg',
         title: 'TACTILE FINISHES',
         subtitle: 'Natural Wood & Fluted Plaster Paneling',
         tag: 'FINISHES',
@@ -197,7 +197,7 @@ const stages: StageData[] = [
       // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
       {
         id: 's2-edge-top-left',
-        src: '/images/P25.jpeg',
+        src: '/images/P29.jpeg',
         title: 'MARBLE JOINERY',
         subtitle: 'Seamless Transition from Stone to Timber',
         tag: 'STONEWORK',
@@ -210,7 +210,7 @@ const stages: StageData[] = [
       // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
       {
         id: 's2-edge-bottom-left',
-        src: '/images/P18.jpeg',
+        src: '/images/P27.jpeg',
         title: 'FORM & FUNCTION',
         subtitle: 'Custom Millwork & Kitchen Island Centerpiece',
         tag: 'TURNKEY',
@@ -223,7 +223,7 @@ const stages: StageData[] = [
       // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
       {
         id: 's2-edge-bottom-mid',
-        src: '/images/P28.jpeg',
+        src: '/images/P32.jpeg',
         title: 'ARCHITECTURAL FIXTURES',
         subtitle: 'Precision Detail in Brushed Gunmetal',
         tag: 'HARDWARE',
@@ -236,7 +236,7 @@ const stages: StageData[] = [
       // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
       {
         id: 's2-edge-mid-right',
-        src: '/images/P26.jpeg',
+        src: '/images/P47.jpeg',
         title: 'CURATED LIGHTING',
         subtitle: 'Recessed Architectural Track Illumination',
         tag: 'LIGHTING',
@@ -249,7 +249,7 @@ const stages: StageData[] = [
       // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
       {
         id: 's2-edge-top-right',
-        src: '/images/P06.jpeg',
+        src: '/images/P34.jpeg',
         title: 'EMIRATES HILLS',
         subtitle: 'Double-Height Residence with Glass Monoliths',
         tag: 'ARCHITECTURE',
@@ -262,7 +262,7 @@ const stages: StageData[] = [
       // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
       {
         id: 's2-edge-bottom-right',
-        src: '/images/P30.jpeg',
+        src: '/images/P49.jpeg',
         title: 'CALACATTA OVAL',
         subtitle: 'Sculptural Dining Table & Custom FF&E',
         tag: 'FURNITURE',
@@ -286,7 +286,7 @@ const stages: StageData[] = [
       // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
         id: 's3-inner-left',
-        src: '/images/P10.jpeg',
+        src: '/images/P37.jpeg',
         title: 'MASTER SANCTUARY',
         subtitle: 'Penthouse Bedroom Suite with Custom Wardrobes',
         tag: 'PENTHOUSE',
@@ -298,7 +298,7 @@ const stages: StageData[] = [
       // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
         id: 's3-inner-right',
-        src: '/images/P15.jpeg',
+        src: '/images/P39.jpeg',
         title: 'CULINARY SUITE',
         subtitle: 'Seamless Monolith Kitchen & Wine Cellar',
         tag: 'FIT-OUT',
@@ -310,7 +310,7 @@ const stages: StageData[] = [
       // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
       {
         id: 's3-edge-mid-left',
-        src: '/images/P38.jpeg',
+        src: '/images/P43.jpeg',
         title: 'TERRACE HORIZON',
         subtitle: 'Indoor-Outdoor Infinity Glass Pergola',
         tag: 'TERRACE',
@@ -323,7 +323,7 @@ const stages: StageData[] = [
       // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
       {
         id: 's3-edge-top-left',
-        src: '/images/P36.jpeg',
+        src: '/images/P48.jpeg',
         title: 'CEILING ARCHITECTURE',
         subtitle: 'Acoustic Wood Ribs & Indirect Coves',
         tag: 'ENGINEERING',
@@ -336,7 +336,7 @@ const stages: StageData[] = [
       // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
       {
         id: 's3-edge-bottom-left',
-        src: '/images/P17.jpeg',
+        src: '/images/P50.jpeg',
         title: 'AOLAO RESIDENCE',
         subtitle: 'Conversational Lounge & Suspended Fireplace',
         tag: 'RESIDENTIAL',
@@ -349,7 +349,7 @@ const stages: StageData[] = [
       // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
       {
         id: 's3-edge-bottom-mid',
-        src: '/images/P42.jpeg',
+        src: '/images/P51.jpeg',
         title: 'CHOREOGRAPHED LIGHT',
         subtitle: 'Automated Scene Lighting for Twilight',
         tag: 'AUTOMATION',
@@ -362,7 +362,7 @@ const stages: StageData[] = [
       // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
       {
         id: 's3-edge-mid-right',
-        src: '/images/P40.jpeg',
+        src: '/images/P52.jpeg',
         title: 'EXECUTIVE SUITE',
         subtitle: 'Private Office Suite at DIFC Gate Towers',
         tag: 'COMMERCIAL',
@@ -375,7 +375,7 @@ const stages: StageData[] = [
       // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
       {
         id: 's3-edge-top-right',
-        src: '/images/P19.jpeg',
+        src: '/images/P45.jpeg',
         title: 'SPA BATHROOM',
         subtitle: 'Bookmatched Nero Marquina & Freestanding Tub',
         tag: 'WELLNESS',
@@ -388,7 +388,7 @@ const stages: StageData[] = [
       // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
       {
         id: 's3-edge-bottom-right',
-        src: '/images/P45.jpeg',
+        src: '/images/P04.jpeg',
         title: 'TURNKEY COMPLETION',
         subtitle: 'Final Handover at Jumeirah Islands Villa',
         tag: 'HANDOVER',
@@ -595,7 +595,7 @@ export const FloatingShowcase: React.FC = () => {
 
           {/* Central Headline with Green/Emerald Squiggly Underline */}
           <div className="my-2 sm:my-3 flex flex-col items-center justify-center">
-            <h2 className="text-[27px] sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-[1.12] transition-all duration-500">
+            <h2 className="text-[22px] sm:text-4xl md:text-5xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.12] transition-all duration-500">
               {/* Row 1 with Green Underline Wave */}
               <span className="block">
                 <span className="relative inline-block mr-2 sm:mr-3">

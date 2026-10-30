@@ -84,7 +84,7 @@ export const CohesiveVision: React.FC = () => {
             A COHESIVE DESIGN APPROACH
           </span>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-white tracking-tight leading-[1.08]">
+          <h2 className="text-4xl sm:text-4xl lg:text-[40px] font-bold text-white tracking-tight leading-[1.08]">
             Every Space. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#D6B779] to-white">
               One Clear Vision.

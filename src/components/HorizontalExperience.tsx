@@ -501,7 +501,7 @@ export const HorizontalExperience: React.FC = () => {
                     THE DIFFERENCE
                   </span>
                 </div>
-                <h2 className="text-2xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.1]">
+                <h2 className="text-2xl sm:text-4xl lg:text-[34px] font-bold text-white tracking-tight leading-[1.1]">
                   They build image generators.
                   <br />
                   <span className="text-white/95">We built a design engine.</span>
@@ -713,7 +713,7 @@ export const HorizontalExperience: React.FC = () => {
                     </span>
                   </div>
 
-                  <h2 className="text-3xl sm:text-4xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.05]">
+                  <h2 className="text-3xl sm:text-4xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.05]">
                     Your aesthetic,
                     <br />
                     <span className="text-white/95">built in.</span>
@@ -753,7 +753,7 @@ export const HorizontalExperience: React.FC = () => {
                           onClick={() => setActiveDept(dept.id)}
                           className={`flex items-center space-x-2 px-2.5 py-2 rounded-full border text-left transition-all duration-300 focus:outline-none ${
                             activeDept === dept.id
-                              ? 'bg-[#1E1C1A] border-[#EA580C]/80 shadow-[0_0_15px_rgba(234,88,12,0.25)]'
+                              ? 'bg-[#1E1C1A] border-[#EA580C]/90 shadow-[0_0_20px_rgba(234,88,12,0.35),inset_0_1px_1px_rgba(255,255,255,0.1)]'
                               : 'bg-[#121110]/80 border-white/10 hover:border-white/20'
                           }`}
                         >
@@ -768,7 +768,7 @@ export const HorizontalExperience: React.FC = () => {
                     </div>
 
                     {/* Spec Kit Tablet */}
-                    <div className="relative z-20 mx-auto w-full max-w-[320px] rounded-[26px] ios-glass border border-white/15 border-t-white/30 p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(16,185,129,0.12)]">
+                    <div className="relative z-20 mx-auto w-full max-w-[320px] rounded-[26px] ios-glass border border-white/15 border-t-white/30 p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.28),0_30px_70px_rgba(0,0,0,0.9),0_0_40px_rgba(16,185,129,0.16)]">
                       <div className="flex items-center justify-between pb-2 border-b border-white/10 mb-2">
                         <div className="flex items-center space-x-1.5">
                           <span className="text-[11px] font-bold uppercase tracking-wider text-white">
@@ -807,7 +807,7 @@ export const HorizontalExperience: React.FC = () => {
                             Templates
                           </span>
                           <div className="grid grid-cols-4 gap-1">
-                            {['/images/P04.jpeg', '/images/P14.jpeg', '/images/P01.jpeg', '/images/P03.jpeg'].map(
+                            {['/images/P09.jpeg', '/images/P22.jpeg', '/images/P11.jpeg', '/images/P24.jpeg'].map(
                               (src, idx) => (
                                 <div
                                   key={idx}
@@ -872,7 +872,7 @@ export const HorizontalExperience: React.FC = () => {
 
                     {/* Output Cards */}
                     <div className="flex flex-col space-y-3 z-20">
-                      <div className="w-[170px] rounded-2xl ios-glass border-t-white/25 p-2.5 shadow-xl group hover:border-white/35 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all">
+                      <div className="w-[170px] rounded-2xl ios-glass border-t-white/25 p-2.5 shadow-[0_16px_40px_rgba(0,0,0,0.8)] group hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.12),0_0_20px_rgba(214,183,121,0.1)] transition-all duration-500">
                         <div className="flex items-center justify-between text-[9px] font-mono text-neutral-400 mb-1.5">
                           <span className="inline-flex items-center space-x-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -899,7 +899,7 @@ export const HorizontalExperience: React.FC = () => {
                         </p>
                       </div>
 
-                      <div className="w-[170px] rounded-2xl ios-glass border-t-white/25 p-2.5 shadow-xl group hover:border-white/35 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all">
+                      <div className="w-[170px] rounded-2xl ios-glass border-t-white/25 p-2.5 shadow-[0_16px_40px_rgba(0,0,0,0.8)] group hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.12),0_0_20px_rgba(214,183,121,0.1)] transition-all duration-500">
                         <div className="flex items-center justify-between text-[9px] font-mono text-neutral-400 mb-1.5">
                           <span className="inline-flex items-center space-x-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
@@ -980,7 +980,7 @@ export const HorizontalExperience: React.FC = () => {
                           onClick={() => setActiveDept(dept.id)}
                           className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full border text-left shrink-0 transition-all ${
                             activeDept === dept.id
-                              ? 'bg-[#1E1C1A] border-[#EA580C]/80 shadow-[0_0_15px_rgba(234,88,12,0.25)]'
+                              ? 'bg-[#1E1C1A] border-[#EA580C]/90 shadow-[0_0_20px_rgba(234,88,12,0.35),inset_0_1px_1px_rgba(255,255,255,0.1)]'
                               : 'bg-[#121110]/80 border-white/10'
                           }`}
                         >
@@ -1025,14 +1025,14 @@ export const HorizontalExperience: React.FC = () => {
                     <div className="grid grid-cols-2 gap-2 max-w-[340px] mx-auto">
                       <div className="rounded-xl ios-glass p-2 border border-white/10">
                         <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-1 relative">
-                          <img src="/images/P04.jpeg" alt="Palm Beachfront Villa" className="w-full h-full object-cover" />
+                          <img src="/images/P22.jpeg" alt="Palm Beachfront Villa" className="w-full h-full object-cover" />
                         </div>
                         <p className="text-[10px] font-bold text-white truncate">Palm Villa</p>
                         <p className="text-[8px] text-neutral-400">Principal Lead</p>
                       </div>
                       <div className="rounded-xl ios-glass p-2 border border-white/10">
                         <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-1 relative">
-                          <img src="/images/P14.jpeg" alt="Grand Living Salon" className="w-full h-full object-cover" />
+                          <img src="/images/P09.jpeg" alt="Grand Living Salon" className="w-full h-full object-cover" />
                         </div>
                         <p className="text-[10px] font-bold text-white truncate">Grand Salon</p>
                         <p className="text-[8px] text-neutral-400">Design Lead</p>
@@ -1065,7 +1065,7 @@ export const HorizontalExperience: React.FC = () => {
                     </span>
                   </div>
 
-                  <h2 className="text-3xl sm:text-4xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.05]">
+                  <h2 className="text-3xl sm:text-4xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.05]">
                     More precision.
                     <br />
                     <span className="text-white/95">Zero burnout.</span>
@@ -1425,7 +1425,7 @@ export const HorizontalExperience: React.FC = () => {
                 {/* ================= RIGHT COLUMN: HEADLINE, CTAs & CATEGORY SELECTOR ================= */}
                 <div>
                   <div className="mb-4">
-                    <h2 className="text-3xl sm:text-4xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.05]">
+                    <h2 className="text-3xl sm:text-4xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.05]">
                       One vision.
                       <br />
                       <span className="relative inline-block text-white">

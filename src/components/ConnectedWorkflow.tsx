@@ -78,7 +78,7 @@ export const ConnectedWorkflow: React.FC = () => {
               </span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl lg:text-[60px] font-bold text-white tracking-tight leading-[1.05]">
+            <h2 className="text-4xl sm:text-4xl lg:text-[42px] font-bold text-white tracking-tight leading-[1.05]">
               Your aesthetic,
               <br />
               <span className="text-white/95">built in.</span>

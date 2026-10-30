@@ -419,7 +419,7 @@ export const InteractiveStudio: React.FC = () => {
             </div>
 
             {/* Large Bold Headline */}
-            <h2 className="text-xl sm:text-3xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.1] mb-2 sm:mb-4 lg:mb-6">
+            <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-tight leading-[1.1] mb-2 sm:mb-4 lg:mb-6">
               Describe it. <br className="hidden sm:inline" />
               Tweak it. Use it everywhere.
             </h2>

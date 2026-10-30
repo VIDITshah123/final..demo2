@@ -184,7 +184,7 @@ export const OneVisionEverySpace: React.FC = () => {
           <div className="flex flex-col">
             
             {/* Headline with Green Wave Stroke under "space" */}
-            <h2 className="text-4xl sm:text-5xl lg:text-[62px] font-bold text-white tracking-tight leading-[1.05]">
+            <h2 className="text-4xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.05]">
               One vision.
               <br />
               <span className="relative inline-block">

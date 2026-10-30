@@ -179,7 +179,7 @@ export const Hero: React.FC = () => {
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-4 sm:pt-8">
         
         {/* ROW 1: HEADLINE WITH EMBEDDED INTERACTIVE PILLS (EXACT SCREENSHOT LAYOUT) */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-lg sm:text-3xl md:text-4xl lg:text-[42px] font-medium text-white/95 tracking-tight mb-2">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-base sm:text-2xl md:text-3xl lg:text-[32px] font-medium text-white/95 tracking-tight mb-2">
           <span className="font-sans font-light text-neutral-300">Let</span>
 
           {/* Pill 1: Avatar Pill [ 👤 ALTIMATE ] */}
@@ -218,7 +218,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* ROW 2: LARGE BOLD PUNCHLINE (EXACT SCREENSHOT: "On brand. Every time.") */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-[1.08] mt-1 sm:mt-2">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.08] mt-1 sm:mt-2">
           Beyond ordinary. Every time.
         </h1>
 

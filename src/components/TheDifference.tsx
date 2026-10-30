@@ -161,7 +161,7 @@ export const TheDifference: React.FC = () => {
               THE DIFFERENCE
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-bold text-white tracking-tight leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[40px] font-bold text-white tracking-tight leading-[1.1]">
             They build image generators.
             <br />
             <span className="text-white/95">We built a design engine.</span>
