@@ -40,7 +40,7 @@ export const Navbar: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'py-3.5 bg-[#080807]/85 backdrop-blur-md border-b border-white/5 shadow-2xl'
+            ? 'py-3.5 bg-[#080807]/70 backdrop-blur-2xl border-b border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.6)] shadow-black/60'
             : 'py-5 bg-transparent'
         }`}
       >
@@ -125,7 +125,7 @@ export const Navbar: React.FC = () => {
             {/* Pill CTA button matching screenshot */}
             <a
               href="#contact"
-              className="inline-flex items-center space-x-2 text-[13px] px-5 py-2 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/15 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-[0_0_20px_rgba(214,183,121,0.2)]"
+              className="inline-flex items-center space-x-2 text-[13px] px-5 py-2 rounded-full ios-glass-pill hover:bg-white/15 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
             >
               <span>Get started</span>
             </a>

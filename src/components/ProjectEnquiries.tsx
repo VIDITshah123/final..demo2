@@ -124,7 +124,7 @@ export const ProjectEnquiries: React.FC = () => {
             </h3>
           </div>
 
-          <div className="divide-y divide-white/10 border-y border-white/10">
+          <div className="divide-y divide-white/10 border-y border-white/10 rounded-2xl ios-glass p-6 sm:p-8 border border-white/10 border-t-white/25 shadow-2xl">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
 
@@ -186,8 +186,8 @@ export const ProjectEnquiries: React.FC = () => {
               key={card.id}
               className={`rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 relative group ${
                 card.isPopular
-                  ? 'bg-gradient-to-b from-[#1C1814] to-[#141210] border border-[#EA580C]/40 shadow-[0_10px_35px_rgba(234,88,12,0.18)]'
-                  : 'bg-[#121110] border border-white/10 hover:border-white/25 hover:bg-[#161514]'
+                  ? 'bg-gradient-to-b from-[#221B15]/90 to-[#141210]/90 border border-[#EA580C]/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_0_35px_rgba(234,88,12,0.25),0_20px_50px_rgba(0,0,0,0.85)]'
+                  : 'ios-glass border-t-white/25 hover:border-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),0_15px_40px_rgba(0,0,0,0.6)]'
               }`}
             >
               {card.isPopular && (
@@ -223,7 +223,7 @@ export const ProjectEnquiries: React.FC = () => {
         </div>
 
         {/* Direct Studio Contact Bar */}
-        <div className="w-full max-w-4xl rounded-2xl bg-[#11100F] border border-white/10 p-6 flex flex-wrap items-center justify-between gap-6">
+        <div className="w-full max-w-4xl rounded-2xl ios-glass border-t-white/25 p-6 flex flex-wrap items-center justify-between gap-6 shadow-2xl">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-xl bg-black/60 border border-white/10 flex items-center justify-center text-[#D6B779]">
               <MapPin className="w-5 h-5" />

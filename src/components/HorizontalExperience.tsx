@@ -512,7 +512,7 @@ export const HorizontalExperience: React.FC = () => {
                 
                 {/* Left Card: Traditional Approach */}
                 <div className="flex flex-col items-center">
-                  <div className="w-full max-w-[360px] rounded-[24px] p-2 sm:p-2.5 bg-[#11100F] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] relative group transition-all">
+                  <div className="w-full max-w-[360px] rounded-[26px] p-2.5 sm:p-3 ios-glass border-t-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_20px_50px_rgba(0,0,0,0.85)] relative group transition-all">
                     <div className="w-full aspect-[4/5] rounded-[18px] bg-[#161513] overflow-hidden relative border border-white/5 flex flex-col justify-between p-4 sm:p-5">
                       <div className="flex items-center justify-between z-10">
                         <span className="px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-black/60 border border-white/10 text-neutral-400">
@@ -572,7 +572,7 @@ export const HorizontalExperience: React.FC = () => {
                 </div>
 
                 {/* Center 4-Dot Vertical Selector */}
-                <div className="flex md:flex-col items-center justify-center space-x-3 md:space-x-0 md:space-y-3.5 py-2 px-3 md:py-3.5 md:px-2 rounded-full bg-[#161514] border border-white/10 shadow-2xl">
+                <div className="flex md:flex-col items-center justify-center space-x-3 md:space-x-0 md:space-y-3.5 py-2 px-3 md:py-3.5 md:px-2 rounded-full ios-glass border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_25px_rgba(0,0,0,0.7)]">
                   {comparisonData.map((item, idx) => (
                     <button
                       key={item.id}
@@ -606,7 +606,7 @@ export const HorizontalExperience: React.FC = () => {
 
                 {/* Right Card: ALTIMATE Turnkey */}
                 <div className="flex flex-col items-center">
-                  <div className="w-full max-w-[360px] rounded-[24px] p-2 sm:p-2.5 bg-[#11100F] border border-white/15 shadow-[0_20px_50px_rgba(234,88,12,0.15)] relative group transition-all">
+                  <div className="w-full max-w-[360px] rounded-[26px] p-2.5 sm:p-3 ios-glass border-t-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_20px_50px_rgba(234,88,12,0.2),0_0_30px_rgba(234,88,12,0.15)] relative group transition-all">
                     <div className="w-full aspect-[4/5] rounded-[18px] overflow-hidden relative flex flex-col">
                       <div className="bg-white text-black p-4 sm:p-5 flex flex-col justify-between">
                         <p className="font-serif italic text-base sm:text-xl text-neutral-900 leading-tight font-medium">
@@ -689,13 +689,13 @@ export const HorizontalExperience: React.FC = () => {
                   <div className="mt-6 flex flex-wrap items-center gap-3">
                     <a
                       href="#contact"
-                      className="px-5 py-2.5 rounded-full text-[11px] font-mono tracking-widest uppercase bg-[#181715] hover:bg-[#22211E] text-white border border-white/15 transition-all shadow-lg"
+                      className="px-5 py-2.5 rounded-full text-[11px] font-mono tracking-widest uppercase ios-glass-interactive text-white shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                     >
                       Explore Materials
                     </a>
                     <a
                       href="#contact"
-                      className="px-5 py-2.5 rounded-full text-[11px] font-mono tracking-widest uppercase font-semibold text-white bg-gradient-to-r from-[#EA580C] to-[#F97316] shadow-[0_0_20px_rgba(234,88,12,0.45)]"
+                      className="px-5 py-2.5 rounded-full text-[11px] font-mono tracking-widest uppercase font-semibold text-white bg-gradient-to-r from-[#EA580C] to-[#F97316] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_0_25px_rgba(234,88,12,0.5)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.45),0_0_35px_rgba(234,88,12,0.7)] transition-all"
                     >
                       Book Consultation
                     </a>
@@ -730,7 +730,7 @@ export const HorizontalExperience: React.FC = () => {
                     </div>
 
                     {/* Spec Kit Tablet */}
-                    <div className="relative z-20 mx-auto w-full max-w-[320px] rounded-[22px] bg-[#11100F] border border-white/15 p-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.85)]">
+                    <div className="relative z-20 mx-auto w-full max-w-[320px] rounded-[26px] ios-glass border border-white/15 border-t-white/30 p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(16,185,129,0.12)]">
                       <div className="flex items-center justify-between pb-2 border-b border-white/10 mb-2">
                         <div className="flex items-center space-x-1.5">
                           <span className="text-[11px] font-bold uppercase tracking-wider text-white">
@@ -834,7 +834,7 @@ export const HorizontalExperience: React.FC = () => {
 
                     {/* Output Cards */}
                     <div className="flex flex-col space-y-3 z-20">
-                      <div className="w-[170px] rounded-xl bg-[#141312] border border-white/10 p-2.5 shadow-xl group">
+                      <div className="w-[170px] rounded-2xl ios-glass border-t-white/25 p-2.5 shadow-xl group hover:border-white/35 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all">
                         <div className="flex items-center justify-between text-[9px] font-mono text-neutral-400 mb-1.5">
                           <span className="inline-flex items-center space-x-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -861,7 +861,7 @@ export const HorizontalExperience: React.FC = () => {
                         </p>
                       </div>
 
-                      <div className="w-[170px] rounded-xl bg-[#141312] border border-white/10 p-2.5 shadow-xl group">
+                      <div className="w-[170px] rounded-2xl ios-glass border-t-white/25 p-2.5 shadow-xl group hover:border-white/35 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all">
                         <div className="flex items-center justify-between text-[9px] font-mono text-neutral-400 mb-1.5">
                           <span className="inline-flex items-center space-x-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
@@ -969,13 +969,13 @@ export const HorizontalExperience: React.FC = () => {
                   <div className="mt-6 flex flex-wrap items-center gap-3">
                     <a
                       href="#contact"
-                      className="px-5 py-2.5 rounded-full text-[11px] font-mono tracking-widest uppercase bg-[#181715] hover:bg-[#22211E] text-white border border-white/15 transition-all shadow-lg"
+                      className="px-5 py-2.5 rounded-full text-[11px] font-mono tracking-widest uppercase ios-glass-interactive text-white shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                     >
                       View Timeline Guarantee
                     </a>
                     <a
                       href="#contact"
-                      className="px-5 py-2.5 rounded-full text-[11px] font-mono tracking-widest uppercase font-semibold text-white bg-gradient-to-r from-[#EA580C] to-[#F97316] shadow-[0_0_20px_rgba(234,88,12,0.45)]"
+                      className="px-5 py-2.5 rounded-full text-[11px] font-mono tracking-widest uppercase font-semibold text-white bg-gradient-to-r from-[#EA580C] to-[#F97316] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_0_25px_rgba(234,88,12,0.5)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.45),0_0_35px_rgba(234,88,12,0.7)] transition-all"
                     >
                       Contact Sales
                     </a>
@@ -986,7 +986,7 @@ export const HorizontalExperience: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 relative">
                   
                   {/* Others Card */}
-                  <div className="rounded-[22px] bg-[#11100F]/90 backdrop-blur-md border border-white/10 p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.85)] flex flex-col justify-between">
+                  <div className="rounded-[26px] ios-glass border-t-white/20 p-4 sm:p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),0_20px_50px_rgba(0,0,0,0.85)] flex flex-col justify-between">
                     <div>
                       <h3 className="text-xs font-bold text-neutral-300 tracking-wide pb-3 border-b border-white/10">
                         Others
@@ -1055,7 +1055,7 @@ export const HorizontalExperience: React.FC = () => {
                   </div>
 
                   {/* ALTIMATE Card */}
-                  <div className="rounded-[22px] bg-[#11100F]/90 backdrop-blur-md border border-[#10B981]/30 p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.85)] flex flex-col justify-between group hover:border-[#10B981]/50 transition-all">
+                  <div className="rounded-[26px] ios-glass border-[#10B981]/40 border-t-white/30 p-4 sm:p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_20px_50px_rgba(0,0,0,0.85),0_0_35px_rgba(16,185,129,0.22)] flex flex-col justify-between group hover:border-[#10B981]/60 transition-all">
                     <div>
                       <div className="flex items-center space-x-1.5 pb-3 border-b border-white/10">
                         <span className="text-emerald-400 font-bold text-xs">✦</span>
@@ -1259,7 +1259,7 @@ export const HorizontalExperience: React.FC = () => {
                 {/* ================= LEFT COLUMN: DYNAMIC CARDS ================= */}
                 <div className="space-y-4 sm:space-y-5">
                   {/* Top Card */}
-                  <div className="rounded-[22px] bg-[#11100F] border border-white/10 overflow-hidden shadow-2xl relative group transition-all duration-500 hover:border-white/25">
+                  <div className="rounded-[24px] ios-glass border-t-white/30 overflow-hidden shadow-2xl relative group transition-all duration-500 hover:border-white/35 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
                     <div className="w-full aspect-[16/9] overflow-hidden relative">
                       <img
                         src={spaceCategories[spaceTab].cardTop.src}
@@ -1286,7 +1286,7 @@ export const HorizontalExperience: React.FC = () => {
                   </div>
 
                   {/* Bottom Card */}
-                  <div className="rounded-[22px] bg-[#11100F] border border-white/10 overflow-hidden shadow-2xl relative group transition-all duration-500 hover:border-white/25">
+                  <div className="rounded-[24px] ios-glass border-t-white/30 overflow-hidden shadow-2xl relative group transition-all duration-500 hover:border-white/35 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
                     <div className="w-full aspect-[16/9] overflow-hidden relative">
                       <img
                         src={spaceCategories[spaceTab].cardBottom.src}
@@ -1360,10 +1360,10 @@ export const HorizontalExperience: React.FC = () => {
                         key={cat.id}
                         type="button"
                         onClick={() => setSpaceTab(idx)}
-                        className={`w-full flex items-center justify-between p-3 sm:p-3.5 rounded-xl text-left transition-all duration-300 border ${
+                        className={`w-full flex items-center justify-between p-3 sm:p-3.5 rounded-2xl text-left transition-all duration-300 ios-glass-interactive ${
                           spaceTab === idx
-                            ? 'bg-[#181615] border-l-4 border-l-white border-white/20 shadow-xl'
-                            : 'bg-[#11100F]/80 border-l-4 border-l-transparent border-white/5 hover:border-white/15 hover:bg-[#151413]'
+                            ? 'border-l-4 border-l-white border-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_0_30px_rgba(255,255,255,0.15)] bg-white/10'
+                            : 'border-l-4 border-l-transparent'
                         }`}
                       >
                         <div className="flex items-center space-x-3">

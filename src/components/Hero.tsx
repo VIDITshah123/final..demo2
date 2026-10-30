@@ -134,7 +134,7 @@ export const Hero: React.FC = () => {
           <span className="font-sans font-light text-neutral-300">Let</span>
 
           {/* Pill 1: Avatar Pill [ 👤 ALTIMATE ] */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#18181B]/90 border border-white/15 backdrop-blur-md shadow-lg shadow-black/40">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg">
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-[#D6B779] to-[#EA580C] p-[1px] flex items-center justify-center overflow-hidden">
               <img
                 src="/images/P12.jpeg"
@@ -150,7 +150,7 @@ export const Hero: React.FC = () => {
           <span className="font-sans font-light text-neutral-300">from</span>
 
           {/* Pill 2: Purple / Indigo Tinted Pill [ 👥 Architecture / Interiors ] */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#3B1D54]/85 border border-[#A855F7]/30 backdrop-blur-md shadow-lg shadow-purple-950/40">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#3B1D54]/75 border border-[#A855F7]/35 backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_rgba(168,85,247,0.25)]">
             <Building2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#C084FC]" />
             <span className="text-sm sm:text-base md:text-lg font-semibold text-white tracking-normal">
               {currentPreset.team}
@@ -160,7 +160,7 @@ export const Hero: React.FC = () => {
           <span className="font-sans font-light text-neutral-300">create</span>
 
           {/* Pill 3: Glass Pill [ 🖼️ Project Space ] */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-lg shadow-black/30">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg">
             <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D6B779]" />
             <span className="text-sm sm:text-base md:text-lg font-semibold text-white tracking-normal truncate max-w-[150px] sm:max-w-[200px]">
               {currentPreset.project}
@@ -177,7 +177,7 @@ export const Hero: React.FC = () => {
         <div className="w-full max-w-2xl mt-8 sm:mt-10">
           <form
             onSubmit={handleSubmit}
-            className="relative w-full rounded-2xl sm:rounded-3xl bg-[#121110]/75 backdrop-blur-2xl border border-white/10 hover:border-white/20 transition-all duration-300 p-5 sm:p-7 shadow-[0_25px_60px_rgba(0,0,0,0.85)] flex flex-col justify-between min-h-[170px] sm:min-h-[195px] text-left group"
+            className="relative w-full rounded-[28px] sm:rounded-[32px] ios-glass border border-white/[0.14] hover:border-white/25 transition-all duration-500 p-5 sm:p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.22),0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(234,88,12,0.12)] flex flex-col justify-between min-h-[170px] sm:min-h-[195px] text-left group"
           >
             {/* Inner Content Area */}
             <div className="w-full pr-12">
@@ -223,7 +223,7 @@ export const Hero: React.FC = () => {
               <button
                 type="submit"
                 aria-label="Generate Architectural Concept"
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-tr from-[#EA580C] via-[#F97316] to-[#FB923C] flex items-center justify-center text-white shadow-lg shadow-orange-950/60 transition-transform duration-300 hover:scale-110 active:scale-95 flex-shrink-0 ml-3 focus:outline-none focus:ring-2 focus:ring-[#EA580C]"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-tr from-[#EA580C] via-[#F97316] to-[#FB923C] flex items-center justify-center text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_0_25px_rgba(234,88,12,0.6)] transition-transform duration-300 hover:scale-110 active:scale-95 flex-shrink-0 ml-3 focus:outline-none"
               >
                 {submitted ? (
                   <Check className="w-5 h-5 text-white" />

@@ -506,13 +506,13 @@ export const FloatingShowcase: React.FC = () => {
 
                   {/* Top Category Badge */}
                   <div className="absolute top-3 left-3 z-10">
-                    <span className="px-2 py-0.5 rounded-[4px] text-[9px] font-mono tracking-wider uppercase bg-black/60 backdrop-blur-md text-[#D6B779] border border-white/10">
+                    <span className="px-2.5 py-0.5 rounded-[6px] text-[9px] font-mono tracking-wider uppercase ios-glass text-[#D6B779] shadow-sm">
                       {card.tag}
                     </span>
                   </div>
 
                   {/* Bottom Text Overlay inside the Card */}
-                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex flex-col justify-end">
+                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/75 to-transparent backdrop-blur-[2px] flex flex-col justify-end">
                     <h3 className="font-sans font-bold text-xs sm:text-sm text-white tracking-wide uppercase leading-tight truncate">
                       {card.title}
                     </h3>
@@ -576,7 +576,7 @@ export const FloatingShowcase: React.FC = () => {
                 onClick={() => handleDotClick(idx)}
                 className={`transition-all duration-300 rounded-full focus:outline-none ${
                   stageIndex === idx
-                    ? 'w-6 h-1.5 bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]'
+                    ? 'w-7 h-1.5 bg-white shadow-[0_0_16px_rgba(255,255,255,0.95),inset_0_1px_1px_rgba(255,255,255,0.8)]'
                     : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/60'
                 }`}
                 aria-label={`Go to stage ${idx + 1}`}

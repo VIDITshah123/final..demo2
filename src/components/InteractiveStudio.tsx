@@ -122,7 +122,7 @@ export const InteractiveStudio: React.FC = () => {
         
         {/* ================= LEFT COLUMN: INTERACTIVE STUDIO CANVAS (60%) ================= */}
         <div className="lg:col-span-7 w-full">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/11.5] rounded-3xl bg-[#121110]/95 backdrop-blur-2xl border border-white/10 shadow-[0_25px_65px_rgba(0,0,0,0.85)] p-5 sm:p-7 flex flex-col justify-between overflow-hidden group">
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/11.5] rounded-3xl sm:rounded-[32px] ios-glass border border-white/15 border-t-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_30px_80px_rgba(0,0,0,0.85)] p-5 sm:p-7 flex flex-col justify-between overflow-hidden group">
             
             {/* Canvas Header Bar */}
             <div className="flex items-center justify-between pb-3 border-b border-white/5 z-20">
@@ -369,14 +369,14 @@ export const InteractiveStudio: React.FC = () => {
           <div className="flex items-center space-x-4 mb-8">
             <a
               href="#contact"
-              className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs font-medium tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm backdrop-blur-md"
+              className="px-6 py-2.5 rounded-full ios-glass-interactive text-white text-xs font-medium tracking-wide shadow-md hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
             >
               Get started
             </a>
 
             <a
               href="#contact"
-              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#E58A3C] hover:brightness-110 text-white text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_24px_rgba(234,88,12,0.45)]"
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#E58A3C] hover:brightness-110 text-white text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_0_25px_rgba(234,88,12,0.5)]"
             >
               Contact sales
             </a>
