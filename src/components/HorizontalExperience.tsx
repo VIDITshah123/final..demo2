@@ -151,6 +151,90 @@ const comparisonData: ComparisonState[] = [
   },
 ];
 
+
+/* =========================================================================
+   SLIDE 4: SIGNATURE WORKS — Featured Project Spotlight
+   ========================================================================= */
+
+interface SignatureProject {
+  id: string;
+  image: string;
+  title: string;
+  subtitle: string;
+  location: string;
+  category: string;
+  area: string;
+  timeline: string;
+  tag: string;
+  description: string;
+  accent: string;
+  glow: string;
+  year: string;
+}
+
+const signatureProjects: SignatureProject[] = [
+  {
+    id: 'sp-1',
+    image: '/images/P04.jpeg',
+    title: 'Villa Lumière',
+    subtitle: 'Beachfront Estate',
+    location: 'Palm Jumeirah, Dubai',
+    category: 'PRIVATE ESTATE',
+    area: '14,200 SQ FT',
+    timeline: '11 Months',
+    tag: 'ARCHITECTURE & INTERIORS',
+    description: 'A beachfront estate defined by double-height glass curtain walls, bookmatched Calacatta marble, and bespoke bronze millwork — conceived as a single continuous architectural gesture from seafront to sky.',
+    accent: '#EA580C',
+    glow: 'rgba(234,88,12,0.28)',
+    year: '2024',
+  },
+  {
+    id: 'sp-2',
+    image: '/images/P14.jpeg',
+    title: 'The Grand Salon',
+    subtitle: 'Emirates Hills Compound',
+    location: 'Emirates Hills, Dubai',
+    category: 'LUXURY VILLA',
+    area: '22,000 SQ FT',
+    timeline: '14 Months',
+    tag: 'ARCHITECTURE & BUILD',
+    description: 'A landmark gated compound featuring a formal reception salon in bookmatched Italian stone, subterranean entertainment vault, and private wellness spa with hydrotherapy.',
+    accent: '#D6B779',
+    glow: 'rgba(214,183,121,0.24)',
+    year: '2024',
+  },
+  {
+    id: 'sp-3',
+    image: '/images/P01.jpeg',
+    title: 'Sky Palace Duplex',
+    subtitle: 'Penthouse Residence',
+    location: 'Downtown Dubai, UAE',
+    category: 'PENTHOUSE',
+    area: '8,500 SQ FT',
+    timeline: '8 Months',
+    tag: 'TURNKEY FIT-OUT',
+    description: 'A triplex sky residence with uninterrupted Burj Khalifa panoramas, floating architectural staircases in smoked oak, and fully integrated Crestron smart home automation.',
+    accent: '#10B981',
+    glow: 'rgba(16,185,129,0.22)',
+    year: '2023',
+  },
+  {
+    id: 'sp-4',
+    image: '/images/P05.jpeg',
+    title: 'Horizon Executive HQ',
+    subtitle: 'Private Family Office',
+    location: 'DIFC, Dubai',
+    category: 'COMMERCIAL',
+    area: '6,800 SQ FT',
+    timeline: '5 Months',
+    tag: 'COMMERCIAL INTERIORS',
+    description: 'A high-altitude executive headquarters with acoustic timber baffles, curved Nero Marquina reception desk, and a private boardroom commanding 360° views of the Dubai skyline.',
+    accent: '#EA580C',
+    glow: 'rgba(234,88,12,0.22)',
+    year: '2023',
+  },
+];
+
 /* =========================================================================
    SLIDE 5: ONE VISION EVERY SPACE DATA
    ========================================================================= */
@@ -268,6 +352,16 @@ export const HorizontalExperience: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<number>(0);
   const [activeDept, setActiveDept] = useState<string>('arch');
 
+  // Slide 4 State — Signature Works auto-advance
+  const [activeProject, setActiveProject] = useState<number>(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveProject((p) => (p + 1) % signatureProjects.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   // Slide 5 State
   const [spaceTab, setSpaceTab] = useState<number>(0);
 
@@ -343,21 +437,21 @@ export const HorizontalExperience: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Translation calculation: 4 slides = 400vw total width. Max translate is 300vw
-  const translateX = scrollProgress * 300; // in vw units (4 slides = 300vw max translate)
+  // Translation calculation: 5 slides = 500vw total width. Max translate is 400vw
+  const translateX = scrollProgress * 400; // in vw units
 
   // Dynamic green ribbon progression tied directly to scroll movement:
   // Starts entering as user moves into Slide 2 (around 0.20),
   // sweeps dynamically through Slide 3, and finishes at Slide 4 (around 0.90).
   const ribbonStart = 0.16;
-  const ribbonEnd = 0.72;
+  const ribbonEnd = 0.78;
   const ribbonProgress = Math.min(1, Math.max(0, (scrollProgress - ribbonStart) / (ribbonEnd - ribbonStart)));
   const strokeDashoffset = pathLength * (1 - ribbonProgress);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[420vh] bg-[#070707] selection:bg-[#D6B779]/25"
+      className="relative w-full h-[520vh] bg-[#070707] selection:bg-[#D6B779]/25"
     >
       {/* ===== CINEMATIC AMBIENT LIGHTING ===== */}
       <AmbientBackground variant="horizontal" />
@@ -368,7 +462,7 @@ export const HorizontalExperience: React.FC = () => {
         {/* ================= HORIZONTAL SCROLL TRACK (400vw Total Width) ================= */}
         <div
           ref={trackRef}
-          className="flex h-full w-[400vw] will-change-transform relative"
+          className="flex h-full w-[500vw] will-change-transform relative"
           style={{
             transform: `translate3d(-${translateX}vw, 0, 0)`,
             transition: 'transform 0.06s ease-out',
@@ -379,8 +473,8 @@ export const HorizontalExperience: React.FC = () => {
              Starts at "Your aesthetic, built in." and advances into Turnkey Velocity & Emblem
              ========================================================================= */}
           <svg
-            className="absolute top-0 left-0 w-[400vw] h-full pointer-events-none z-0"
-            viewBox="0 0 4000 1000"
+            className="absolute top-0 left-0 w-[500vw] h-full pointer-events-none z-0"
+            viewBox="0 0 5000 1000"
             fill="none"
             preserveAspectRatio="none"
           >
@@ -1179,6 +1273,191 @@ export const HorizontalExperience: React.FC = () => {
 
                 </div>
 
+              </div>
+
+            </div>
+          </section>
+
+          {/* =========================================================================
+             SLIDE 4: SIGNATURE WORKS — Featured Project Spotlight
+             ========================================================================= */}
+          <section className="w-screen min-w-[100vw] h-screen shrink-0 relative flex items-center justify-center overflow-hidden select-none">
+
+            {/* Dynamic ambient glow that shifts with active project */}
+            <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
+              <div
+                className="absolute inset-0 transition-all duration-1000"
+                style={{
+                  background: `radial-gradient(ellipse 80% 60% at 30% 50%, ${signatureProjects[activeProject].glow} 0%, transparent 70%)`,
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#070707]/0 via-[#070707]/60 to-[#070707]/95" />
+            </div>
+
+            {/* ── FULL-BLEED BACKGROUND IMAGE (fills left ~60%) ── */}
+            <div className="absolute inset-0 z-0">
+              {signatureProjects.map((proj, idx) => (
+                <div
+                  key={proj.id}
+                  className="absolute inset-0 transition-all duration-1000 ease-in-out"
+                  style={{
+                    opacity: activeProject === idx ? 1 : 0,
+                    transform: activeProject === idx ? 'scale(1.00)' : 'scale(1.04)',
+                  }}
+                >
+                  <img
+                    src={proj.image}
+                    alt={proj.title}
+                    className="w-full h-full object-cover object-center"
+                    style={{ filter: 'brightness(0.55) contrast(1.08)' }}
+                  />
+                </div>
+              ))}
+              {/* Right-side fade to dark for content readability */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#070707]/55 to-[#070707]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070707]/70 via-transparent to-[#070707]/30" />
+            </div>
+
+            {/* ── CONTENT LAYER ── */}
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-end lg:items-center justify-between gap-8 h-full py-16">
+
+              {/* Left — Editorial project title overlay (visible on image) */}
+              <div className="flex-1 flex flex-col justify-end lg:justify-center pb-8 lg:pb-0">
+                <div
+                  className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full border mb-5 w-fit transition-all duration-700"
+                  style={{ borderColor: `${signatureProjects[activeProject].accent}55`, background: `${signatureProjects[activeProject].accent}18` }}
+                >
+                  <span
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: signatureProjects[activeProject].accent }}
+                  />
+                  <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-white/80">
+                    {signatureProjects[activeProject].tag}
+                  </span>
+                </div>
+
+                <h2 className="text-4xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-tight leading-[0.95] mb-3 transition-all duration-700">
+                  {signatureProjects[activeProject].title}
+                </h2>
+                <p className="text-base sm:text-lg text-white/60 font-light tracking-wide mb-1">
+                  {signatureProjects[activeProject].subtitle}
+                </p>
+                <p className="text-sm text-white/40 font-mono tracking-widest uppercase">
+                  {signatureProjects[activeProject].location}
+                </p>
+
+                {/* Progress bar */}
+                <div className="mt-8 flex items-center space-x-3">
+                  {signatureProjects.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setActiveProject(i)}
+                      className="relative h-0.5 rounded-full overflow-hidden transition-all duration-300"
+                      style={{
+                        width: activeProject === i ? '48px' : '16px',
+                        background: activeProject === i ? signatureProjects[activeProject].accent : 'rgba(255,255,255,0.2)',
+                      }}
+                    />
+                  ))}
+                  <span className="text-[10px] font-mono text-white/30 ml-2">
+                    {String(activeProject + 1).padStart(2, '0')} / {String(signatureProjects.length).padStart(2, '0')}
+                  </span>
+                </div>
+              </div>
+
+              {/* Right — Project details panel */}
+              <div className="w-full lg:w-[420px] shrink-0">
+                <div
+                  className="rounded-3xl border p-6 sm:p-8 backdrop-blur-xl transition-all duration-700"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(14,12,10,0.90) 0%, rgba(8,7,6,0.95) 100%)',
+                    borderColor: `${signatureProjects[activeProject].accent}30`,
+                    boxShadow: `inset 0 1px 1px rgba(255,255,255,0.08), 0 0 60px ${signatureProjects[activeProject].glow}, 0 30px 80px rgba(0,0,0,0.80)`,
+                  }}
+                >
+                  {/* Year badge */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-mono text-white/30 tracking-widest uppercase">
+                      PROJECT RECORD
+                    </span>
+                    <span
+                      className="text-[11px] font-mono font-bold tracking-widest px-2.5 py-0.5 rounded-full border"
+                      style={{
+                        color: signatureProjects[activeProject].accent,
+                        borderColor: `${signatureProjects[activeProject].accent}40`,
+                        background: `${signatureProjects[activeProject].accent}12`,
+                      }}
+                    >
+                      {signatureProjects[activeProject].year}
+                    </span>
+                  </div>
+
+                  {/* Stats grid */}
+                  <div className="grid grid-cols-3 gap-3 mb-6">
+                    {[
+                      { label: 'CATEGORY', value: signatureProjects[activeProject].category },
+                      { label: 'AREA', value: signatureProjects[activeProject].area },
+                      { label: 'TIMELINE', value: signatureProjects[activeProject].timeline },
+                    ].map((stat) => (
+                      <div key={stat.label} className="rounded-xl bg-white/[0.04] border border-white/[0.07] p-3">
+                        <span className="text-[8px] font-mono uppercase tracking-widest text-white/30 block mb-1">
+                          {stat.label}
+                        </span>
+                        <span className="text-[11px] font-bold text-white leading-tight">
+                          {stat.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-xs text-neutral-400 font-light leading-relaxed mb-7 border-t border-white/[0.06] pt-5">
+                    {signatureProjects[activeProject].description}
+                  </p>
+
+                  {/* Thumbnail selector row */}
+                  <div className="grid grid-cols-4 gap-2">
+                    {signatureProjects.map((proj, i) => (
+                      <button
+                        key={proj.id}
+                        type="button"
+                        onClick={() => setActiveProject(i)}
+                        className="relative rounded-xl overflow-hidden aspect-square border-2 transition-all duration-300"
+                        style={{
+                          borderColor: activeProject === i ? signatureProjects[activeProject].accent : 'rgba(255,255,255,0.08)',
+                          boxShadow: activeProject === i ? `0 0 12px ${signatureProjects[activeProject].accent}55` : 'none',
+                        }}
+                      >
+                        <img
+                          src={proj.image}
+                          alt={proj.title}
+                          className="w-full h-full object-cover transition-all duration-300"
+                          style={{ filter: activeProject === i ? 'brightness(1)' : 'brightness(0.45) grayscale(0.3)' }}
+                        />
+                        {activeProject === i && (
+                          <div
+                            className="absolute inset-0 opacity-30"
+                            style={{ background: `linear-gradient(to top, ${proj.accent}, transparent)` }}
+                          />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <a
+                    href="#contact"
+                    className="mt-5 w-full flex items-center justify-center space-x-2 py-3 rounded-2xl text-xs font-mono uppercase tracking-widest font-semibold transition-all duration-300 text-white"
+                    style={{
+                      background: `linear-gradient(135deg, ${signatureProjects[activeProject].accent}, ${signatureProjects[activeProject].accent}BB)`,
+                      boxShadow: `0 0 24px ${signatureProjects[activeProject].glow}`,
+                    }}
+                  >
+                    <span>Discuss a similar project</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
 
             </div>
