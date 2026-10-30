@@ -20,6 +20,12 @@ node_modules
 extracted_frames/
 preview_test/
 extract.py
+extract_s3.py
+extract_recording.py
+extracted_recording/
+extracted_section3/
+take_screenshots.py
+verification_shots/
 
 # Environment variables
 .env

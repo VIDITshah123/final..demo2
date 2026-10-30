@@ -22,9 +22,9 @@ interface StageData {
 }
 
 const stages: StageData[] = [
-  // ================= STAGE 1: CONCEIVED WITH VISION · SIGNATURE RESIDENCES =================
+  // ================= STAGE 1: REAL OUTPUTS · ARCHITECTURAL SPACES =================
   {
-    eyebrow: 'SIGNATURE RESIDENCES · ARCHITECTURAL EXCELLENCE',
+    eyebrow: 'REAL OUTPUTS · ARCHITECTURAL SPACES',
     highlightWord: 'Conceived',
     line1Suffix: 'with vision',
     line2: 'Bespoke & Elevated.',
