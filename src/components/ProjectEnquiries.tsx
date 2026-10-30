@@ -46,39 +46,39 @@ interface EnquiryCard {
 const enquiryCards: EnquiryCard[] = [
   {
     id: 'enq-1',
-    title: 'PRIVATE RESIDENCES',
-    description: 'Bespoke residential interior architecture shaped around your private lifestyle.',
-    action: 'Discuss Residence',
-    tag: 'PRIVATE RESIDENCE',
+    title: 'Residential Interiors',
+    description: 'Thoughtfully designed homes shaped around your lifestyle.',
+    action: 'Discuss Your Home',
+    tag: 'RESIDENTIAL',
   },
   {
     id: 'enq-2',
-    title: 'LUXURY VILLAS',
-    description: 'Beachfront estates & architectural compounds with turnkey execution.',
-    action: 'Discuss Villa',
-    tag: 'ESTATE ARCHITECTURE',
+    title: 'Luxury Villas',
+    description: 'Distinctive residential environments with considered architectural detail.',
+    action: 'Discuss Your Villa',
+    tag: 'SIGNATURE ESTATES',
     isPopular: true,
   },
   {
     id: 'enq-3',
-    title: 'SKYLINE PENTHOUSES',
-    description: 'High-altitude duplex & triplex sanctuaries with panoramic skyline terraces.',
-    action: 'Discuss Penthouse',
-    tag: 'PENTHOUSE FIT-OUT',
+    title: 'Commercial Interiors',
+    description: 'Refined environments for business, hospitality, and work.',
+    action: 'Discuss Your Space',
+    tag: 'COMMERCIAL & HQ',
   },
   {
     id: 'enq-4',
-    title: 'FAMILY OFFICES',
-    description: 'Refined corporate suites, private boardrooms, and executive hospitality environments.',
-    action: 'Discuss Headquarters',
-    tag: 'COMMERCIAL',
+    title: 'Fit-Out Projects',
+    description: 'Coordinated fit-out solutions with attention to quality and finishing.',
+    action: 'Discuss Your Fit-Out',
+    tag: 'TURNKEY FIT-OUT',
   },
   {
     id: 'enq-5',
-    title: 'SPECIAL COMMISSIONS',
-    description: 'Custom architectural follies, private tasting cellars, and wellness spas.',
-    action: 'Start Commission',
-    tag: 'BESPOKE COMMISSION',
+    title: 'Bespoke Projects',
+    description: 'Tell us about the space you envision creating.',
+    action: 'Start a Conversation',
+    tag: 'BESPOKE ATELIER',
   },
 ];
 
@@ -158,17 +158,24 @@ export const ProjectEnquiries: React.FC = () => {
           </div>
         </div>
 
-        {/* ================= MASSIVE PUNCHLINE HEADLINE (Matching Frame 11) ================= */}
+        {/* ================= SECTION SIX: FINAL MULTI-CARD COMPOSITION ================= */}
         <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+            <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-neutral-300">
+              YOUR NEXT PROJECT
+            </span>
+          </div>
+
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.05]">
-            One vision,
+            Let's Create
             <br />
             <span className="italic font-serif font-light text-transparent bg-clip-text bg-gradient-to-r from-[#D6B779] via-[#F4F0E8] to-[#EA580C]">
-              every turnkey space.
+              Something Extraordinary.
             </span>
           </h2>
-          <p className="mt-6 text-sm sm:text-base text-neutral-300 leading-relaxed font-light max-w-xl mx-auto">
-            Ready to initiate your Dubai architectural masterwork? Connect directly with our principal partners for a private consultation.
+          <p className="mt-5 text-sm sm:text-base text-neutral-300 leading-relaxed font-light max-w-xl mx-auto">
+            Every exceptional space begins with an idea. Let's discuss your vision and explore the possibilities.
           </p>
         </div>
 

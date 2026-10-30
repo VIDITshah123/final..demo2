@@ -9,7 +9,12 @@ import {
   ChevronRight,
   ChevronDown,
   ArrowUpRight,
+  ArrowRight,
   User,
+  Home,
+  Building2,
+  Briefcase,
+  Sparkles,
 } from 'lucide-react';
 
 /* =========================================================================
@@ -194,6 +199,104 @@ const emblemImages: ShowcaseImage[] = [
 ];
 
 /* =========================================================================
+   SLIDE 5: ONE VISION EVERY SPACE DATA
+   ========================================================================= */
+
+interface SpaceCategory {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: React.ReactNode;
+  cardTop: {
+    src: string;
+    tag: string;
+    title: string;
+    desc: string;
+  };
+  cardBottom: {
+    src: string;
+    tag: string;
+    title: string;
+    desc: string;
+  };
+}
+
+const spaceCategories: SpaceCategory[] = [
+  {
+    id: 'residences',
+    title: 'Private Residences',
+    subtitle: 'Beachfront villas, gated estates & sanctuary compounds',
+    icon: <Home className="w-4 h-4 text-neutral-300" />,
+    cardTop: {
+      src: '/images/P04.jpeg',
+      tag: 'PALM JUMEIRAH ESTATE',
+      title: 'Villa Lumière Beachfront',
+      desc: 'Double-height glass curtain wall overlooking the Arabian Gulf.',
+    },
+    cardBottom: {
+      src: '/images/P14.jpeg',
+      tag: 'EMIRATES HILLS',
+      title: 'Formal Reception Salon',
+      desc: 'Bookmatched Italian Calacatta marble and integrated architectural lighting.',
+    },
+  },
+  {
+    id: 'penthouses',
+    title: 'Skyline Penthouses',
+    subtitle: 'Triplex penthouses, sky lounges & 360° panoramas',
+    icon: <Building2 className="w-4 h-4 text-neutral-300" />,
+    cardTop: {
+      src: '/images/P01.jpeg',
+      tag: 'DOWNTOWN DUBAI',
+      title: 'Sky Palace Duplex',
+      desc: 'High-altitude panoramic living framed by bronze architectural fins.',
+    },
+    cardBottom: {
+      src: '/images/P05.jpeg',
+      tag: 'DIFC HORIZON',
+      title: 'Private Sky Terrace',
+      desc: 'Infinity edge reflecting pool with uninterrupted Burj Khalifa views.',
+    },
+  },
+  {
+    id: 'commercial',
+    title: 'Executive Headquarters',
+    subtitle: 'Family offices, boardroom suites & flagship embassies',
+    icon: <Briefcase className="w-4 h-4 text-neutral-300" />,
+    cardTop: {
+      src: '/images/P18.jpeg',
+      tag: 'DIFC GATE PRECINCT',
+      title: 'Family Office Sanctuary',
+      desc: 'Acoustic fluted walnut paneling and discreet executive hospitality bar.',
+    },
+    cardBottom: {
+      src: '/images/P23.jpeg',
+      tag: 'D3 DESIGN DISTRICT',
+      title: 'Partner Boardroom Suite',
+      desc: 'Monolithic quartz conferencing table with concealed AV connectivity.',
+    },
+  },
+  {
+    id: 'hospitality',
+    title: 'Bespoke Hospitality',
+    subtitle: 'Private wellness spas, tasting cellars & cigar lounges',
+    icon: <Sparkles className="w-4 h-4 text-neutral-300" />,
+    cardTop: {
+      src: '/images/P28.jpeg',
+      tag: 'JUMEIRAH BAY',
+      title: 'Thermal Stone Wellness Spa',
+      desc: 'Heated Finnish cedar sauna and hydrotherapy rain suite.',
+    },
+    cardBottom: {
+      src: '/images/P30.jpeg',
+      tag: 'PRIVATE COMPOUND',
+      title: 'Sommelier Tasting Lounge',
+      desc: 'Climate-controlled glass wine vault with custom brushed brass racks.',
+    },
+  },
+];
+
+/* =========================================================================
    MAIN HORIZONTAL EXPERIENCE CONTAINER
    ========================================================================= */
 
@@ -211,6 +314,9 @@ export const HorizontalExperience: React.FC = () => {
   // Slide 2 State
   const [selectedColor, setSelectedColor] = useState<number>(0);
   const [activeDept, setActiveDept] = useState<string>('arch');
+
+  // Slide 5 State
+  const [spaceTab, setSpaceTab] = useState<number>(0);
 
   // Palette swatches for Slide 2
   const paletteSwatches = [
@@ -285,20 +391,20 @@ export const HorizontalExperience: React.FC = () => {
   }, []);
 
   // Translation calculation: 4 slides = 400vw total width. Max translate is 300vw
-  const translateX = scrollProgress * 300; // in vw units
+  const translateX = scrollProgress * 400; // in vw units
 
   // Dynamic green ribbon progression tied directly to scroll movement:
   // Starts entering as user moves into Slide 2 (around 0.20),
   // sweeps dynamically through Slide 3, and finishes at Slide 4 (around 0.90).
-  const ribbonStart = 0.20;
-  const ribbonEnd = 0.90;
+  const ribbonStart = 0.16;
+  const ribbonEnd = 0.78;
   const ribbonProgress = Math.min(1, Math.max(0, (scrollProgress - ribbonStart) / (ribbonEnd - ribbonStart)));
   const strokeDashoffset = pathLength * (1 - ribbonProgress);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[420vh] bg-[#070707] selection:bg-[#D6B779]/25"
+      className="relative w-full h-[520vh] bg-[#070707] selection:bg-[#D6B779]/25"
     >
       {/* ================= PINNED STICKY VIEWPORT CONTAINER ================= */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center bg-[#070707]">
@@ -306,7 +412,7 @@ export const HorizontalExperience: React.FC = () => {
         {/* ================= HORIZONTAL SCROLL TRACK (400vw Total Width) ================= */}
         <div
           ref={trackRef}
-          className="flex h-full w-[400vw] will-change-transform relative"
+          className="flex h-full w-[500vw] will-change-transform relative"
           style={{
             transform: `translate3d(-${translateX}vw, 0, 0)`,
             transition: 'transform 0.04s linear',
@@ -317,8 +423,8 @@ export const HorizontalExperience: React.FC = () => {
              Starts at "Your aesthetic, built in." and advances into Turnkey Velocity & Emblem
              ========================================================================= */}
           <svg
-            className="absolute top-0 left-0 w-[400vw] h-full pointer-events-none z-0"
-            viewBox="0 0 4000 1000"
+            className="absolute top-0 left-0 w-[500vw] h-full pointer-events-none z-0"
+            viewBox="0 0 5000 1000"
             fill="none"
             preserveAspectRatio="none"
           >
@@ -327,7 +433,7 @@ export const HorizontalExperience: React.FC = () => {
                 id="continuousGreenRibbon"
                 x1="1040"
                 y1="500"
-                x2="3480"
+                x2="3650"
                 y2="500"
                 gradientUnits="userSpaceOnUse"
               >
@@ -352,7 +458,7 @@ export const HorizontalExperience: React.FC = () => {
                 strokeDashoffset moves along dynamically with the user's scroll! */}
             <path
               ref={ribbonPathRef}
-              d="M 1040 860 C 1380 800, 1720 600, 2040 440 C 2240 320, 2450 160, 2650 240 C 2850 320, 2920 680, 3120 740 C 3260 780, 3350 820, 3480 820"
+              d="M 1040 860 C 1380 800, 1720 600, 2040 440 C 2240 320, 2450 160, 2650 240 C 2850 320, 2920 680, 3120 740 C 3300 780, 3450 820, 3650 820"
               stroke="url(#continuousGreenRibbon)"
               strokeWidth="86"
               strokeLinecap="round"
@@ -1125,6 +1231,176 @@ export const HorizontalExperience: React.FC = () => {
               </div>
             </div>
 
+          </section>
+
+          {/* =========================================================================
+             SLIDE 5: ONE VISION EVERY SPACE (Matching Reference & Screenshot 10)
+             ========================================================================= */}
+          <section className="w-screen min-w-[100vw] h-screen shrink-0 relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 overflow-hidden select-none">
+            {/* Background Lighting */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+              <div
+                className="absolute top-1/2 -right-20 w-[600px] h-[600px] rounded-full ambient-glow"
+                style={{
+                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(7, 7, 7, 0) 70%)',
+                }}
+              />
+              <div
+                className="absolute bottom-10 left-10 w-[500px] h-[500px] rounded-full ambient-glow"
+                style={{
+                  background: 'radial-gradient(circle, rgba(234, 88, 12, 0.1) 0%, rgba(7, 7, 7, 0) 70%)',
+                }}
+              />
+            </div>
+
+            <div className="relative w-full max-w-6xl mx-auto my-auto z-10">
+              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-10 lg:gap-14">
+                
+                {/* ================= LEFT COLUMN: DYNAMIC CARDS ================= */}
+                <div className="space-y-4 sm:space-y-5">
+                  {/* Top Card */}
+                  <div className="rounded-[22px] bg-[#11100F] border border-white/10 overflow-hidden shadow-2xl relative group transition-all duration-500 hover:border-white/25">
+                    <div className="w-full aspect-[16/9] overflow-hidden relative">
+                      <img
+                        src={spaceCategories[spaceTab].cardTop.src}
+                        alt={spaceCategories[spaceTab].cardTop.title}
+                        className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                      
+                      <div className="absolute top-3.5 left-3.5">
+                        <span className="px-2.5 py-0.5 rounded text-[9px] font-mono tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#D6B779] border border-white/10">
+                          {spaceCategories[spaceTab].cardTop.tag}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-3.5 left-3.5 right-3.5">
+                        <h3 className="text-base sm:text-lg font-bold text-white tracking-wide">
+                          {spaceCategories[spaceTab].cardTop.title}
+                        </h3>
+                        <p className="text-[11px] sm:text-xs text-neutral-300 font-light mt-0.5 line-clamp-1">
+                          {spaceCategories[spaceTab].cardTop.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Card */}
+                  <div className="rounded-[22px] bg-[#11100F] border border-white/10 overflow-hidden shadow-2xl relative group transition-all duration-500 hover:border-white/25">
+                    <div className="w-full aspect-[16/9] overflow-hidden relative">
+                      <img
+                        src={spaceCategories[spaceTab].cardBottom.src}
+                        alt={spaceCategories[spaceTab].cardBottom.title}
+                        className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                      
+                      <div className="absolute top-3.5 left-3.5">
+                        <span className="px-2.5 py-0.5 rounded text-[9px] font-mono tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#10B981] border border-white/10">
+                          {spaceCategories[spaceTab].cardBottom.tag}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-3.5 left-3.5 right-3.5">
+                        <h3 className="text-base sm:text-lg font-bold text-white tracking-wide">
+                          {spaceCategories[spaceTab].cardBottom.title}
+                        </h3>
+                        <p className="text-[11px] sm:text-xs text-neutral-300 font-light mt-0.5 line-clamp-1">
+                          {spaceCategories[spaceTab].cardBottom.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ================= RIGHT COLUMN: HEADLINE, CTAs & CATEGORY SELECTOR ================= */}
+                <div>
+                  <div className="mb-4">
+                    <h2 className="text-3xl sm:text-4xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.05]">
+                      One vision.
+                      <br />
+                      <span className="relative inline-block text-white">
+                        Every space.
+                        <svg
+                          className="absolute -bottom-2 left-0 w-full h-3 text-[#10B981] opacity-90"
+                          viewBox="0 0 160 16"
+                          fill="none"
+                          preserveAspectRatio="none"
+                        >
+                          <path
+                            d="M 2 10 Q 80 2, 158 11"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </span>
+                    </h2>
+                  </div>
+
+                  <div className="flex items-center space-x-3 mb-6">
+                    <a
+                      href="#contact"
+                      className="px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all shadow-md"
+                    >
+                      Get started
+                    </a>
+                    <a
+                      href="#contact"
+                      className="px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold text-white bg-gradient-to-r from-[#EA580C] to-[#F97316] shadow-[0_0_20px_rgba(234,88,12,0.45)] hover:brightness-110 transition-all"
+                    >
+                      Contact sales
+                    </a>
+                  </div>
+
+                  {/* 4 Interactive Category Tiles */}
+                  <div className="space-y-2.5">
+                    {spaceCategories.map((cat, idx) => (
+                      <button
+                        key={cat.id}
+                        type="button"
+                        onClick={() => setSpaceTab(idx)}
+                        className={`w-full flex items-center justify-between p-3 sm:p-3.5 rounded-xl text-left transition-all duration-300 border ${
+                          spaceTab === idx
+                            ? 'bg-[#181615] border-l-4 border-l-white border-white/20 shadow-xl'
+                            : 'bg-[#11100F]/80 border-l-4 border-l-transparent border-white/5 hover:border-white/15 hover:bg-[#151413]'
+                        }`}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div
+                            className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-colors ${
+                              spaceTab === idx
+                                ? 'bg-white/10 border-white/20 text-white'
+                                : 'bg-black/40 border-white/10 text-neutral-400'
+                            }`}
+                          >
+                            {cat.icon}
+                          </div>
+                          <div>
+                            <h4
+                              className={`text-xs sm:text-sm font-bold transition-colors ${
+                                spaceTab === idx ? 'text-white' : 'text-neutral-300'
+                              }`}
+                            >
+                              {cat.title}
+                            </h4>
+                            <p className="text-[10px] sm:text-[11px] text-neutral-400 font-light mt-0.5 line-clamp-1">
+                              {cat.subtitle}
+                            </p>
+                          </div>
+                        </div>
+                        <ArrowRight
+                          className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                            spaceTab === idx ? 'text-white translate-x-1' : 'text-neutral-500'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </section>
 
         </div>

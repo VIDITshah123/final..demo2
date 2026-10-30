@@ -25,11 +25,11 @@ const stages: StageData[] = [
   // ================= STAGE 1: REAL OUTPUTS · ARCHITECTURAL SPACES =================
   {
     eyebrow: 'REAL OUTPUTS · ARCHITECTURAL SPACES',
-    highlightWord: 'Conceived',
-    line1Suffix: 'with vision',
-    line2: 'Bespoke & Elevated.',
+    highlightWord: 'Prompted',
+    line1Suffix: 'in seconds',
+    line2: 'On-brand & Editable.',
     description:
-      'From conceptual architectural blueprints to the final curated spatial ambiance, ALTIMATE delivers bespoke private residences tailored exclusively for elevated Dubai lifestyles.',
+      'Turn a spatial vision into polished architectural directions, then refine the layout, stone selections, custom millwork, and lighting with full creative control.',
     cards: [
       // 4 Inner Anchor Cards (Framing Central Text)
       {
@@ -132,14 +132,14 @@ const stages: StageData[] = [
     ],
   },
 
-  // ================= STAGE 2: CRAFTED IN DETAIL · BESPOKE INTERIORS =================
+  // ================= STAGE 2: DESIGNED IN SECONDS · BESPOKE INTERIORS =================
   {
-    eyebrow: 'MATERIAL MASTERY · BESPOKE INTERIORS',
-    highlightWord: 'Crafted',
-    line1Suffix: 'in detail',
-    line2: 'Refined & Timeless.',
+    eyebrow: 'CURATED MATERIALITY · BESPOKE INTERIORS',
+    highlightWord: 'Designed',
+    line1Suffix: 'in seconds',
+    line2: 'On-brand & Editable.',
     description:
-      'Custom Italian millwork, bookmatched Calacatta marble, and meticulously curated lighting designed to orchestrate harmonious, sensory living environments.',
+      'Create clean, flexible interiors you can keep refining in ALTIMATE Studio, from custom bronze joinery and lighting to bookmatched Italian marble.',
     cards: [
       // 4 Inner Anchor Cards
       {
@@ -242,14 +242,14 @@ const stages: StageData[] = [
     ],
   },
 
-  // ================= STAGE 3: DELIVERED TURNKEY · PROJECT EXECUTION =================
+  // ================= STAGE 3: CREATED IN SECONDS · PROJECT EXECUTION =================
   {
     eyebrow: 'TURNKEY FIT-OUT · PROJECT EXECUTION',
-    highlightWord: 'Delivered',
-    line1Suffix: 'turnkey',
-    line2: 'Flawless & On-schedule.',
+    highlightWord: 'Created',
+    line1Suffix: 'in seconds',
+    line2: 'On-brand & Editable.',
     description:
-      'Complete end-to-end execution, authority approvals, precision engineering, and turnkey handover delivered with uncompromising craftsmanship across Dubai.',
+      'Generate spaces that stay rigorously consistent with your architectural brief, engineered across Dubai with guaranteed turnkey delivery and single-source accountability.',
     cards: [
       // 4 Inner Anchor Cards
       {
