@@ -12,12 +12,19 @@
     color: #F4F0E8;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
     background-color: #070707;
     margin: 0;
     padding: 0;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -130,6 +137,83 @@
 .animate-drift-4 {
   animation: ambientDrift4 32s ease-in-out infinite;
 }
+/* ================= CALM LUXURY ATMOSPHERIC DRIFT CYCLES ================= */
+@keyframes heroCalmAmber {
+  0% {
+    transform: translate(0%, 0%) scale(1) rotate(0deg);
+    opacity: 0.78;
+  }
+  30% {
+    transform: translate(8%, -4%) scale(1.08) rotate(3deg);
+    opacity: 0.88;
+  }
+  65% {
+    transform: translate(16%, 6%) scale(1.14) rotate(7deg);
+    opacity: 0.82;
+  }
+  85% {
+    transform: translate(6%, 10%) scale(1.04) rotate(2deg);
+    opacity: 0.74;
+  }
+  100% {
+    transform: translate(0%, 0%) scale(1) rotate(0deg);
+    opacity: 0.78;
+  }
+}
+
+@keyframes heroCalmEmerald {
+  0% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.65;
+  }
+  40% {
+    transform: translate(12%, -6%) scale(1.18);
+    opacity: 0.78;
+  }
+  75% {
+    transform: translate(6%, 8%) scale(1.06);
+    opacity: 0.58;
+  }
+  100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.65;
+  }
+}
+
+@keyframes heroCalmBronze {
+  0% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.55;
+  }
+  35% {
+    transform: translate(-10%, 8%) scale(1.12);
+    opacity: 0.72;
+  }
+  70% {
+    transform: translate(-16%, -4%) scale(1.22);
+    opacity: 0.82;
+  }
+  100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.55;
+  }
+}
+
+.animate-hero-amber {
+  animation: heroCalmAmber 28s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-hero-emerald {
+  animation: heroCalmEmerald 34s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-hero-bronze {
+  animation: heroCalmBronze 30s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
 
 /* Organic Floating Movement Cycles */
 @keyframes floatA {

@@ -415,7 +415,7 @@ export const HorizontalExperience: React.FC = () => {
           className="flex h-full w-[500vw] will-change-transform relative"
           style={{
             transform: `translate3d(-${translateX}vw, 0, 0)`,
-            transition: 'transform 0.04s linear',
+            transition: 'transform 0.06s ease-out',
           }}
         >
           {/* =========================================================================
@@ -487,7 +487,7 @@ export const HorizontalExperience: React.FC = () => {
               />
             </div>
 
-            <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center my-auto pt-10">
+            <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center my-auto pt-16 sm:pt-10">
               
               {/* Header */}
               <div className="text-center mb-6 lg:mb-8">
@@ -497,7 +497,7 @@ export const HorizontalExperience: React.FC = () => {
                     THE DIFFERENCE
                   </span>
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.1]">
+                <h2 className="text-2xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.1]">
                   They build image generators.
                   <br />
                   <span className="text-white/95">We built a design engine.</span>
@@ -505,15 +505,48 @@ export const HorizontalExperience: React.FC = () => {
                 <p className="mt-2 text-xs sm:text-sm text-neutral-400 max-w-lg mx-auto font-light leading-relaxed">
                   Most studios stop at flat 3D pictures. ALTIMATE unifies architecture, interior design, and turnkey fit-out into a single cohesive reality.
                 </p>
+
+                {/* Mobile 4-Dot Horizontal Selector */}
+                <div className="flex md:hidden items-center justify-center space-x-3 mt-4 py-1.5 px-3 rounded-full ios-glass border border-white/15 max-w-xs mx-auto">
+                  {comparisonData.map((item, idx) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setDiffActiveTab(idx)}
+                      aria-label={`Select ${item.label}`}
+                      className="relative p-0.5 focus:outline-none"
+                    >
+                      <span
+                        className={`block rounded-full transition-all duration-300 ${
+                          diffActiveTab === idx
+                            ? 'w-4 h-4 p-0.5 border-2 shadow-lg'
+                            : 'w-2.5 h-2.5 hover:scale-110'
+                        }`}
+                        style={{
+                          borderColor: diffActiveTab === idx ? item.color : 'transparent',
+                          boxShadow: diffActiveTab === idx ? `0 0 10px ${item.color}` : 'none',
+                        }}
+                      >
+                        <span
+                          className="block w-full h-full rounded-full transition-all"
+                          style={{
+                            backgroundColor: item.color,
+                            opacity: diffActiveTab === idx ? 1 : 0.6,
+                          }}
+                        />
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              {/* Dual Cards + 4-Dot Vertical Selector */}
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6 lg:gap-8 w-full max-w-4xl">
+              {/* Dual Cards + 4-Dot Selector (Optimized for Mobile & Desktop) */}
+              <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-2.5 sm:gap-6 lg:gap-8 w-full max-w-4xl">
                 
                 {/* Left Card: Traditional Approach */}
                 <div className="flex flex-col items-center">
                   <div className="w-full max-w-[360px] rounded-[26px] p-2.5 sm:p-3 ios-glass border-t-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_20px_50px_rgba(0,0,0,0.85)] relative group transition-all">
-                    <div className="w-full aspect-[4/5] rounded-[18px] bg-[#161513] overflow-hidden relative border border-white/5 flex flex-col justify-between p-4 sm:p-5">
+                    <div className="w-full aspect-[3/4] sm:aspect-[4/5] rounded-[14px] sm:rounded-[18px] bg-[#161513] overflow-hidden relative border border-white/5 flex flex-col justify-between p-2.5 sm:p-5">
                       <div className="flex items-center justify-between z-10">
                         <span className="px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-black/60 border border-white/10 text-neutral-400">
                           {currentDiff.traditional.badge1}
@@ -571,8 +604,8 @@ export const HorizontalExperience: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Center 4-Dot Vertical Selector */}
-                <div className="flex md:flex-col items-center justify-center space-x-3 md:space-x-0 md:space-y-3.5 py-2 px-3 md:py-3.5 md:px-2 rounded-full ios-glass border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_25px_rgba(0,0,0,0.7)]">
+                {/* Center 4-Dot Vertical Selector (Desktop) */}
+                <div className="hidden md:flex flex-col items-center justify-center space-y-3.5 py-3.5 px-2 rounded-full ios-glass border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_25px_rgba(0,0,0,0.7)]">
                   {comparisonData.map((item, idx) => (
                     <button
                       key={item.id}
@@ -663,7 +696,7 @@ export const HorizontalExperience: React.FC = () => {
              ========================================================================= */}
           <section className="w-screen min-w-[100vw] h-screen shrink-0 relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 overflow-hidden select-none">
             
-            <div className="relative w-full max-w-6xl mx-auto flex flex-col my-auto">
+            <div className="relative w-full max-w-6xl mx-auto flex flex-col my-auto pt-14 sm:pt-0">
               
               <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.9fr] items-center gap-10 lg:gap-14">
                 
@@ -702,9 +735,10 @@ export const HorizontalExperience: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Right Column: Connected Spec Kit & Output Cards */}
-                <div className="relative w-full overflow-x-auto pb-2">
-                  <div className="min-w-[640px] grid grid-cols-[130px_1fr_180px] items-center gap-4 relative">
+                {/* Right Column: Connected Spec Kit & Output Cards (Fully Responsive) */}
+                <div className="relative w-full pb-2">
+                  {/* Desktop Layout: 3 Columns with Wires */}
+                  <div className="hidden lg:grid grid-cols-[130px_1fr_180px] items-center gap-4 relative">
                     
                     {/* Discipline Pills */}
                     <div className="flex flex-col space-y-3 z-20">
@@ -929,6 +963,77 @@ export const HorizontalExperience: React.FC = () => {
                       />
                     </svg>
 
+                  </div>
+
+                  {/* Mobile & Tablet Layout (< 1024px): Clean Stacked Flow */}
+                  <div className="block lg:hidden w-full space-y-3 mt-4">
+                    {/* Horizontal Discipline Pills */}
+                    <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar py-1">
+                      {departments.map((dept) => (
+                        <button
+                          key={dept.id}
+                          type="button"
+                          onClick={() => setActiveDept(dept.id)}
+                          className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full border text-left shrink-0 transition-all ${
+                            activeDept === dept.id
+                              ? 'bg-[#1E1C1A] border-[#EA580C]/80 shadow-[0_0_15px_rgba(234,88,12,0.25)]'
+                              : 'bg-[#121110]/80 border-white/10'
+                          }`}
+                        >
+                          <div className="w-5 h-5 rounded-full bg-black/60 flex items-center justify-center shrink-0">
+                            {dept.icon}
+                          </div>
+                          <span className="text-[10px] font-medium text-neutral-200">
+                            {dept.title}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Spec Kit Tablet on Mobile */}
+                    <div className="w-full max-w-[340px] mx-auto rounded-2xl ios-glass border border-white/15 p-3.5 shadow-xl">
+                      <div className="flex items-center justify-between pb-1.5 border-b border-white/10 mb-2">
+                        <div className="flex items-center space-x-1">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-white">Material Kit</span>
+                          <span className="text-[9px]">🔒</span>
+                        </div>
+                        <span className="text-[9px] font-mono text-neutral-400">altimate.ae/specs</span>
+                      </div>
+                      <div className="text-sm font-bold text-white mb-2">ALTIMATE</div>
+
+                      {/* Swatches Selector */}
+                      <div className="flex items-center space-x-1.5 py-1">
+                        {paletteSwatches.map((swatch, idx) => (
+                          <button
+                            key={swatch.name}
+                            type="button"
+                            onClick={() => setSelectedColor(idx)}
+                            className={`w-6 h-6 rounded-full border transition-all ${
+                              selectedColor === idx ? 'scale-110 border-white shadow-md' : 'border-transparent opacity-70'
+                            }`}
+                            style={{ backgroundColor: swatch.hex }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Dual Preview Cards on Mobile */}
+                    <div className="grid grid-cols-2 gap-2 max-w-[340px] mx-auto">
+                      <div className="rounded-xl ios-glass p-2 border border-white/10">
+                        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-1 relative">
+                          <img src="/images/P04.jpeg" alt="Palm Beachfront Villa" className="w-full h-full object-cover" />
+                        </div>
+                        <p className="text-[10px] font-bold text-white truncate">Palm Villa</p>
+                        <p className="text-[8px] text-neutral-400">Principal Lead</p>
+                      </div>
+                      <div className="rounded-xl ios-glass p-2 border border-white/10">
+                        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-1 relative">
+                          <img src="/images/P14.jpeg" alt="Grand Living Salon" className="w-full h-full object-cover" />
+                        </div>
+                        <p className="text-[10px] font-bold text-white truncate">Grand Salon</p>
+                        <p className="text-[8px] text-neutral-400">Design Lead</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -1158,7 +1263,7 @@ export const HorizontalExperience: React.FC = () => {
 
             {/* Central Chronograph Radar Dial */}
             <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-auto my-auto">
-              <div className="relative w-[320px] sm:w-[380px] md:w-[440px] h-[320px] sm:h-[380px] md:h-[440px] flex items-center justify-center">
+              <div className="relative w-[260px] sm:w-[360px] md:w-[440px] h-[260px] sm:h-[360px] md:h-[440px] flex items-center justify-center">
                 
                 <div className="absolute inset-0 rounded-full border border-white/[0.08] pointer-events-none" />
 
@@ -1254,7 +1359,7 @@ export const HorizontalExperience: React.FC = () => {
             </div>
 
             <div className="relative w-full max-w-6xl mx-auto my-auto z-10">
-              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-10 lg:gap-14">
+              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-5 lg:gap-14">
                 
                 {/* ================= LEFT COLUMN: DYNAMIC CARDS ================= */}
                 <div className="space-y-4 sm:space-y-5">

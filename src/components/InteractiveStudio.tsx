@@ -85,7 +85,7 @@ export const InteractiveStudio: React.FC = () => {
   return (
     <section
       id="methodology"
-      className="relative min-h-screen w-full bg-[#070707] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 flex items-center justify-center overflow-hidden select-none border-t border-white/5"
+      className="relative min-h-screen w-full bg-[#070707] py-16 sm:py-32 px-4 sm:px-6 lg:px-12 flex items-center justify-center overflow-hidden select-none border-t border-white/5"
     >
       {/* ================= BACKGROUND ATMOSPHERIC LIGHTING ================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
@@ -122,7 +122,7 @@ export const InteractiveStudio: React.FC = () => {
         
         {/* ================= LEFT COLUMN: INTERACTIVE STUDIO CANVAS (60%) ================= */}
         <div className="lg:col-span-7 w-full">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/11.5] rounded-3xl sm:rounded-[32px] ios-glass border border-white/15 border-t-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_30px_80px_rgba(0,0,0,0.85)] p-5 sm:p-7 flex flex-col justify-between overflow-hidden group">
+          <div className="relative w-full min-h-[380px] sm:min-h-0 sm:aspect-[16/11] lg:aspect-[16/11.5] rounded-2xl sm:rounded-[32px] ios-glass border border-white/15 border-t-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_30px_80px_rgba(0,0,0,0.85)] p-3.5 sm:p-7 flex flex-col justify-between overflow-hidden group">
             
             {/* Canvas Header Bar */}
             <div className="flex items-center justify-between pb-3 border-b border-white/5 z-20">
@@ -170,7 +170,7 @@ export const InteractiveStudio: React.FC = () => {
               {activeTab === 'envision' && (
                 <div className="relative w-full h-full flex flex-col justify-between p-2 animate-in fade-in zoom-in-95 duration-500">
                   {/* Architectural Conceptual Render Card */}
-                  <div className="relative w-[85%] sm:w-[75%] max-w-md mx-auto aspect-[16/10] rounded-xl overflow-hidden border border-white/15 shadow-2xl bg-black/40 group/card">
+                  <div className="relative w-[95%] sm:w-[75%] max-w-md mx-auto aspect-[16/10] rounded-xl overflow-hidden border border-white/15 shadow-2xl bg-black/40 group/card">
                     <img
                       src="/images/P04.jpeg"
                       alt="Palm Jumeirah Villa Blueprint Concept"
@@ -236,7 +236,7 @@ export const InteractiveStudio: React.FC = () => {
                   </div>
 
                   {/* Active Transform Bounding Box Card with Corner & Side Handles */}
-                  <div className="relative w-[85%] sm:w-[75%] max-w-md mx-auto aspect-[16/10] rounded-xl overflow-hidden border-2 border-[#D6B779] shadow-2xl bg-black/40">
+                  <div className="relative w-[95%] sm:w-[75%] max-w-md mx-auto aspect-[16/10] rounded-xl overflow-hidden border-2 border-[#D6B779] shadow-2xl bg-black/40">
                     <img
                       src="/images/P07.jpeg"
                       alt="Refined Living Salon"
@@ -285,7 +285,7 @@ export const InteractiveStudio: React.FC = () => {
               {activeTab === 'deliver' && (
                 <div className="relative w-full h-full flex flex-col justify-between p-2 animate-in fade-in zoom-in-95 duration-500">
                   {/* Coordinated Multi-Space Estate Grid (6 Coordinated Rooms) */}
-                  <div className="grid grid-cols-3 gap-2 sm:gap-2.5 w-full h-[85%] max-h-[300px]">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 w-full h-[85%] max-h-[300px]">
                     <div className="relative rounded-lg overflow-hidden border border-white/10 group">
                       <img src="/images/P01.jpeg" alt="Living Salon" className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">

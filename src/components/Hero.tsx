@@ -88,41 +88,52 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-between items-center bg-[#070707] overflow-hidden pt-28 pb-10 px-4 sm:px-6 lg:px-8 select-none">
-      {/* ================= ATMOSPHERIC AMBIENT LIGHT BLOOMS (MATCHING SCREENSHOT) ================= */}
+      {/* ================= CALM ATMOSPHERIC AMBIENT LIGHT BLOOMS (MATCHING REFERENCE VIDEO) ================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-        {/* Top-Left Vibrant Amber/Orange Bloom */}
+        {/* 1. Luminous Amber-Gold Atmospheric Beam (Top-Left, Slowly Sweeping & Breathing) */}
         <div
-          className="absolute -top-[15%] -left-[10%] w-[65vw] h-[65vw] max-w-[850px] max-h-[850px] rounded-full ambient-glow-lg"
+          className="absolute -top-[10%] -left-[10%] w-[72vw] h-[72vw] max-w-[980px] max-h-[980px] rounded-full ambient-glow-lg animate-hero-amber"
           style={{
-            background: 'radial-gradient(circle, rgba(234, 88, 12, 0.42) 0%, rgba(196, 130, 63, 0.28) 35%, rgba(152, 106, 60, 0.12) 60%, transparent 80%)',
+            background:
+              'radial-gradient(ellipse 75% 65% at 32% 28%, rgba(245, 158, 11, 0.82) 0%, rgba(234, 88, 12, 0.6) 35%, rgba(180, 83, 9, 0.3) 60%, transparent 82%)',
           }}
         />
 
-        {/* Far Right Vivid Warm Orange Bloom */}
+        {/* 2. Serene Emerald-Teal Calming Pool (Lower-Left, Counterbalancing Amber) */}
         <div
-          className="absolute top-[10%] -right-[15%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full ambient-glow-lg"
+          className="absolute -bottom-[14%] -left-[10%] w-[65vw] h-[65vw] max-w-[880px] max-h-[880px] rounded-full ambient-glow-lg animate-hero-emerald"
           style={{
-            background: 'radial-gradient(circle, rgba(234, 88, 12, 0.48) 0%, rgba(214, 140, 50, 0.25) 40%, rgba(30, 24, 18, 0.1) 70%, transparent 85%)',
+            background:
+              'radial-gradient(circle 620px at 35% 72%, rgba(16, 185, 129, 0.65) 0%, rgba(5, 150, 105, 0.42) 38%, rgba(4, 120, 87, 0.18) 65%, transparent 82%)',
           }}
         />
 
-        {/* Bottom Ambient Warm Glow Reflection */}
+        {/* 3. Far-Right Warm Bronze & Honey Glow (Blooms Gently across Top-Right) */}
         <div
-          className="absolute -bottom-[20%] left-[20%] right-[20%] h-[45vw] max-h-[500px] rounded-full ambient-glow-lg"
+          className="absolute -top-[8%] -right-[10%] w-[66vw] h-[66vw] max-w-[900px] max-h-[900px] rounded-full ambient-glow-lg animate-hero-bronze"
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(214, 140, 50, 0.25) 0%, rgba(234, 88, 12, 0.15) 45%, transparent 75%)',
+            background:
+              'radial-gradient(circle 650px at 72% 30%, rgba(214, 183, 121, 0.52) 0%, rgba(234, 88, 12, 0.35) 45%, rgba(152, 106, 60, 0.15) 70%, transparent 85%)',
           }}
         />
 
-        {/* Darkening vignette overlay preserving central contrast */}
+        {/* 4. Bottom Center Warm Glow Reflection */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[#070707]/30 via-transparent to-[#070707]/80"
+          className="absolute -bottom-[16%] left-[22%] right-[22%] h-[42vw] max-h-[500px] rounded-full ambient-glow-lg animate-hero-amber"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(214, 140, 50, 0.35) 0%, rgba(16, 185, 129, 0.2) 45%, transparent 80%)',
+          }}
         />
+
+        {/* Center Vignette: Darkens behind central text for 100% contrast, while letting perimeter glows radiate */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(7, 7, 7, 0.35) 0%, rgba(7, 7, 7, 0.75) 100%)',
+            background: 'radial-gradient(ellipse 880px 580px at center, rgba(7, 7, 7, 0.78) 0%, rgba(7, 7, 7, 0.45) 55%, transparent 95%)',
           }}
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[#070707]/30 via-transparent to-[#070707]/60 pointer-events-none"
         />
       </div>
 
@@ -130,11 +141,11 @@ export const Hero: React.FC = () => {
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-4 sm:pt-8">
         
         {/* ROW 1: HEADLINE WITH EMBEDDED INTERACTIVE PILLS (EXACT SCREENSHOT LAYOUT) */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-medium text-white/95 tracking-tight mb-2">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-lg sm:text-3xl md:text-4xl lg:text-[42px] font-medium text-white/95 tracking-tight mb-2">
           <span className="font-sans font-light text-neutral-300">Let</span>
 
           {/* Pill 1: Avatar Pill [ 👤 ALTIMATE ] */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg">
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg">
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-[#D6B779] to-[#EA580C] p-[1px] flex items-center justify-center overflow-hidden">
               <img
                 src="/images/P12.jpeg"
@@ -142,7 +153,7 @@ export const Hero: React.FC = () => {
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
-            <span className="text-sm sm:text-base md:text-lg font-semibold text-white tracking-normal">
+            <span className="text-xs sm:text-base md:text-lg font-semibold text-white tracking-normal">
               {currentPreset.lead}
             </span>
           </div>
@@ -150,9 +161,9 @@ export const Hero: React.FC = () => {
           <span className="font-sans font-light text-neutral-300">from</span>
 
           {/* Pill 2: Purple / Indigo Tinted Pill [ 👥 Architecture / Interiors ] */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#3B1D54]/75 border border-[#A855F7]/35 backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_rgba(168,85,247,0.25)]">
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#3B1D54]/75 border border-[#A855F7]/35 backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_rgba(168,85,247,0.25)]">
             <Building2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#C084FC]" />
-            <span className="text-sm sm:text-base md:text-lg font-semibold text-white tracking-normal">
+            <span className="text-xs sm:text-base md:text-lg font-semibold text-white tracking-normal">
               {currentPreset.team}
             </span>
           </div>
@@ -160,16 +171,16 @@ export const Hero: React.FC = () => {
           <span className="font-sans font-light text-neutral-300">create</span>
 
           {/* Pill 3: Glass Pill [ 🖼️ Project Space ] */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg">
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg">
             <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D6B779]" />
-            <span className="text-sm sm:text-base md:text-lg font-semibold text-white tracking-normal truncate max-w-[150px] sm:max-w-[200px]">
+            <span className="text-xs sm:text-base md:text-lg font-semibold text-white tracking-normal truncate max-w-[150px] sm:max-w-[200px]">
               {currentPreset.project}
             </span>
           </div>
         </div>
 
         {/* ROW 2: LARGE BOLD PUNCHLINE (EXACT SCREENSHOT: "On brand. Every time.") */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-none mt-1 sm:mt-2">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-[1.08] mt-1 sm:mt-2">
           Beyond ordinary. Every time.
         </h1>
 
@@ -177,7 +188,7 @@ export const Hero: React.FC = () => {
         <div className="w-full max-w-2xl mt-8 sm:mt-10">
           <form
             onSubmit={handleSubmit}
-            className="relative w-full rounded-[28px] sm:rounded-[32px] ios-glass border border-white/[0.14] hover:border-white/25 transition-all duration-500 p-5 sm:p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.22),0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(234,88,12,0.12)] flex flex-col justify-between min-h-[170px] sm:min-h-[195px] text-left group"
+            className="relative w-full rounded-[24px] sm:rounded-[32px] ios-glass border border-white/[0.14] hover:border-white/25 transition-all duration-500 p-4 sm:p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.22),0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(234,88,12,0.12)] flex flex-col justify-between min-h-[155px] sm:min-h-[195px] text-left group"
           >
             {/* Inner Content Area */}
             <div className="w-full pr-12">

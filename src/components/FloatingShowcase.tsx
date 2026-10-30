@@ -29,104 +29,120 @@ const stages: StageData[] = [
     line1Suffix: 'in seconds',
     line2: 'On-brand & Editable.',
     description:
-      'Turn a spatial vision into polished architectural directions, then refine the layout, stone selections, custom millwork, and lighting with full creative control.',
+      'Turn a spatial brief into polished architectural directions, then refine the layout, stone selections, custom millwork, and lighting with full creative control.',
     cards: [
-      // 4 Inner Anchor Cards (Framing Central Text)
+      // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
-        id: 's1-inner-tl',
+        id: 's1-inner-left',
         src: '/images/P04.jpeg',
         title: 'VILLA LUMIÈRE',
         subtitle: 'Palm Jumeirah Beachfront Estate',
         tag: 'ARCHITECTURE',
-        positionStyle: { top: '8%', left: '7%' },
-        width: '280px',
+        positionStyle: { top: '30%', left: 'max(4%, calc(50% - 545px))' },
+        width: '285px',
         aspectRatio: '1 / 1',
       },
+
+      // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
-        id: 's1-inner-tr',
+        id: 's1-inner-right',
         src: '/images/P14.jpeg',
         title: 'GRAND SALON',
         subtitle: 'Double-Height Dining & Ambient Lighting',
         tag: 'INTERIORS',
-        positionStyle: { top: '8%', right: '7%' },
-        width: '270px',
-        aspectRatio: '4 / 5',
-      },
-      {
-        id: 's1-inner-bl',
-        src: '/images/P01.jpeg',
-        title: 'THE AZURE SUITE',
-        subtitle: 'Penthouse Living with Panoramic Skyline',
-        tag: 'FIT-OUT',
-        positionStyle: { bottom: '7%', left: '7%' },
-        width: '290px',
-        aspectRatio: '4 / 3',
-      },
-      {
-        id: 's1-inner-br',
-        src: '/images/P03.jpeg',
-        title: 'SANCTUARY BAY',
-        subtitle: 'Intimate Lighting & Italian Travertine',
-        tag: 'MATERIALITY',
-        positionStyle: { bottom: '7%', right: '7%' },
-        width: '280px',
+        positionStyle: { top: '22%', left: 'min(78%, calc(50% + 250px))' },
+        width: '285px',
         aspectRatio: '1 / 1',
       },
 
-      // 5 Outer Constellation Cards (Partially Clipped at Viewport Perimeter)
+      // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
       {
-        id: 's1-edge-tl',
+        id: 's1-edge-mid-left',
         src: '/images/P02.jpeg',
         title: 'COASTAL MONOLITH',
         subtitle: 'Exterior Facade & Screen Architecture',
         tag: 'RESIDENTIAL',
-        positionStyle: { top: '22%', left: '-7%' },
-        width: '250px',
-        aspectRatio: '4 / 5',
-        isEdgeCard: true,
-      },
-      {
-        id: 's1-edge-bl',
-        src: '/images/P12.jpeg',
-        title: 'CALACATTA GALLERY',
-        subtitle: 'Bookmatched Marble Entrance Foyer',
-        tag: 'STONEWORK',
-        positionStyle: { bottom: '15%', left: '-5%' },
-        width: '230px',
+        positionStyle: { top: '27%', left: '-4%' },
+        width: '260px',
         aspectRatio: '3 / 4',
         isEdgeCard: true,
       },
+
+      // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
       {
-        id: 's1-edge-top',
+        id: 's1-edge-top-left',
         src: '/images/P21.jpeg',
         title: 'FACADE INTEGRATION',
         subtitle: 'Perimeter Terrace & Architectural Pergola',
         tag: 'EXTERIOR',
-        positionStyle: { top: '-7%', right: '28%' },
+        positionStyle: { top: '-5%', left: '1%' },
+        width: '250px',
+        aspectRatio: '4 / 5',
+        isEdgeCard: true,
+      },
+
+      // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
+      {
+        id: 's1-edge-bottom-left',
+        src: '/images/P01.jpeg',
+        title: 'THE AZURE SUITE',
+        subtitle: 'Penthouse Living with Panoramic Skyline',
+        tag: 'FIT-OUT',
+        positionStyle: { bottom: '-6%', left: '-2%' },
         width: '240px',
+        aspectRatio: '1 / 1',
+        isEdgeCard: true,
+      },
+
+      // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
+      {
+        id: 's1-edge-bottom-mid',
+        src: '/images/P12.jpeg',
+        title: 'CALACATTA GALLERY',
+        subtitle: 'Bookmatched Marble Entrance Foyer',
+        tag: 'STONEWORK',
+        positionStyle: { bottom: '-7%', left: '18%' },
+        width: '260px',
         aspectRatio: '16 / 10',
         isEdgeCard: true,
       },
+
+      // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
       {
-        id: 's1-edge-tr',
+        id: 's1-edge-mid-right',
         src: '/images/P05.jpeg',
         title: 'SKYLINE PENTHOUSE',
         subtitle: 'Triplex Living at Downtown Dubai',
         tag: 'PENTHOUSE',
-        positionStyle: { top: '20%', right: '-7%' },
-        width: '250px',
-        aspectRatio: '3 / 4',
+        positionStyle: { top: '31%', right: '-3%' },
+        width: '255px',
+        aspectRatio: '9 / 16',
         isEdgeCard: true,
       },
+
+      // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
       {
-        id: 's1-edge-br',
+        id: 's1-edge-top-right',
+        src: '/images/P03.jpeg',
+        title: 'SANCTUARY BAY',
+        subtitle: 'Intimate Lighting & Italian Travertine',
+        tag: 'MATERIALITY',
+        positionStyle: { top: '-5%', right: '5%' },
+        width: '250px',
+        aspectRatio: '1 / 1',
+        isEdgeCard: true,
+      },
+
+      // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
+      {
+        id: 's1-edge-bottom-right',
         src: '/images/P23.jpeg',
         title: 'PRIVATE ATELIER',
         subtitle: 'Executive Study with Bronze Millwork',
         tag: 'BESPOKE',
-        positionStyle: { bottom: '14%', right: '-5%' },
-        width: '230px',
-        aspectRatio: '1 / 1',
+        positionStyle: { bottom: '-6%', right: '3%' },
+        width: '255px',
+        aspectRatio: '4 / 5',
         isEdgeCard: true,
       },
     ],
@@ -139,104 +155,120 @@ const stages: StageData[] = [
     line1Suffix: 'in seconds',
     line2: 'On-brand & Editable.',
     description:
-      'Create clean, flexible interiors you can keep refining in ALTIMATE Studio, from custom bronze joinery and lighting to bookmatched Italian marble.',
+      'Create clean, flexible interiors you can keep adjusting in ALTIMATE Studio, from custom bronze joinery and lighting to bookmatched Italian marble.',
     cards: [
-      // 4 Inner Anchor Cards
+      // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
-        id: 's2-inner-tl',
+        id: 's2-inner-left',
         src: '/images/P07.jpeg',
         title: 'MARINA SHORES',
         subtitle: 'Contemporary Villa Living & Lounge Space',
         tag: 'LIVING ROOM',
-        positionStyle: { top: '8%', left: '7%' },
-        width: '280px',
+        positionStyle: { top: '30%', left: 'max(4%, calc(50% - 545px))' },
+        width: '285px',
         aspectRatio: '1 / 1',
       },
+
+      // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
-        id: 's2-inner-tr',
+        id: 's2-inner-right',
         src: '/images/P16.jpeg',
         title: 'BRONZE ACCENTS',
         subtitle: 'Fluted Wall Panels & Concealed Illumination',
         tag: 'JOINERY',
-        positionStyle: { top: '8%', right: '7%' },
-        width: '270px',
-        aspectRatio: '4 / 5',
-      },
-      {
-        id: 's2-inner-bl',
-        src: '/images/P18.jpeg',
-        title: 'FORM & FUNCTION',
-        subtitle: 'Custom Millwork & Kitchen Island Centerpiece',
-        tag: 'TURNKEY',
-        positionStyle: { bottom: '7%', left: '7%' },
-        width: '290px',
-        aspectRatio: '3 / 4',
-      },
-      {
-        id: 's2-inner-br',
-        src: '/images/P06.jpeg',
-        title: 'EMIRATES HILLS',
-        subtitle: 'Double-Height Residence with Floor-to-Ceiling Glass',
-        tag: 'ARCHITECTURE',
-        positionStyle: { bottom: '7%', right: '7%' },
-        width: '280px',
+        positionStyle: { top: '22%', left: 'min(78%, calc(50% + 250px))' },
+        width: '285px',
         aspectRatio: '1 / 1',
       },
 
-      // 5 Outer Constellation Cards
+      // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
       {
-        id: 's2-edge-tl',
+        id: 's2-edge-mid-left',
         src: '/images/P20.jpeg',
         title: 'TACTILE FINISHES',
         subtitle: 'Natural Wood & Fluted Plaster Paneling',
         tag: 'FINISHES',
-        positionStyle: { top: '22%', left: '-7%' },
-        width: '240px',
+        positionStyle: { top: '27%', left: '-4%' },
+        width: '260px',
         aspectRatio: '3 / 4',
         isEdgeCard: true,
       },
+
+      // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
       {
-        id: 's2-edge-bl',
-        src: '/images/P28.jpeg',
-        title: 'ARCHITECTURAL FIXTURES',
-        subtitle: 'Precision Detail in Brushed Gunmetal',
-        tag: 'HARDWARE',
-        positionStyle: { bottom: '15%', left: '-5%' },
-        width: '230px',
-        aspectRatio: '1 / 1',
-        isEdgeCard: true,
-      },
-      {
-        id: 's2-edge-top',
+        id: 's2-edge-top-left',
         src: '/images/P25.jpeg',
         title: 'MARBLE JOINERY',
         subtitle: 'Seamless Transition from Stone to Timber',
         tag: 'STONEWORK',
-        positionStyle: { top: '-7%', left: '26%' },
-        width: '240px',
-        aspectRatio: '4 / 5',
-        isEdgeCard: true,
-      },
-      {
-        id: 's2-edge-tr',
-        src: '/images/P26.jpeg',
-        title: 'CURATED LIGHTING',
-        subtitle: 'Recessed Architectural Track Illumination',
-        tag: 'LIGHTING',
-        positionStyle: { top: '20%', right: '-7%' },
+        positionStyle: { top: '-5%', left: '1%' },
         width: '250px',
         aspectRatio: '4 / 5',
         isEdgeCard: true,
       },
+
+      // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
       {
-        id: 's2-edge-br',
+        id: 's2-edge-bottom-left',
+        src: '/images/P18.jpeg',
+        title: 'FORM & FUNCTION',
+        subtitle: 'Custom Millwork & Kitchen Island Centerpiece',
+        tag: 'TURNKEY',
+        positionStyle: { bottom: '-6%', left: '-2%' },
+        width: '240px',
+        aspectRatio: '1 / 1',
+        isEdgeCard: true,
+      },
+
+      // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
+      {
+        id: 's2-edge-bottom-mid',
+        src: '/images/P28.jpeg',
+        title: 'ARCHITECTURAL FIXTURES',
+        subtitle: 'Precision Detail in Brushed Gunmetal',
+        tag: 'HARDWARE',
+        positionStyle: { bottom: '-7%', left: '18%' },
+        width: '260px',
+        aspectRatio: '16 / 10',
+        isEdgeCard: true,
+      },
+
+      // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
+      {
+        id: 's2-edge-mid-right',
+        src: '/images/P26.jpeg',
+        title: 'CURATED LIGHTING',
+        subtitle: 'Recessed Architectural Track Illumination',
+        tag: 'LIGHTING',
+        positionStyle: { top: '31%', right: '-3%' },
+        width: '255px',
+        aspectRatio: '9 / 16',
+        isEdgeCard: true,
+      },
+
+      // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
+      {
+        id: 's2-edge-top-right',
+        src: '/images/P06.jpeg',
+        title: 'EMIRATES HILLS',
+        subtitle: 'Double-Height Residence with Glass Monoliths',
+        tag: 'ARCHITECTURE',
+        positionStyle: { top: '-5%', right: '5%' },
+        width: '250px',
+        aspectRatio: '1 / 1',
+        isEdgeCard: true,
+      },
+
+      // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
+      {
+        id: 's2-edge-bottom-right',
         src: '/images/P30.jpeg',
         title: 'CALACATTA OVAL',
         subtitle: 'Sculptural Dining Table & Custom FF&E',
         tag: 'FURNITURE',
-        positionStyle: { bottom: '14%', right: '-5%' },
-        width: '230px',
-        aspectRatio: '1 / 1',
+        positionStyle: { bottom: '-6%', right: '3%' },
+        width: '255px',
+        aspectRatio: '4 / 5',
         isEdgeCard: true,
       },
     ],
@@ -251,102 +283,118 @@ const stages: StageData[] = [
     description:
       'Generate spaces that stay rigorously consistent with your architectural brief, engineered across Dubai with guaranteed turnkey delivery and single-source accountability.',
     cards: [
-      // 4 Inner Anchor Cards
+      // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
-        id: 's3-inner-tl',
+        id: 's3-inner-left',
         src: '/images/P10.jpeg',
         title: 'MASTER SANCTUARY',
         subtitle: 'Penthouse Bedroom Suite with Custom Wardrobes',
         tag: 'PENTHOUSE',
-        positionStyle: { top: '8%', left: '7%' },
-        width: '280px',
+        positionStyle: { top: '30%', left: 'max(4%, calc(50% - 545px))' },
+        width: '285px',
         aspectRatio: '1 / 1',
       },
+
+      // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
-        id: 's3-inner-tr',
+        id: 's3-inner-right',
         src: '/images/P15.jpeg',
         title: 'CULINARY SUITE',
         subtitle: 'Seamless Monolith Kitchen & Wine Cellar',
         tag: 'FIT-OUT',
-        positionStyle: { top: '8%', right: '7%' },
-        width: '280px',
+        positionStyle: { top: '22%', left: 'min(78%, calc(50% + 250px))' },
+        width: '285px',
         aspectRatio: '1 / 1',
       },
-      {
-        id: 's3-inner-bl',
-        src: '/images/P17.jpeg',
-        title: 'AOLAO RESIDENCE',
-        subtitle: 'Conversational Lounge & Suspended Fireplace',
-        tag: 'RESIDENTIAL',
-        positionStyle: { bottom: '7%', left: '7%' },
-        width: '290px',
-        aspectRatio: '3 / 4',
-      },
-      {
-        id: 's3-inner-br',
-        src: '/images/P19.jpeg',
-        title: 'SPA BATHROOM',
-        subtitle: 'Bookmatched Nero Marquina & Freestanding Tub',
-        tag: 'WELLNESS',
-        positionStyle: { bottom: '7%', right: '7%' },
-        width: '270px',
-        aspectRatio: '4 / 5',
-      },
 
-      // 5 Outer Constellation Cards
+      // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
       {
-        id: 's3-edge-tl',
+        id: 's3-edge-mid-left',
         src: '/images/P38.jpeg',
         title: 'TERRACE HORIZON',
         subtitle: 'Indoor-Outdoor Infinity Glass Pergola',
         tag: 'TERRACE',
-        positionStyle: { top: '22%', left: '-7%' },
-        width: '250px',
-        aspectRatio: '16 / 10',
+        positionStyle: { top: '27%', left: '-4%' },
+        width: '260px',
+        aspectRatio: '3 / 4',
         isEdgeCard: true,
       },
+
+      // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
       {
-        id: 's3-edge-bl',
-        src: '/images/P42.jpeg',
-        title: 'CHOREOGRAPHED LIGHT',
-        subtitle: 'Automated Scene Lighting for Twilight',
-        tag: 'AUTOMATION',
-        positionStyle: { bottom: '15%', left: '-5%' },
-        width: '230px',
-        aspectRatio: '1 / 1',
-        isEdgeCard: true,
-      },
-      {
-        id: 's3-edge-top',
+        id: 's3-edge-top-left',
         src: '/images/P36.jpeg',
         title: 'CEILING ARCHITECTURE',
         subtitle: 'Acoustic Wood Ribs & Indirect Coves',
         tag: 'ENGINEERING',
-        positionStyle: { top: '-7%', right: '30%' },
-        width: '240px',
-        aspectRatio: '4 / 3',
+        positionStyle: { top: '-5%', left: '1%' },
+        width: '250px',
+        aspectRatio: '4 / 5',
         isEdgeCard: true,
       },
+
+      // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
       {
-        id: 's3-edge-tr',
+        id: 's3-edge-bottom-left',
+        src: '/images/P17.jpeg',
+        title: 'AOLAO RESIDENCE',
+        subtitle: 'Conversational Lounge & Suspended Fireplace',
+        tag: 'RESIDENTIAL',
+        positionStyle: { bottom: '-6%', left: '-2%' },
+        width: '240px',
+        aspectRatio: '1 / 1',
+        isEdgeCard: true,
+      },
+
+      // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
+      {
+        id: 's3-edge-bottom-mid',
+        src: '/images/P42.jpeg',
+        title: 'CHOREOGRAPHED LIGHT',
+        subtitle: 'Automated Scene Lighting for Twilight',
+        tag: 'AUTOMATION',
+        positionStyle: { bottom: '-7%', left: '18%' },
+        width: '260px',
+        aspectRatio: '16 / 10',
+        isEdgeCard: true,
+      },
+
+      // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
+      {
+        id: 's3-edge-mid-right',
         src: '/images/P40.jpeg',
         title: 'EXECUTIVE SUITE',
         subtitle: 'Private Office Suite at DIFC Gate Towers',
         tag: 'COMMERCIAL',
-        positionStyle: { top: '20%', right: '-7%' },
-        width: '250px',
-        aspectRatio: '16 / 10',
+        positionStyle: { top: '31%', right: '-3%' },
+        width: '255px',
+        aspectRatio: '9 / 16',
         isEdgeCard: true,
       },
+
+      // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
       {
-        id: 's3-edge-br',
+        id: 's3-edge-top-right',
+        src: '/images/P19.jpeg',
+        title: 'SPA BATHROOM',
+        subtitle: 'Bookmatched Nero Marquina & Freestanding Tub',
+        tag: 'WELLNESS',
+        positionStyle: { top: '-5%', right: '5%' },
+        width: '250px',
+        aspectRatio: '1 / 1',
+        isEdgeCard: true,
+      },
+
+      // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
+      {
+        id: 's3-edge-bottom-right',
         src: '/images/P45.jpeg',
         title: 'TURNKEY COMPLETION',
         subtitle: 'Final Handover at Jumeirah Islands Villa',
         tag: 'HANDOVER',
-        positionStyle: { bottom: '14%', right: '-5%' },
-        width: '240px',
-        aspectRatio: '1 / 1',
+        positionStyle: { bottom: '-6%', right: '3%' },
+        width: '255px',
+        aspectRatio: '4 / 5',
         isEdgeCard: true,
       },
     ],
@@ -410,39 +458,39 @@ export const FloatingShowcase: React.FC = () => {
     <div
       id="showcase"
       ref={containerRef}
-      className="relative w-full h-[320vh] bg-[#070707]"
+      className="relative w-full h-[260vh] md:h-[320vh] bg-[#070707]"
     >
       {/* ================= PINNED STICKY CONTAINER ================= */}
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#070707] select-none">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#070707] select-none px-4">
         
-        {/* ================= BACKGROUND ATMOSPHERIC LIGHTING ================= */}
+        {/* ================= CALM BACKGROUND ATMOSPHERIC LIGHTING ================= */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-          {/* Top-Left Ambient Glow */}
+          {/* Top-Left Ambient Emerald/Amber Drift */}
           <div
-            className="absolute -top-[15%] -left-[10%] w-[55vw] h-[55vw] max-w-[750px] max-h-[750px] rounded-full ambient-glow-lg transition-all duration-1000"
+            className="absolute -top-[12%] -left-[10%] w-[68vw] h-[68vw] max-w-[920px] max-h-[920px] rounded-full ambient-glow-lg animate-hero-emerald transition-all duration-1000"
             style={{
               background:
                 stageIndex === 0
-                  ? 'radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(152, 106, 60, 0.12) 40%, transparent 70%)'
+                  ? 'radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, rgba(5, 150, 105, 0.25) 40%, transparent 75%)'
                   : stageIndex === 1
-                  ? 'radial-gradient(circle, rgba(234, 88, 12, 0.18) 0%, rgba(16, 185, 129, 0.12) 45%, transparent 70%)'
-                  : 'radial-gradient(circle, rgba(217, 70, 239, 0.14) 0%, rgba(234, 88, 12, 0.14) 45%, transparent 70%)',
+                  ? 'radial-gradient(circle, rgba(234, 88, 12, 0.45) 0%, rgba(16, 185, 129, 0.28) 45%, transparent 75%)'
+                  : 'radial-gradient(circle, rgba(214, 183, 121, 0.42) 0%, rgba(234, 88, 12, 0.28) 45%, transparent 75%)',
             }}
           />
 
-          {/* Top-Right Warm Amber Bloom */}
+          {/* Top-Right Warm Honey / Amber Bloom */}
           <div
-            className="absolute -top-[10%] -right-[15%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full ambient-glow-lg"
+            className="absolute -top-[8%] -right-[12%] w-[66vw] h-[66vw] max-w-[900px] max-h-[900px] rounded-full ambient-glow-lg animate-hero-amber"
             style={{
-              background: 'radial-gradient(circle, rgba(196, 130, 63, 0.22) 0%, rgba(48, 20, 18, 0.15) 50%, transparent 75%)',
+              background: 'radial-gradient(circle, rgba(245, 158, 11, 0.48) 0%, rgba(196, 130, 63, 0.28) 45%, transparent 80%)',
             }}
           />
 
-          {/* Bottom Center Ambient Glow */}
+          {/* Bottom Center Calming Floor Reflection */}
           <div
-            className="absolute -bottom-[15%] left-[25%] right-[25%] h-[40vw] max-h-[500px] rounded-full ambient-glow-lg"
+            className="absolute -bottom-[16%] left-[20%] right-[20%] h-[42vw] max-h-[500px] rounded-full ambient-glow-lg animate-hero-bronze"
             style={{
-              background: 'radial-gradient(ellipse at center, rgba(16, 185, 129, 0.12) 0%, rgba(234, 88, 12, 0.1) 45%, transparent 75%)',
+              background: 'radial-gradient(ellipse at center, rgba(16, 185, 129, 0.35) 0%, rgba(214, 183, 121, 0.22) 45%, transparent 75%)',
             }}
           />
 
@@ -450,59 +498,52 @@ export const FloatingShowcase: React.FC = () => {
           <div
             className="absolute inset-0"
             style={{
-              background: 'radial-gradient(ellipse at center, rgba(7, 7, 7, 0.45) 0%, rgba(7, 7, 7, 0.9) 100%)',
+              background: 'radial-gradient(ellipse 880px 580px at center, rgba(7, 7, 7, 0.8) 0%, rgba(7, 7, 7, 0.45) 55%, transparent 95%)',
             }}
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-[#070707]/30 via-transparent to-[#070707]/60 pointer-events-none"
           />
         </div>
 
-        {/* ================= 9 EXPANSIVE FLOATING CARDS (4 INNER + 5 EDGE CLIPPED) ================= */}
-        <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+        {/* ================= 9 PRECISELY POSITIONED FLOATING CARDS (DESKTOP ONLY: 768px+) ================= */}
+        <div className="hidden md:block absolute inset-0 pointer-events-none z-10 overflow-hidden">
           {currentStage.cards.map((card, i) => {
-            // Parallax offset: subtle inward drift based on stageProgress
-            const driftY = (stageProgress - 0.5) * (i < 4 ? (i < 2 ? -24 : 24) : (i % 2 === 0 ? -16 : 16));
-            const driftX = (stageProgress - 0.5) * (i < 4 ? (i % 2 === 0 ? -24 : 24) : (i % 2 === 0 ? 16 : -16));
+            // Parallax offset: subtle organic drift based on scroll
+            const driftY = (stageProgress - 0.5) * (i < 2 ? -18 : (i % 2 === 0 ? -12 : 12));
+            const driftX = (stageProgress - 0.5) * (i < 2 ? (i === 0 ? -16 : 16) : (i % 2 === 0 ? 12 : -12));
 
             return (
               <div
                 key={card.id}
-                className={`absolute pointer-events-auto transition-all duration-700 ease-out will-change-transform ${
-                  card.isEdgeCard ? 'hidden md:block' : 'block'
-                }`}
+                className="absolute pointer-events-auto transition-all duration-700 ease-out will-change-transform"
                 style={{
                   ...card.positionStyle,
-                  width: `min(${card.width}, ${card.isEdgeCard ? '19vw' : '23vw'})`,
-                  minWidth: card.isEdgeCard ? '150px' : '180px',
+                  width: `min(${card.width}, ${card.isEdgeCard ? '20vw' : '22vw'})`,
+                  minWidth: card.isEdgeCard ? '160px' : '190px',
                   transform: `translate3d(${driftX}px, ${driftY}px, 0)`,
                 }}
               >
-                {/* Rectangular Card Container matching the reference video layout */}
+                {/* Architectural Card Container with iOS Glass Edge & Refined Corners */}
                 <div
-                  className="w-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-[#11100E] relative group hover:border-white/35 transition-all duration-500"
+                  className="w-full rounded-2xl overflow-hidden ios-glass border border-white/12 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-[#11100E] relative group hover:border-white/35 transition-all duration-500"
                   style={{
                     aspectRatio: card.aspectRatio,
                   }}
                 >
-                  {/* Architectural Image Asset */}
+                  {/* High Quality Architectural Photograph */}
                   <img
                     src={card.src}
                     alt={card.title}
                     loading="eager"
-                    className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05] group-hover:scale-105 group-hover:brightness-100 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover object-center filter brightness-[0.93] contrast-[1.04] group-hover:scale-105 group-hover:brightness-100 transition-transform duration-700 ease-out"
                   />
 
                   {/* Corner Architectural Crosshair Accents */}
-                  <div className="absolute top-2.5 left-2.5 text-white/40 font-mono text-[11px] pointer-events-none">
-                    +
-                  </div>
-                  <div className="absolute top-2.5 right-2.5 text-white/40 font-mono text-[11px] pointer-events-none">
-                    +
-                  </div>
-                  <div className="absolute bottom-2.5 left-2.5 text-white/40 font-mono text-[11px] pointer-events-none">
-                    +
-                  </div>
-                  <div className="absolute bottom-2.5 right-2.5 text-white/40 font-mono text-[11px] pointer-events-none">
-                    +
-                  </div>
+                  <div className="absolute top-2.5 left-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
+                  <div className="absolute top-2.5 right-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
+                  <div className="absolute bottom-2.5 left-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
+                  <div className="absolute bottom-2.5 right-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
 
                   {/* Top Category Badge */}
                   <div className="absolute top-3 left-3 z-10">
@@ -527,40 +568,46 @@ export const FloatingShowcase: React.FC = () => {
         </div>
 
         {/* ================= CENTERED HEADLINE & ARCHITECTURAL DESCRIPTION ================= */}
-        <div className="relative z-20 max-w-2xl mx-auto text-center px-4 sm:px-6 flex flex-col items-center justify-center pointer-events-auto">
+        <div className="relative z-20 w-full max-w-2xl mx-auto text-center px-4 flex flex-col items-center justify-center pointer-events-auto overflow-hidden">
           
           {/* Eyebrow Label */}
-          <div className="h-6 mb-3 overflow-hidden">
-            <span className="text-[11px] sm:text-xs tracking-[0.28em] uppercase text-neutral-400 font-medium transition-all duration-300">
+          <div className="mb-2 sm:mb-3">
+            <span className="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-neutral-400 font-medium">
               {currentStage.eyebrow}
             </span>
           </div>
 
-          {/* Central Headline with Green/Emerald Squiggly Brush Behind Dynamic Word */}
-          <div className="min-h-[170px] sm:min-h-[200px] flex flex-col items-center justify-center">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-[1.05] transition-all duration-500">
-              {/* Row 1 with Squiggly Highlighter Wave */}
+          {/* Central Headline with Green/Emerald Squiggly Underline */}
+          <div className="my-2 sm:my-3 flex flex-col items-center justify-center">
+            <h2 className="text-[27px] sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-[1.12] transition-all duration-500">
+              {/* Row 1 with Green Underline Wave */}
               <span className="block">
-                <span className="relative inline-block mr-2.5">
-                  {/* Organic Green Squiggly Wave Stroke */}
-                  <svg
-                    className="absolute -inset-x-3 -inset-y-1.5 w-[calc(100%+24px)] h-[calc(100%+12px)] -z-10 text-[#10B981] opacity-95 transition-transform duration-500 ease-out transform -rotate-1"
-                    viewBox="0 0 240 60"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M 12 32 Q 55 12 120 30 T 225 24 C 238 34 232 50 210 46 Q 135 54 65 44 C 25 38 10 44 12 32 Z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                <span className="relative inline-block mr-2 sm:mr-3">
                   <span className="relative z-10 text-white font-bold">
                     {currentStage.highlightWord}
                   </span>
+                  
+                  {/* Organic Green Squiggly Underline Wave (Matching Reference Screenshot) */}
+                  <svg
+                    className="absolute -bottom-1 sm:-bottom-2.5 left-0 w-full h-3.5 sm:h-5 overflow-visible pointer-events-none -z-0"
+                    viewBox="0 0 120 16"
+                    preserveAspectRatio="none"
+                    fill="none"
+                  >
+                    <path
+                      d="M 2 8 C 25 15, 55 1, 85 9 C 102 14, 112 5, 118 7"
+                      stroke="#10B981"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="filter drop-shadow-[0_0_12px_rgba(16,185,129,0.9)]"
+                    />
+                  </svg>
                 </span>
                 <span className="text-white font-normal">{currentStage.line1Suffix}</span>
               </span>
 
-              {/* Row 2: Fixed Sub-Punchline */}
+              {/* Row 2: Sub-Punchline */}
               <span className="block mt-1 sm:mt-2 text-white">
                 {currentStage.line2}
               </span>
@@ -568,7 +615,7 @@ export const FloatingShowcase: React.FC = () => {
           </div>
 
           {/* ================= 3 CAROUSEL STATE DOTS (• • •) ================= */}
-          <div className="flex items-center space-x-2.5 my-5 sm:my-6">
+          <div className="flex items-center space-x-2.5 my-3 sm:my-5">
             {stages.map((_, idx) => (
               <button
                 key={idx}
@@ -585,9 +632,44 @@ export const FloatingShowcase: React.FC = () => {
           </div>
 
           {/* Supporting Description beneath dots */}
-          <p className="text-xs sm:text-sm md:text-[15px] text-neutral-400 max-w-lg mx-auto leading-relaxed font-light transition-opacity duration-400 min-h-[48px]">
+          <p className="text-xs sm:text-sm md:text-[15px] text-neutral-400 max-w-lg mx-auto leading-relaxed font-light transition-opacity duration-400">
             {currentStage.description}
           </p>
+
+          {/* ================= MOBILE FEATURED CARDS CAROUSEL (MOBILE ONLY: < 768px) ================= */}
+          {/* Docked neatly below the text with zero collision and smooth swipe */}
+          <div className="block md:hidden w-full max-w-full overflow-hidden mt-4">
+            <div className="flex items-center space-x-3 overflow-x-auto no-scrollbar py-2 px-1 snap-x snap-mandatory">
+              {currentStage.cards.slice(0, 3).map((card) => (
+                <div
+                  key={card.id}
+                  className="w-[185px] sm:w-[210px] shrink-0 snap-center rounded-2xl overflow-hidden ios-glass border border-white/15 bg-[#121110] shadow-xl"
+                >
+                  <div className="w-full aspect-[4/3] relative">
+                    <img
+                      src={card.src}
+                      alt={card.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-[8px] font-mono tracking-wider uppercase bg-black/60 text-[#D6B779] border border-white/10">
+                      {card.tag}
+                    </div>
+                  </div>
+                  <div className="p-3 bg-gradient-to-t from-black via-black/80 to-transparent text-left">
+                    <h3 className="font-bold text-xs text-white uppercase truncate">
+                      {card.title}
+                    </h3>
+                    <p className="text-[10px] text-neutral-400 truncate mt-0.5">
+                      {card.subtitle}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-center space-x-1.5 mt-2 text-[10px] text-neutral-500 font-mono">
+              <span>← Swipe to explore spaces →</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
