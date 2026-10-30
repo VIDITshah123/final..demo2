@@ -50,7 +50,7 @@ export const Hero: React.FC = () => {
 
   // Typing effect simulation
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     const fullText = currentPreset.query;
     let charIndex = 0;
     setTypedText('');
