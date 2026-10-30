@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ALTIMATE Interiors - Asset Inventory</title>
+  <style>
+    body { background: #080807; color: #F4F0E8; font-family: sans-serif; padding: 20px; }
+    h1 { color: #D6B779; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .card { background: #141311; border: 1px solid #333; border-radius: 4px; overflow: hidden; }
+    img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .name { padding: 8px; font-size: 12px; text-align: center; color: #D6B779; }
+  </style>
+</head>
+<body>
+  <h1>ALTIMATE Interiors — Image Assets (P01 - P52)</h1>
+  <div class="grid" id="grid"></div>
+  <script>
+    const grid = document.getElementById('grid');
+    for (let i = 1; i <= 52; i++) {
+      const num = String(i).padStart(2, '0');
+      const filename = `P${num}.jpeg`;
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `<img src="/images/${filename}" alt="${filename}" loading="lazy"><div class="name">${filename}</div>`;
+      grid.appendChild(div);
+    }
+  </script>
+</body>
+</html>
+
