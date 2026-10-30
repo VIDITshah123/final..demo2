@@ -32,6 +32,7 @@ export default {
         'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float-slow': 'float 12s ease-in-out infinite',
         'float-reverse': 'float-reverse 15s ease-in-out infinite',
+        'spin-slow': 'spin 22s linear infinite',
       },
       keyframes: {
         float: {

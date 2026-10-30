@@ -197,6 +197,22 @@ const emblemImages: ShowcaseImage[] = [
     position: 'bottom-[14%] right-[6%]',
     size: 'w-[190px] sm:w-[230px] aspect-[3/4]',
   },
+  {
+    id: 'ie-5',
+    src: '/images/P02.jpeg',
+    title: 'MARBLE ATELIER',
+    tag: 'MATERIALS',
+    position: 'top-[40%] left-[3%]',
+    size: 'w-[140px] sm:w-[170px] aspect-[3/4]',
+  },
+  {
+    id: 'ie-6',
+    src: '/images/P03.jpeg',
+    title: 'BESPOKE LOUNGE',
+    tag: 'INTERIORS',
+    position: 'top-[40%] right-[3%]',
+    size: 'w-[140px] sm:w-[170px] aspect-[3/4]',
+  },
 ];
 
 /* =========================================================================
@@ -1237,6 +1253,11 @@ export const HorizontalExperience: React.FC = () => {
              * The Green Ribbon gently tapers and terminates here!
              ========================================================================= */}
           <section className="w-screen min-w-[100vw] h-screen shrink-0 relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 overflow-hidden select-none">
+            {/* Ambient light for emblem slide */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full" style={{background: 'radial-gradient(circle, rgba(16,185,129,0.12) 0%, rgba(234,88,12,0.07) 50%, transparent 75%)', filter: 'blur(40px)', animation: 'hxEmeraldA 14s ease-in-out infinite'}} />
+              <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full" style={{background: 'radial-gradient(circle, rgba(234,88,12,0.09) 0%, transparent 70%)', filter: 'blur(30px)', animation: 'hxAmberA 18s ease-in-out infinite 3s'}} />
+            </div>
             
             {/* Floating Perimeter Cards */}
             <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
@@ -1245,7 +1266,7 @@ export const HorizontalExperience: React.FC = () => {
                   key={img.id}
                   className={`absolute ${img.position} ${img.size} pointer-events-auto transition-transform duration-500`}
                 >
-                  <div className="w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-[#11100E] group hover:border-[#10B981]/50 transition-all relative">
+                  <div className="w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-[#11100E] ios-glass-card group hover:border-[#10B981]/50 transition-all relative">
                     <img
                       src={img.src}
                       alt={img.title}
@@ -1268,8 +1289,20 @@ export const HorizontalExperience: React.FC = () => {
             {/* Central Chronograph Radar Dial */}
             <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-auto my-auto">
               <div className="relative w-[260px] sm:w-[360px] md:w-[440px] h-[260px] sm:h-[360px] md:h-[440px] flex items-center justify-center">
-                
+
+                {/* Ambient glow behind dial */}
+                <div className="absolute inset-0 rounded-full pointer-events-none" style={{background: 'radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(234,88,12,0.08) 45%, transparent 75%)', filter: 'blur(18px)'}} />
+
+                {/* Outer static ring */}
+                <div className="absolute inset-[-18px] sm:inset-[-22px] rounded-full border border-white/[0.05] pointer-events-none" />
+                {/* Mid-outer static ring */}
+                <div className="absolute inset-[-6px] sm:inset-[-8px] rounded-full border border-white/[0.07] pointer-events-none" />
+                {/* Main inner ring */}
                 <div className="absolute inset-0 rounded-full border border-white/[0.08] pointer-events-none" />
+                {/* Inner accent ring */}
+                <div className="absolute inset-[22px] sm:inset-[28px] rounded-full border border-[#10B981]/[0.18] pointer-events-none" style={{animation: 'emblemRingPulse 4s ease-in-out infinite'}} />
+                {/* Innermost gold ring */}
+                <div className="absolute inset-[44px] sm:inset-[56px] rounded-full border border-[#D6B779]/[0.15] pointer-events-none" style={{animation: 'emblemRingPulse 6s ease-in-out infinite 1s'}} />
 
                 {/* SVG Radial Tick Marks & Compass Points */}
                 <svg
