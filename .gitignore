@@ -30,6 +30,8 @@ inspect_video.py
 extracted_hscroll/
 verify_hscroll.py
 hscroll_shots/
+verify_ribbon_motion.py
+ribbon_shots/
 
 # Environment variables
 .env

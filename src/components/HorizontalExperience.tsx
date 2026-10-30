@@ -303,8 +303,9 @@ const spaceCategories: SpaceCategory[] = [
 export const HorizontalExperience: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const ribbonPathRef = useRef<SVGPathElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [pathLength, setPathLength] = useState(2800);
 
   // Slide 1 State
   const [diffActiveTab, setDiffActiveTab] = useState<number>(0);
@@ -317,14 +318,6 @@ export const HorizontalExperience: React.FC = () => {
   // Slide 5 State
   const [activeSpaceTab, setActiveSpaceTab] = useState<number>(0);
   const currentSpace = spaceCategories[activeSpaceTab];
-
-  const slideTitles = [
-    'The Difference',
-    'Materiality Kit',
-    'Turnkey Velocity',
-    'Architectural Emblem',
-    'Every Space',
-  ];
 
   // Palette swatches for Slide 2
   const paletteSwatches = [
@@ -363,6 +356,13 @@ export const HorizontalExperience: React.FC = () => {
   ];
 
   useEffect(() => {
+    if (ribbonPathRef.current) {
+      const len = ribbonPathRef.current.getTotalLength();
+      if (len > 0) setPathLength(len);
+    }
+  }, []);
+
+  useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
@@ -379,11 +379,6 @@ export const HorizontalExperience: React.FC = () => {
           const progress = Math.max(0, Math.min(1, currentScroll / totalScrollable));
 
           setScrollProgress(progress);
-
-          // Calculate active slide index (0 to 4)
-          const slide = Math.min(4, Math.floor(progress * 5));
-          setActiveSlide(slide);
-
           ticking = false;
         });
         ticking = true;
@@ -396,16 +391,16 @@ export const HorizontalExperience: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Jump to slide by clicking step indicators
-  const jumpToSlide = (index: number) => {
-    if (!containerRef.current) return;
-    const totalScrollable = containerRef.current.offsetHeight - window.innerHeight;
-    const targetScroll = containerRef.current.offsetTop + (index / 4) * totalScrollable;
-    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-  };
-
-  // Translation calculation: 5 slides = 500vw total width. Max translate is 400vw (4 * windowWidth)
+  // Translation calculation: 5 slides = 500vw total width. Max translate is 400vw
   const translateX = scrollProgress * 400; // in vw units
+
+  // Dynamic green ribbon progression tied directly to scroll movement:
+  // Starts entering as user moves into Slide 2 (around 0.16),
+  // sweeps dynamically through Slide 3, and finishes at Slide 4 (around 0.78).
+  const ribbonStart = 0.16;
+  const ribbonEnd = 0.78;
+  const ribbonProgress = Math.min(1, Math.max(0, (scrollProgress - ribbonStart) / (ribbonEnd - ribbonStart)));
+  const strokeDashoffset = pathLength * (1 - ribbonProgress);
 
   return (
     <div
@@ -415,48 +410,18 @@ export const HorizontalExperience: React.FC = () => {
       {/* ================= PINNED STICKY VIEWPORT CONTAINER ================= */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center bg-[#070707]">
         
-        {/* ================= TOP FLOATING NAVIGATION HUD (Beautified) ================= */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 z-40 flex items-center space-x-3 px-4 py-1.5 rounded-full bg-[#121110]/85 backdrop-blur-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-          <span className="text-[10px] font-mono tracking-widest text-[#D6B779] font-bold">
-            0{activeSlide + 1}
-          </span>
-          <span className="text-white/20">/</span>
-          <span className="text-[10px] font-mono tracking-widest text-neutral-400">05</span>
-          <div className="h-3 w-[1px] bg-white/15" />
-          <span className="text-xs font-semibold text-white tracking-wide uppercase">
-            {slideTitles[activeSlide]}
-          </span>
-
-          {/* Mini Interactive Step Dots */}
-          <div className="flex items-center space-x-1.5 pl-2 border-l border-white/10">
-            {[0, 1, 2, 3, 4].map((idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => jumpToSlide(idx)}
-                className={`transition-all duration-300 rounded-full focus:outline-none ${
-                  activeSlide === idx
-                    ? 'w-5 h-1.5 bg-[#10B981] shadow-[0_0_10px_rgba(16,185,129,0.8)]'
-                    : 'w-1.5 h-1.5 bg-white/25 hover:bg-white/60'
-                }`}
-                aria-label={`Jump to ${slideTitles[idx]}`}
-              />
-            ))}
-          </div>
-        </div>
-
         {/* ================= HORIZONTAL SCROLL TRACK (500vw Total Width) ================= */}
         <div
           ref={trackRef}
           className="flex h-full w-[500vw] will-change-transform relative"
           style={{
             transform: `translate3d(-${translateX}vw, 0, 0)`,
-            transition: 'transform 0.05s linear',
+            transition: 'transform 0.04s linear',
           }}
         >
           {/* =========================================================================
-             CONTINUOUS GREEN ARCHITECTURAL RIBBON (Spans Slides 2, 3 & 4)
-             Starts at "Your aesthetic, built in." and ends at the Emblem!
+             CONTINUOUS DYNAMIC GREEN ARCHITECTURAL RIBBON (Moves along with user scroll)
+             Starts at "Your aesthetic, built in." and advances into Turnkey Velocity & Emblem
              ========================================================================= */}
           <svg
             className="absolute top-0 left-0 w-[500vw] h-full pointer-events-none z-0"
@@ -467,9 +432,9 @@ export const HorizontalExperience: React.FC = () => {
             <defs>
               <linearGradient
                 id="continuousGreenRibbon"
-                x1="1080"
+                x1="1040"
                 y1="500"
-                x2="3500"
+                x2="3480"
                 y2="500"
                 gradientUnits="userSpaceOnUse"
               >
@@ -481,7 +446,7 @@ export const HorizontalExperience: React.FC = () => {
 
               {/* Enhanced Soft Glow Filter */}
               <filter id="ribbonGlow" x="-10%" y="-10%" width="120%" height="120%">
-                <feGaussianBlur stdDeviation="8" result="glow" />
+                <feGaussianBlur stdDeviation="10" result="glow" />
                 <feMerge>
                   <feMergeNode in="glow" />
                   <feMergeNode in="SourceGraphic" />
@@ -489,13 +454,21 @@ export const HorizontalExperience: React.FC = () => {
               </filter>
             </defs>
 
-            {/* The single continuous ribbon: starts at x=1080 (bottom-left of Slide 2),
-                sweeps through Slide 3 behind the cards, and tapers off at x=3400 in Slide 4 */}
+            {/* The single continuous ribbon: starts at x=1040 (bottom-left of Slide 2),
+                sweeps through Slide 3 behind the cards, and tapers off at x=3480 in Slide 4.
+                strokeDashoffset moves along dynamically with the user's scroll! */}
             <path
-              d="M 1080 820 C 1450 780, 1750 580, 2050 440 C 2250 320, 2450 160, 2650 240 C 2850 320, 2920 680, 3120 740 C 3260 780, 3350 820, 3480 820"
+              ref={ribbonPathRef}
+              d="M 1040 860 C 1380 800, 1720 600, 2040 440 C 2240 320, 2450 160, 2650 240 C 2850 320, 2920 680, 3120 740 C 3260 780, 3350 820, 3480 820"
               stroke="url(#continuousGreenRibbon)"
               strokeWidth="86"
               strokeLinecap="round"
+              strokeDasharray={pathLength}
+              strokeDashoffset={strokeDashoffset}
+              style={{
+                transition: 'stroke-dashoffset 0.08s ease-out',
+                opacity: ribbonProgress > 0 ? 1 : 0,
+              }}
               filter="url(#ribbonGlow)"
             />
           </svg>
