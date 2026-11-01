@@ -9,7 +9,6 @@ interface ShowcaseCard {
   positionStyle: React.CSSProperties;
   aspectRatio: string;
   width: string;
-  isEdgeCard?: boolean;
 }
 
 interface StageData {
@@ -21,6 +20,7 @@ interface StageData {
   cards: ShowcaseCard[];
 }
 
+// 4 carefully art-directed showcase cards per stage — clean composition, generous breathing room, zero lag
 const stages: StageData[] = [
   // ================= STAGE 1: REAL OUTPUTS · ARCHITECTURAL SPACES =================
   {
@@ -31,119 +31,45 @@ const stages: StageData[] = [
     description:
       'Turn a spatial brief into polished architectural directions, then refine the layout, stone selections, custom millwork, and lighting with full creative control.',
     cards: [
-      // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
-        id: 's1-inner-left',
+        id: 's1-c1',
         src: '/images/P09.jpeg',
-        title: 'VILL· LUMIÈRE',
+        title: 'VILLA LUMIÈRE',
         subtitle: 'Palm Jumeirah Beachfront Estate',
         tag: 'ARCHITECTURE',
-        positionStyle: { top: '30%', left: 'max(4%, calc(50% - 545px))' },
-        width: '285px',
+        positionStyle: { top: '26%', left: 'max(5%, calc(50% - 540px))' },
+        width: '275px',
         aspectRatio: '1 / 1',
       },
-
-      // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
-        id: 's1-inner-right',
+        id: 's1-c2',
+        src: '/images/P33.jpeg',
+        title: 'COASTAL MONOLITH',
+        subtitle: 'Exterior Facade & Screen Architecture',
+        tag: 'FACADE',
+        positionStyle: { top: '7%', left: 'max(2%, calc(50% - 630px))' },
+        width: '215px',
+        aspectRatio: '4 / 3',
+      },
+      {
+        id: 's1-c3',
         src: '/images/P11.jpeg',
         title: 'GRAND SALON',
         subtitle: 'Double-Height Dining & Ambient Lighting',
         tag: 'INTERIORS',
-        positionStyle: { top: '22%', left: 'min(78%, calc(50% + 250px))' },
-        width: '285px',
+        positionStyle: { top: '22%', left: 'min(72%, calc(50% + 240px))' },
+        width: '275px',
         aspectRatio: '1 / 1',
       },
-
-      // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
       {
-        id: 's1-edge-mid-left',
-        src: '/images/P33.jpeg',
-        title: 'COASTAL MONOLITH',
-        subtitle: 'Exterior Facade & Screen Architecture',
-        tag: 'RESIDENTIAL',
-        positionStyle: { top: '27%', left: '-4%' },
-        width: '260px',
-        aspectRatio: '3 / 4',
-        isEdgeCard: true,
-      },
-
-      // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
-      {
-        id: 's1-edge-top-left',
-        src: '/images/P35.jpeg',
-        title: 'FACADE INTEGRATION',
-        subtitle: 'Perimeter Terrace & Architectural Pergola',
-        tag: 'EXTERIOR',
-        positionStyle: { top: '-5%', left: '1%' },
-        width: '250px',
-        aspectRatio: '4 / 5',
-        isEdgeCard: true,
-      },
-
-      // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
-      {
-        id: 's1-edge-bottom-left',
-        src: '/images/P31.jpeg',
-        title: 'THE AZURE SUITE',
-        subtitle: 'Penthouse Living with Panoramic Skyline',
-        tag: 'FIT-OUT',
-        positionStyle: { bottom: '-6%', left: '-2%' },
-        width: '240px',
-        aspectRatio: '1 / 1',
-        isEdgeCard: true,
-      },
-
-      // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
-      {
-        id: 's1-edge-bottom-mid',
-        src: '/images/P13.jpeg',
-        title: 'CALACATT· GALLERY',
-        subtitle: 'Bookmatched Marble Entrance Foyer',
-        tag: 'STONEWORK',
-        positionStyle: { bottom: '-7%', left: '18%' },
-        width: '260px',
-        aspectRatio: '16 / 10',
-        isEdgeCard: true,
-      },
-
-      // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
-      {
-        id: 's1-edge-mid-right',
+        id: 's1-c4',
         src: '/images/P44.jpeg',
         title: 'SKYLINE PENTHOUSE',
         subtitle: 'Triplex Living at Downtown Dubai',
         tag: 'PENTHOUSE',
-        positionStyle: { top: '31%', right: '-3%' },
-        width: '255px',
-        aspectRatio: '9 / 16',
-        isEdgeCard: true,
-      },
-
-      // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
-      {
-        id: 's1-edge-top-right',
-        src: '/images/P08.jpeg',
-        title: 'SANCTUARY BAY',
-        subtitle: 'Intimate Lighting & Italian Travertine',
-        tag: 'MATERIALITY',
-        positionStyle: { top: '-5%', right: '5%' },
-        width: '250px',
-        aspectRatio: '1 / 1',
-        isEdgeCard: true,
-      },
-
-      // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
-      {
-        id: 's1-edge-bottom-right',
-        src: '/images/P46.jpeg',
-        title: 'PRIVATE ATELIER',
-        subtitle: 'Executive Study with Bronze Millwork',
-        tag: 'BESPOKE',
-        positionStyle: { bottom: '-6%', right: '3%' },
-        width: '255px',
-        aspectRatio: '4 / 5',
-        isEdgeCard: true,
+        positionStyle: { top: '54%', left: 'min(74%, calc(50% + 340px))' },
+        width: '225px',
+        aspectRatio: '4 / 3',
       },
     ],
   },
@@ -157,119 +83,45 @@ const stages: StageData[] = [
     description:
       'Create clean, flexible interiors you can keep adjusting in ALTIMATE Studio, from custom bronze joinery and lighting to bookmatched Italian marble.',
     cards: [
-      // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
-        id: 's2-inner-left',
+        id: 's2-c1',
         src: '/images/P22.jpeg',
-        title: 'MARIN· SHORES',
+        title: 'MARINA SHORES',
         subtitle: 'Contemporary Villa Living & Lounge Space',
         tag: 'LIVING ROOM',
-        positionStyle: { top: '30%', left: 'max(4%, calc(50% - 545px))' },
-        width: '285px',
+        positionStyle: { top: '26%', left: 'max(5%, calc(50% - 540px))' },
+        width: '275px',
         aspectRatio: '1 / 1',
       },
-
-      // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
-        id: 's2-inner-right',
-        src: '/images/P24.jpeg',
-        title: 'BRONZE ACCENTS',
-        subtitle: 'Fluted Wall Panels & Concealed Illumination',
-        tag: 'JOINERY',
-        positionStyle: { top: '22%', left: 'min(78%, calc(50% + 250px))' },
-        width: '285px',
-        aspectRatio: '1 / 1',
-      },
-
-      // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
-      {
-        id: 's2-edge-mid-left',
-        src: '/images/P41.jpeg',
-        title: 'TACTILE FINISHES',
-        subtitle: 'Natural Wood & Fluted Plaster Paneling',
-        tag: 'FINISHES',
-        positionStyle: { top: '27%', left: '-4%' },
-        width: '260px',
-        aspectRatio: '3 / 4',
-        isEdgeCard: true,
-      },
-
-      // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
-      {
-        id: 's2-edge-top-left',
+        id: 's2-c2',
         src: '/images/P29.jpeg',
         title: 'MARBLE JOINERY',
         subtitle: 'Seamless Transition from Stone to Timber',
         tag: 'STONEWORK',
-        positionStyle: { top: '-5%', left: '1%' },
-        width: '250px',
-        aspectRatio: '4 / 5',
-        isEdgeCard: true,
+        positionStyle: { top: '7%', left: 'max(2%, calc(50% - 630px))' },
+        width: '215px',
+        aspectRatio: '4 / 3',
       },
-
-      // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
       {
-        id: 's2-edge-bottom-left',
-        src: '/images/P27.jpeg',
-        title: 'FORM & FUNCTION',
-        subtitle: 'Custom Millwork & Kitchen Island Centerpiece',
-        tag: 'TURNKEY',
-        positionStyle: { bottom: '-6%', left: '-2%' },
-        width: '240px',
+        id: 's2-c3',
+        src: '/images/P24.jpeg',
+        title: 'BRONZE ACCENTS',
+        subtitle: 'Fluted Wall Panels & Concealed Illumination',
+        tag: 'JOINERY',
+        positionStyle: { top: '22%', left: 'min(72%, calc(50% + 240px))' },
+        width: '275px',
         aspectRatio: '1 / 1',
-        isEdgeCard: true,
       },
-
-      // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
       {
-        id: 's2-edge-bottom-mid',
-        src: '/images/P32.jpeg',
-        title: 'ARCHITECTURAL FIXTURES',
-        subtitle: 'Precision Detail in Brushed Gunmetal',
-        tag: 'HARDWARE',
-        positionStyle: { bottom: '-7%', left: '18%' },
-        width: '260px',
-        aspectRatio: '16 / 10',
-        isEdgeCard: true,
-      },
-
-      // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
-      {
-        id: 's2-edge-mid-right',
-        src: '/images/P47.jpeg',
-        title: 'CURATED LIGHTING',
-        subtitle: 'Recessed Architectural Track Illumination',
-        tag: 'LIGHTING',
-        positionStyle: { top: '31%', right: '-3%' },
-        width: '255px',
-        aspectRatio: '9 / 16',
-        isEdgeCard: true,
-      },
-
-      // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
-      {
-        id: 's2-edge-top-right',
+        id: 's2-c4',
         src: '/images/P34.jpeg',
         title: 'EMIRATES HILLS',
         subtitle: 'Double-Height Residence with Glass Monoliths',
         tag: 'ARCHITECTURE',
-        positionStyle: { top: '-5%', right: '5%' },
-        width: '250px',
-        aspectRatio: '1 / 1',
-        isEdgeCard: true,
-      },
-
-      // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
-      {
-        id: 's2-edge-bottom-right',
-        src: '/images/P49.jpeg',
-        title: 'CALACATT· OVAL',
-        subtitle: 'Sculptural Dining Table & Custom FF&E',
-        tag: 'FURNITURE',
-        positionStyle: { bottom: '-6%', right: '3%' },
-        width: '255px',
-        aspectRatio: '4 / 5',
-        isEdgeCard: true,
+        positionStyle: { top: '54%', left: 'min(74%, calc(50% + 340px))' },
+        width: '225px',
+        aspectRatio: '4 / 3',
       },
     ],
   },
@@ -283,174 +135,153 @@ const stages: StageData[] = [
     description:
       'Generate spaces that stay rigorously consistent with your architectural brief, engineered across Dubai with guaranteed turnkey delivery and single-source accountability.',
     cards: [
-      // 1. Inner Left Framing Card (Square, Directly Adjacent to Headline)
       {
-        id: 's3-inner-left',
+        id: 's3-c1',
         src: '/images/P37.jpeg',
         title: 'MASTER SANCTUARY',
         subtitle: 'Penthouse Bedroom Suite with Custom Wardrobes',
         tag: 'PENTHOUSE',
-        positionStyle: { top: '30%', left: 'max(4%, calc(50% - 545px))' },
-        width: '285px',
+        positionStyle: { top: '26%', left: 'max(5%, calc(50% - 540px))' },
+        width: '275px',
         aspectRatio: '1 / 1',
       },
-
-      // 2. Inner Right Framing Card (Square, Directly Adjacent to Headline, Slightly Higher)
       {
-        id: 's3-inner-right',
-        src: '/images/P39.jpeg',
-        title: 'CULINARY SUITE',
-        subtitle: 'Seamless Monolith Kitchen & Wine Cellar',
-        tag: 'FIT-OUT',
-        positionStyle: { top: '22%', left: 'min(78%, calc(50% + 250px))' },
-        width: '285px',
-        aspectRatio: '1 / 1',
-      },
-
-      // 3. Mid-Left Edge Card (Tall Vertical, Partially Clipped at Screen Left)
-      {
-        id: 's3-edge-mid-left',
-        src: '/images/P43.jpeg',
-        title: 'TERRACE HORIZON',
-        subtitle: 'Indoor-Outdoor Infinity Glass Pergola',
-        tag: 'TERRACE',
-        positionStyle: { top: '27%', left: '-4%' },
-        width: '260px',
-        aspectRatio: '3 / 4',
-        isEdgeCard: true,
-      },
-
-      // 4. Top-Left Edge Card (Partially Clipped at Screen Top-Left)
-      {
-        id: 's3-edge-top-left',
+        id: 's3-c2',
         src: '/images/P48.jpeg',
         title: 'CEILING ARCHITECTURE',
         subtitle: 'Acoustic Wood Ribs & Indirect Coves',
         tag: 'ENGINEERING',
-        positionStyle: { top: '-5%', left: '1%' },
-        width: '250px',
-        aspectRatio: '4 / 5',
-        isEdgeCard: true,
+        positionStyle: { top: '7%', left: 'max(2%, calc(50% - 630px))' },
+        width: '215px',
+        aspectRatio: '4 / 3',
       },
-
-      // 5. Bottom-Left Edge Card (Partially Clipped at Bottom-Left Corner)
       {
-        id: 's3-edge-bottom-left',
-        src: '/images/P50.jpeg',
-        title: 'AOLAO RESIDENCE',
-        subtitle: 'Conversational Lounge & Suspended Fireplace',
-        tag: 'RESIDENTIAL',
-        positionStyle: { bottom: '-6%', left: '-2%' },
-        width: '240px',
+        id: 's3-c3',
+        src: '/images/P39.jpeg',
+        title: 'CULINARY SUITE',
+        subtitle: 'Seamless Monolith Kitchen & Wine Cellar',
+        tag: 'FIT-OUT',
+        positionStyle: { top: '22%', left: 'min(72%, calc(50% + 240px))' },
+        width: '275px',
         aspectRatio: '1 / 1',
-        isEdgeCard: true,
       },
-
-      // 6. Bottom-Center-Left Edge Card (Tucked Along Lower Perimeter)
       {
-        id: 's3-edge-bottom-mid',
-        src: '/images/P51.jpeg',
-        title: 'CHOREOGRAPHED LIGHT',
-        subtitle: 'Automated Scene Lighting for Twilight',
-        tag: 'AUTOMATION',
-        positionStyle: { bottom: '-7%', left: '18%' },
-        width: '260px',
-        aspectRatio: '16 / 10',
-        isEdgeCard: true,
-      },
-
-      // 7. Mid-Right Edge Card (Tall Vertical, Partially Clipped at Screen Right)
-      {
-        id: 's3-edge-mid-right',
-        src: '/images/P52.jpeg',
-        title: 'EXECUTIVE SUITE',
-        subtitle: 'Private Office Suite at DIFC Gate Towers',
-        tag: 'COMMERCIAL',
-        positionStyle: { top: '31%', right: '-3%' },
-        width: '255px',
-        aspectRatio: '9 / 16',
-        isEdgeCard: true,
-      },
-
-      // 8. Top-Right Edge Card (Partially Clipped at Screen Top-Right)
-      {
-        id: 's3-edge-top-right',
+        id: 's3-c4',
         src: '/images/P45.jpeg',
-        title: 'SP· BATHROOM',
+        title: 'SPA BATHROOM',
         subtitle: 'Bookmatched Nero Marquina & Freestanding Tub',
         tag: 'WELLNESS',
-        positionStyle: { top: '-5%', right: '5%' },
-        width: '250px',
-        aspectRatio: '1 / 1',
-        isEdgeCard: true,
-      },
-
-      // 9. Bottom-Right Edge Card (Partially Clipped at Bottom-Right Corner)
-      {
-        id: 's3-edge-bottom-right',
-        src: '/images/P04.jpeg',
-        title: 'TURNKEY COMPLETION',
-        subtitle: 'Final Handover at Jumeirah Islands Villa',
-        tag: 'HANDOVER',
-        positionStyle: { bottom: '-6%', right: '3%' },
-        width: '255px',
-        aspectRatio: '4 / 5',
-        isEdgeCard: true,
+        positionStyle: { top: '54%', left: 'min(74%, calc(50% + 340px))' },
+        width: '225px',
+        aspectRatio: '4 / 3',
       },
     ],
   },
 ];
 
-export const FloatingShowcase: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [stageIndex, setStageIndex] = useState(0);
-  const [stageProgress, setStageProgress] = useState(0.5);
+  function smoothstep(t: number): number {
+    const c = Math.max(0, Math.min(1, t));
+    return c * c * (3 - 2 * c);
+  }
 
-  useEffect(() => {
-    let ticking = false;
+  export const FloatingShowcase: React.FC = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const desktopLayersRef = useRef<(HTMLDivElement | null)[]>([]);
+    const mobileLayersRef = useRef<(HTMLDivElement | null)[]>([]);
+    const activeIndexRef = useRef<number>(0);
 
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (!containerRef.current) {
-            ticking = false;
-            return;
-          }
+    // React state ONLY updates when stage index changes (0 -> 1 -> 2)
+    // This eliminates 60fps re-rendering overhead and eliminates scroll lag completely!
+    const [activeStageIndex, setActiveStageIndex] = useState(0);
+
+      useEffect(() => {
+        let ticking = false;
+
+        const updateTransforms = () => {
+          if (!containerRef.current) return;
           const rect = containerRef.current.getBoundingClientRect();
           const totalScrollable = Math.max(1, containerRef.current.offsetHeight - window.innerHeight);
           const currentScroll = Math.max(0, -rect.top);
           const overallProgress = Math.max(0, Math.min(1, currentScroll / totalScrollable));
 
-          if (overallProgress < 0.33) {
-            setStageIndex(0);
-            setStageProgress(overallProgress / 0.33);
-          } else if (overallProgress < 0.67) {
-            setStageIndex(1);
-            setStageProgress((overallProgress - 0.33) / 0.34);
+          // Calculate smooth continuous stage position (0.0 to 2.0)
+          let sf = 0;
+          if (overallProgress <= 0.16) {
+            sf = 0;
+          } else if (overallProgress < 0.46) {
+            const t = (overallProgress - 0.16) / 0.30;
+            sf = smoothstep(t);
+          } else if (overallProgress <= 0.68) {
+            sf = 1;
+          } else if (overallProgress < 0.94) {
+            const t = (overallProgress - 0.68) / 0.26;
+            sf = 1 + smoothstep(t);
           } else {
-            setStageIndex(2);
-            setStageProgress((overallProgress - 0.67) / 0.33);
+            sf = 2;
           }
 
-          ticking = false;
-        });
-        ticking = true;
+      // Check if active index changed for text & dots
+      const newActive = sf < 0.5 ? 0 : sf < 1.5 ? 1 : 2;
+      if (newActive !== activeIndexRef.current) {
+        activeIndexRef.current = newActive;
+        setActiveStageIndex(newActive);
       }
-    };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+        // Direct GPU transform on Desktop Layers (105vh distance per stage)
+        desktopLayersRef.current.forEach((layer, sIdx) => {
+          if (!layer) return;
+          const diff = sIdx - sf;
+          if (Math.abs(diff) > 1.15) {
+            layer.style.visibility = 'hidden';
+          } else {
+            layer.style.visibility = 'visible';
+            const yVh = Math.round(diff * 105 * 10) / 10;
+            const opacity = Math.max(0, Math.min(1, Math.round((1.2 - Math.abs(diff) * 0.95) * 100) / 100));
+            layer.style.transform = `translate3d(0, ${yVh}vh, 0)`;
+            layer.style.opacity = String(opacity);
+          }
+        });
 
-    return () => window.removeEventListener('scroll', handleScroll);
+        // Direct GPU transform on Mobile Layers (230px distance per stage)
+        mobileLayersRef.current.forEach((layer, sIdx) => {
+          if (!layer) return;
+          const diff = sIdx - sf;
+          if (Math.abs(diff) > 1.15) {
+            layer.style.visibility = 'hidden';
+          } else {
+            layer.style.visibility = 'visible';
+            const yPx = Math.round(diff * 230);
+            const opacity = Math.max(0, Math.min(1, Math.round((1.2 - Math.abs(diff) * 0.95) * 100) / 100));
+            layer.style.transform = `translate3d(0, ${yPx}px, 0)`;
+            layer.style.opacity = String(opacity);
+          }
+        });
+      };
+
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateTransforms();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      updateTransforms();
+
+      return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const currentStage = stages[stageIndex];
+  const currentStage = stages[activeStageIndex];
 
-  // Dot click navigation
+  // Dot click navigation: smoothly scrolls directly into target stage's dwell window
   const handleDotClick = (index: number) => {
     if (!containerRef.current) return;
     const totalScrollable = containerRef.current.offsetHeight - window.innerHeight;
-    const targetScroll = containerRef.current.offsetTop + (index / 2.2) * totalScrollable;
+    const targetProgress = index === 0 ? 0.08 : index === 1 ? 0.57 : 0.96;
+    const targetScroll = containerRef.current.offsetTop + targetProgress * totalScrollable;
     window.scrollTo({ top: targetScroll, behavior: 'smooth' });
   };
 
@@ -458,167 +289,156 @@ export const FloatingShowcase: React.FC = () => {
     <div
       id="showcase"
       ref={containerRef}
-      className="relative w-full h-[260vh] md:h-[320vh] bg-[#070707]"
+      className="relative w-full h-[240vh] md:h-[300vh] bg-[#070707]"
     >
       {/* ================= PINNED STICKY CONTAINER ================= */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#070707] select-none px-4">
-        
-        {/* ================= CINEMATIC AMBIENT ORB SYSTEM ================= */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-          {/* LAYER · — Stage-responsive amber/emerald top-left (independent drift) */}
-          <div
-            className="ambient-orb ambient-orb-amber-show transition-[background] duration-1000"
-            style={{
-              width: '72vw',
-              height: '72vw',
-              maxWidth: 960,
-              maxHeight: 960,
-              top: '-14%',
-              left: '-12%',
-              background:
-                stageIndex === 0
-                  ? 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(16,185,129,0.58) 0%, rgba(5,150,105,0.32) 45%, transparent 78%)'
-                  : stageIndex === 1
-                  ? 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(234,88,12,0.58) 0%, rgba(16,185,129,0.30) 48%, transparent 78%)'
-                  : 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(217,120,41,0.58) 0%, rgba(234,88,12,0.32) 48%, transparent 78%)',
-            }}
-          />
 
-          {/* LAYER B — Warm honey/amber, upper-right, independent path */}
+        {/* ================= CINEMATIC AMBIENT LIGHTING ================= */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
           <div
-            className="ambient-orb ambient-orb-bronze-show"
+            className="ambient-orb ambient-orb-amber-show transition-[background] duration-700"
             style={{
               width: '68vw',
               height: '68vw',
-              maxWidth: 920,
-              maxHeight: 920,
-              top: '-10%',
-              right: '-14%',
-              background: 'radial-gradient(circle at 68% 30%, rgba(245,158,11,0.48) 0%, rgba(196,130,63,0.26) 46%, transparent 82%)',
+              maxWidth: 900,
+              maxHeight: 900,
+              top: '-12%',
+              left: '-10%',
+              background:
+                activeStageIndex === 0
+                    ? 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(16,185,129,0.45) 0%, rgba(5,150,105,0.22) 45%, transparent 75%)'
+                    : activeStageIndex === 1
+                  ? 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(234,88,12,0.45) 0%, rgba(16,185,129,0.20) 48%, transparent 75%)'
+              : 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(217,120,41,0.45) 0%, rgba(234,88,12,0.22) 48%, transparent 75%)',
             }}
           />
 
-          {/* LAYER C — Emerald floor reflection, lower-center */}
+          <div
+            className="ambient-orb ambient-orb-bronze-show"
+            style={{
+              width: '60vw',
+              height: '60vw',
+              maxWidth: 800,
+              maxHeight: 800,
+              top: '-8%',
+              right: '-10%',
+              background:
+              'radial-gradient(circle at 68% 30%, rgba(245,158,11,0.35) 0%, rgba(196,130,63,0.18) 46%, transparent 80%)',
+            }}
+          />
+
           <div
             className="ambient-orb ambient-orb-emerald-show"
             style={{
-              width: '54vw',
-              height: '54vw',
-              maxWidth: 720,
-              maxHeight: 720,
-              bottom: '-18%',
-              left: '18%',
-              background: 'radial-gradient(ellipse at center, rgba(16,185,129,0.36) 0%, rgba(214,183,121,0.20) 48%, transparent 78%)',
+              width: '50vw',
+              height: '50vw',
+              maxWidth: 650,
+              maxHeight: 650,
+              bottom: '-16%',
+              left: '20%',
+              background:
+              'radial-gradient(ellipse at center, rgba(16,185,129,0.28) 0%, rgba(214,183,121,0.14) 48%, transparent 75%)',
             }}
           />
 
-          {/* Deep center vignette */}
+          {/* Center vignette */}
           <div
             className="absolute inset-0"
             style={{
-              background: 'radial-gradient(ellipse 900px 600px at center, rgba(7,7,7,0.80) 0%, rgba(7,7,7,0.44) 55%, transparent 95%)',
+              background:
+              'radial-gradient(ellipse 900px 600px at center, rgba(7,7,7,0.75) 0%, rgba(7,7,7,0.35) 55%, transparent 95%)',
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/28 via-transparent to-[#070707]/58 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/30 via-transparent to-[#070707]/60 pointer-events-none" />
         </div>
 
-        {/* ================= 9 PRECISELY POSITIONED FLOATING CARDS (DESKTOP ONLY: 768px+) ================= */}
+        {/* ================= 3 STAGES RENDERED AS GPU SLIDER LAYERS (DESKTOP 768px+) ================= */}
+        {/* Each stage is an ultra-fast GPU layer: translates smoothly with 0 React re-renders while scrolling */}
         <div className="hidden md:block absolute inset-0 pointer-events-none z-10 overflow-hidden">
-          {currentStage.cards.map((card, i) => {
-            // Differential multi-layer parallax depth (Phase 4)
-            const isForeground = i < 2;
-            const driftY = (stageProgress - 0.5) * (isForeground ? -26 : (i % 2 === 0 ? -14 : 14));
-            const driftX = (stageProgress - 0.5) * (isForeground ? (i === 0 ? -22 : 22) : (i % 2 === 0 ? 14 : -14));
-
-            // Select independent organic floating oscillation
-            const floatAnimClass = i % 3 === 0
-              ? 'animate-card-float-a'
-              : i % 3 === 1
-              ? 'animate-card-float-b'
-              : 'animate-card-float-c';
-
-            return (
-              <div
-                key={card.id}
-                className="absolute pointer-events-auto transition-all duration-700 ease-out will-change-transform"
-                style={{
-                  ...card.positionStyle,
-                  width: `min(${card.width}, ${card.isEdgeCard ? '20vw' : '22vw'})`,
-                  minWidth: card.isEdgeCard ? '160px' : '190px',
-                  transform: `translate3d(${driftX}px, ${driftY}px, 0)`,
-                  zIndex: isForeground ? 20 : 10,
-                }}
-              >
-                {/* Architectural Card Container with iOS Glass Edge & Organic Floating Suspension */}
+            {
+              stages.map((stage, sIdx) => (
                 <div
-                  className={`w-full rounded-2xl overflow-hidden ios-glass-card bg-[#11100E] relative group transition-all duration-700 ${floatAnimClass}`}
+                  key={stage.highlightWord}
+                  ref={(el) => (desktopLayersRef.current[sIdx] = el)}
+                  className="absolute inset-0 pointer-events-none will-change-transform"
                   style={{
-                    aspectRatio: card.aspectRatio,
-                    boxShadow: isForeground
-                      ? 'inset 0 1px 1px rgba(255,255,255,0.25), 0 20px 45px rgba(0,0,0,0.85), 0 0 30px rgba(214,183,121,0.1)'
-                      : 'inset 0 1px 1px rgba(255,255,255,0.15), 0 15px 35px rgba(0,0,0,0.75)',
+                    transform: `translate3d(0, ${sIdx * 105}vh, 0)`,
+                    opacity: sIdx === 0 ? 1 : 0,
                   }}
                 >
-                  {/* High Quality Architectural Photograph */}
-                  <img
-                    src={card.src}
-                    alt={card.title}
-                    loading="eager"
-                    className="w-full h-full object-cover object-center filter brightness-[0.93] contrast-[1.04] group-hover:scale-105 group-hover:brightness-100 transition-transform duration-700 ease-out"
-                  />
+                  {stage.cards.map((card) => (
+                    <div
+                      key={card.id}
+                      className="absolute pointer-events-auto transition-transform duration-500 ease-out hover:scale-[1.03]"
+                      style={{
+                        ...card.positionStyle,
+                        width: `min(${card.width}, 22vw)`,
+                        minWidth: '190px',
+                      }}
+                    >
+                      <div
+                        className="w-full rounded-2xl overflow-hidden bg-[#141311] border border-white/10 relative group shadow-[0_12px_35px_rgba(0,0,0,0.75),inset_0_1px_1px_rgba(255,255,255,0.15)]"
+                        style={{ aspectRatio: card.aspectRatio }}
+                      >
+                        <img
+                          src={card.src}
+                          alt={card.title}
+                          loading="eager"
+                          className="w-full h-full object-cover object-center filter brightness-[0.95] contrast-[1.03] group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
 
-                  {/* Glass Specular Reflection Highlight */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.1] pointer-events-none" />
+                        {/* Specular sheen highlight */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.08] pointer-events-none" />
 
-                  {/* Corner Architectural Crosshair Accents */}
-                  <div className="absolute top-2.5 left-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
-                  <div className="absolute top-2.5 right-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
-                  <div className="absolute bottom-2.5 left-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
-                  <div className="absolute bottom-2.5 right-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
+                        {/* Corner Crosshair Accents */}
+                        <div className="absolute top-2.5 left-2.5 text-white/30 font-mono text-[10px] pointer-events-none">+</div>
+                        <div className="absolute top-2.5 right-2.5 text-white/30 font-mono text-[10px] pointer-events-none">+</div>
+                        <div className="absolute bottom-2.5 left-2.5 text-white/30 font-mono text-[10px] pointer-events-none">+</div>
+                        <div className="absolute bottom-2.5 right-2.5 text-white/30 font-mono text-[10px] pointer-events-none">+</div>
 
-                  {/* Top Category Badge with Liquid Glass Glow */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="px-2.5 py-0.5 rounded-[6px] text-[9px] font-mono tracking-wider uppercase ios-glass text-[#D6B779] shadow-sm border border-white/10">
-                      {card.tag}
-                    </span>
-                  </div>
+                            {/* Top Category Badge */ }
+                            <div className="absolute top-3 left-3 z-10">
+                              <span className="px-2.5 py-0.5 rounded-[6px] text-[9px] font-mono tracking-wider uppercase bg-black/60 text-[#D6B779] shadow-sm border border-white/10">
+                                {card.tag}
+                              </span>
+                            </div>
 
-                  {/* Bottom Text Overlay inside the Card */}
-                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/75 to-transparent backdrop-blur-[2px] flex flex-col justify-end">
-                    <h3 className="font-sans font-bold text-xs sm:text-sm text-white tracking-wide uppercase leading-tight truncate">
-                      {card.title}
-                    </h3>
-                    <p className="text-[10px] sm:text-[11px] text-neutral-400 font-light mt-0.5 line-clamp-1">
-                      {card.subtitle}
-                    </p>
-                  </div>
+                                {/* Bottom Title & Subtitle */}
+                                <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex flex-col justify-end">
+                                  <h3 className="font-sans font-bold text-xs sm:text-sm text-white tracking-wide uppercase leading-tight truncate">
+                                    {card.title}
+                                  </h3>
+                                  <p className="text-[10px] sm:text-[11px] text-neutral-400 font-light mt-0.5 line-clamp-1">
+                                    {card.subtitle}
+                                  </p>
+                                </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            );
-          })}
+              ))
+            }
         </div>
 
         {/* ================= CENTERED HEADLINE & ARCHITECTURAL DESCRIPTION ================= */}
-        <div className="relative z-20 w-full max-w-2xl mx-auto text-center px-4 flex flex-col items-center justify-center pointer-events-auto overflow-hidden">
-          
+        <div className="relative z-20 w-full max-w-2xl mx-auto text-center px-4 flex flex-col items-center justify-center pointer-events-auto">
+
           {/* Eyebrow Label */}
-          <div className="mb-2 sm:mb-3">
+          <div className="mb-2 sm:mb-3 transition-opacity duration-300">
             <span className="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-neutral-400 font-medium">
               {currentStage.eyebrow}
             </span>
           </div>
 
-          {/* Central Headline with Green/Emerald Squiggly Underline */}
-          <div className="my-2 sm:my-3 flex flex-col items-center justify-center">
-            <h2 className="text-[22px] sm:text-4xl md:text-5xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.12] transition-all duration-500">
-              {/* Row 1 with Green Underline Wave */}
+          {/* Central Headline with Green Squiggly Underline */}
+          <div className="my-2 sm:my-3 flex flex-col items-center justify-center transition-all duration-300">
+            <h2 className="text-[22px] sm:text-4xl md:text-5xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.12]">
               <span className="block">
                 <span className="relative inline-block mr-2 sm:mr-3">
                   <span className="relative z-10 text-white font-bold">
                     {currentStage.highlightWord}
                   </span>
-                  
-                  {/* Organic Green Squiggly Underline Wave (Matching Reference Screenshot) */}
                   <svg
                     className="absolute -bottom-1 sm:-bottom-2.5 left-0 w-full h-3.5 sm:h-5 overflow-visible pointer-events-none -z-0"
                     viewBox="0 0 120 16"
@@ -638,73 +458,83 @@ export const FloatingShowcase: React.FC = () => {
                 <span className="text-white font-normal">{currentStage.line1Suffix}</span>
               </span>
 
-              {/* Row 2: Sub-Punchline */}
               <span className="block mt-1 sm:mt-2 text-white">
                 {currentStage.line2}
               </span>
             </h2>
           </div>
 
-          {/* ================= 3 CAROUSEL STATE DOTS (• • •) ================= */}
+          {/* 3 Carousel Dots */}
           <div className="flex items-center space-x-2.5 my-3 sm:my-5">
             {stages.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => handleDotClick(idx)}
-                className={`transition-all duration-300 rounded-full focus:outline-none ${
-                  stageIndex === idx
+                className={`transition-all duration-300 rounded-full focus:outline-none ${activeStageIndex === idx
                     ? 'w-7 h-1.5 bg-white shadow-[0_0_16px_rgba(255,255,255,0.95),inset_0_1px_1px_rgba(255,255,255,0.8)]'
                     : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/60'
-                }`}
+                  }`}
                 aria-label={`Go to stage ${idx + 1}`}
               />
             ))}
           </div>
 
-          {/* Supporting Description beneath dots */}
-          <p className="text-xs sm:text-sm md:text-[15px] text-neutral-400 max-w-lg mx-auto leading-relaxed font-light transition-opacity duration-400">
+          {/* Supporting Description */}
+          <p className="text-xs sm:text-sm md:text-[15px] text-neutral-400 max-w-lg mx-auto leading-relaxed font-light transition-opacity duration-300">
             {currentStage.description}
           </p>
 
-          {/* ================= MOBILE FEATURED CARDS CAROUSEL (MOBILE ONLY: < 768px) ================= */}
-          {/* Docked neatly below the text with zero collision and smooth swipe */}
-          <div className="block md:hidden w-full max-w-full overflow-hidden mt-4">
-            <div className="flex items-center space-x-3 overflow-x-auto no-scrollbar py-2 px-1 snap-x snap-mandatory">
-              {currentStage.cards.slice(0, 3).map((card) => (
-                <div
-                  key={card.id}
-                  className="w-[185px] sm:w-[210px] shrink-0 snap-center rounded-2xl overflow-hidden ios-glass-card bg-[#121110]"
-                >
-                  <div className="w-full aspect-[4/3] relative">
-                    <img
-                      src={card.src}
-                      alt={card.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-[8px] font-mono tracking-wider uppercase bg-black/60 text-[#D6B779] border border-white/10">
-                      {card.tag}
+          {/* ================= MOBILE FEATURED CARDS VERTICAL SLIDER (< 768px) ================= */}
+          <div className="block md:hidden w-full max-w-full mt-4 relative h-[215px] overflow-hidden">
+            {stages.map((stage, sIdx) => (
+              <div
+                key={stage.highlightWord}
+                ref={(el) => (mobileLayersRef.current[sIdx] = el)}
+                className="absolute inset-0 w-full flex items-center will-change-transform"
+                style={{
+                  transform: `translate3d(0, ${sIdx * 230}px, 0)`,
+                  opacity: sIdx === 0 ? 1 : 0,
+                }}
+              >
+                <div className="flex items-center space-x-3 overflow-x-auto no-scrollbar py-2 px-1 snap-x snap-mandatory w-full justify-center">
+                  {stage.cards.slice(0, 2).map((card) => (
+                    <div
+                      key={`mobile-${card.id}`}
+                      className="w-[170px] sm:w-[195px] shrink-0 snap-center rounded-2xl overflow-hidden bg-[#141311] border border-white/10 shadow-lg"
+                    >
+                      <div className="w-full aspect-[4/3] relative">
+                        <img
+                          src={card.src}
+                          alt={card.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-[8px] font-mono tracking-wider uppercase bg-black/60 text-[#D6B779] border border-white/10">
+                          {card.tag}
+                        </div>
+                      </div>
+                      <div className="p-2.5 bg-gradient-to-t from-black via-black/80 to-transparent text-left">
+                        <h3 className="font-bold text-[11px] text-white uppercase truncate">
+                          {card.title}
+                        </h3>
+                        <p className="text-[9px] text-neutral-400 truncate mt-0.5">
+                          {card.subtitle}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-3 bg-gradient-to-t from-black via-black/80 to-transparent text-left">
-                    <h3 className="font-bold text-xs text-white uppercase truncate">
-                      {card.title}
-                    </h3>
-                    <p className="text-[10px] text-neutral-400 truncate mt-0.5">
-                      {card.subtitle}
-                    </p>
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div className="flex items-center justify-center space-x-1.5 mt-2 text-[10px] text-neutral-500 font-mono">
-              <span>← Swipe to explore spaces →</span>
-            </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex md:hidden items-center justify-center space-x-1.5 mt-2 text-[10px] text-neutral-500 font-mono">
+            <span>← Swipe horizontally to explore spaces →</span>
           </div>
         </div>
-      </div>
+                </div>
     </div>
-  );
+          );
 };
 
-export default FloatingShowcase;
+          export default FloatingShowcase;
