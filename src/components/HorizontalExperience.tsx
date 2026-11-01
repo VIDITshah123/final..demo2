@@ -16,6 +16,7 @@ import {
   Building2,
   Briefcase,
   Sparkles,
+  Layers,
 } from 'lucide-react';
 
 /* =========================================================================
@@ -356,12 +357,7 @@ export const HorizontalExperience: React.FC = () => {
   const [activeProject, setActiveProject] = useState<number>(0);
   const [slide4Progress, setSlide4Progress] = useState<number>(0); // 0=before, 0.5=centered, 1=after
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveProject((p) => (p + 1) % signatureProjects.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
+  // Image advance is scroll-driven - computed in handleScroll
 
   // Slide 5 State
   const [spaceTab, setSpaceTab] = useState<number>(0);
@@ -427,13 +423,17 @@ export const HorizontalExperience: React.FC = () => {
 
           setScrollProgress(progress);
 
-          // Slide 4 parallax progress: active when progress is ~0.60–0.80
-          // translateX goes 0→400vw total (5 slides). Slide 4 center ≈ 300vw = progress ~0.75
-          // We want slide4Progress = 0 when slide enters, 0.5 when centered, 1 when leaving
-          const slide4Center = 0.75;
-          const slide4HalfWidth = 0.13; // how wide the "active" window is
-          const raw4 = (progress - (slide4Center - slide4HalfWidth)) / (slide4HalfWidth * 2);
+          // Slide 4 parallax (centered over dwell 5/9 to 7/9)
+          const _s4c = (300 / 540 + 420 / 540) / 2;
+          const _s4h = 0.22;
+          const raw4 = (progress - (_s4c - _s4h)) / (_s4h * 2);
           setSlide4Progress(Math.max(0, Math.min(1, raw4)));
+
+          // Scroll-driven image stepping: 4 images x 30vh in dwell window
+          const _s4start = 300 / 540;
+          const _s4end   = 420 / 540;
+          const _dwell = Math.max(0, Math.min(1, (progress - _s4start) / (_s4end - _s4start)));
+          setActiveProject(Math.min(3, Math.floor(_dwell * 4)));
 
           ticking = false;
         });
@@ -447,21 +447,34 @@ export const HorizontalExperience: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Translation calculation: 5 slides = 500vw total width. Max translate is 400vw
-  const translateX = scrollProgress * 400; // in vw units
+  // Piecewise translateX (container 640vh, scrollable 540vh):
+  //   Phase A: 0->5/9 => tx 0->300vw (slides 1-4 entry)
+  //   Phase B: 5/9->7/9 => tx=300vw  (slide 4 DWELL: 4 images x 30vh)
+  //   Phase C: 7/9->1  => tx 300->400vw (slide 5)
+  const S_P4 = 300 / 540;
+  const E_P4 = 420 / 540;
+  const translateX = (() => {
+    if (scrollProgress <= S_P4) {
+      return (scrollProgress / S_P4) * 300;
+    } else if (scrollProgress <= E_P4) {
+      return 300;
+    } else {
+      return 300 + ((scrollProgress - E_P4) / (1 - E_P4)) * 100;
+    }
+  })();
 
   // Dynamic green ribbon progression tied directly to scroll movement:
   // Starts entering as user moves into Slide 2 (around 0.20),
   // sweeps dynamically through Slide 3, and finishes at Slide 4 (around 0.90).
-  const ribbonStart = 0.16;
-  const ribbonEnd = 0.78;
+  const ribbonStart = 0.12;
+  const ribbonEnd = 0.62;
   const ribbonProgress = Math.min(1, Math.max(0, (scrollProgress - ribbonStart) / (ribbonEnd - ribbonStart)));
   const strokeDashoffset = pathLength * (1 - ribbonProgress);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[520vh] bg-[#070707] selection:bg-[#D6B779]/25"
+      className="relative w-full h-[640vh] bg-[#070707] selection:bg-[#D6B779]/25"
     >
       {/* ===== CINEMATIC AMBIENT LIGHTING ===== */}
       <AmbientBackground variant="horizontal" />
@@ -547,27 +560,29 @@ export const HorizontalExperience: React.FC = () => {
               />
             </div>
 
-            <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center my-auto pt-16 sm:pt-10">
+            <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center my-auto py-2 sm:py-4 px-2">
               
               {/* Header */}
-              <div className="text-center mb-6 lg:mb-8">
+              <div className="text-center mb-3 sm:mb-5">
                 <div className="inline-flex items-center space-x-2 px-3 py-0.5 rounded-full bg-white/[0.04] border border-white/10 mb-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-pulse" />
                   <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-neutral-300">
                     THE DIFFERENCE
                   </span>
                 </div>
-                <h2 className="text-2xl sm:text-4xl lg:text-[34px] font-bold text-white tracking-tight leading-[1.1]">
+                <h2 className="text-xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight leading-[1.12]">
                   They build image generators.
                   <br />
-                  <span className="text-white/95">We built a design engine.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-neutral-300">
+                    We built a design engine.
+                  </span>
                 </h2>
-                <p className="mt-2 text-xs sm:text-sm text-neutral-400 max-w-lg mx-auto font-light leading-relaxed">
+                <p className="mt-1.5 text-xs sm:text-[13px] text-neutral-400 max-w-lg mx-auto font-light leading-relaxed">
                   Most studios stop at flat 3D pictures. ALTIMATE unifies architecture, interior design, and turnkey fit-out into a single cohesive reality.
                 </p>
 
                 {/* Mobile 4-Dot Horizontal Selector */}
-                <div className="flex md:hidden items-center justify-center space-x-3 mt-4 py-1.5 px-3 rounded-full ios-glass border border-white/15 max-w-xs mx-auto">
+                <div className="flex md:hidden items-center justify-center space-x-3 mt-3 py-1.5 px-3 rounded-full ios-glass border border-white/15 max-w-xs mx-auto shadow-lg">
                   {comparisonData.map((item, idx) => (
                     <button
                       key={item.id}
@@ -579,8 +594,8 @@ export const HorizontalExperience: React.FC = () => {
                       <span
                         className={`block rounded-full transition-all duration-300 ${
                           diffActiveTab === idx
-                            ? 'w-4 h-4 p-0.5 border-2 shadow-lg'
-                            : 'w-2.5 h-2.5 hover:scale-110'
+                            ? 'w-4 h-4 p-0.5 border-2 shadow-lg scale-110'
+                            : 'w-2.5 h-2.5 hover:scale-110 opacity-60'
                         }`}
                         style={{
                           borderColor: diffActiveTab === idx ? item.color : 'transparent',
@@ -600,19 +615,20 @@ export const HorizontalExperience: React.FC = () => {
                 </div>
               </div>
 
-              {/* Dual Cards + 4-Dot Selector (Optimized for Mobile & Desktop) */}
-              <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-2.5 sm:gap-6 lg:gap-8 w-full max-w-4xl">
+              {/* Dual Cards + 4-Dot Selector (Optimized Proportions & 3D Glass Glow) */}
+              <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-6 lg:gap-8 w-full max-w-4xl">
                 
                 {/* Left Card: Traditional Approach */}
                 <div className="flex flex-col items-center">
-                  <div className="w-full max-w-[360px] rounded-[26px] p-2.5 sm:p-3 ios-glass border-t-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_20px_50px_rgba(0,0,0,0.85)] relative group transition-all">
-                    <div className="w-full aspect-[3/4] sm:aspect-[4/5] rounded-[14px] sm:rounded-[18px] bg-[#161513] overflow-hidden relative border border-white/5 flex flex-col justify-between p-2.5 sm:p-5">
+                  <div className="w-full max-w-[340px] rounded-[22px] sm:rounded-[26px] p-2 sm:p-2.5 ios-glass border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_15px_35px_rgba(0,0,0,0.85)] relative group transition-all duration-500 hover:border-white/20">
+                    <div className="w-full h-[250px] sm:h-[285px] lg:h-[305px] rounded-[15px] sm:rounded-[18px] bg-[#141311] overflow-hidden relative border border-white/5 flex flex-col justify-between p-3 sm:p-4">
+                      
                       <div className="flex items-center justify-between z-10">
-                        <span className="px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-black/60 border border-white/10 text-neutral-400">
+                        <span className="px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-neutral-400">
                           {currentDiff.traditional.badge1}
                         </span>
-                        <div className="flex items-center space-x-1 px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-black/60 border border-white/10 text-neutral-400">
-                          <span>🔒</span>
+                        <div className="flex items-center space-x-1 px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-neutral-400">
+                          <Layers className="w-2.5 h-2.5 text-neutral-400" />
                           <span>{currentDiff.traditional.badge2}</span>
                         </div>
                       </div>
@@ -621,51 +637,51 @@ export const HorizontalExperience: React.FC = () => {
                         <img
                           src={currentDiff.traditional.image}
                           alt="Traditional render concept"
-                          className="w-full h-full object-cover filter grayscale contrast-125 brightness-[0.45] opacity-75"
+                          className="w-full h-full object-cover filter grayscale contrast-125 brightness-[0.42] opacity-75 group-hover:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
                       </div>
 
-                      <div className="relative z-10 mt-auto pt-6">
-                        <p className="font-serif italic text-base sm:text-lg text-neutral-300 leading-tight">
+                      <div className="relative z-10 mt-auto pt-3">
+                        <p className="font-serif italic text-sm sm:text-base text-neutral-300 leading-tight">
                           {currentDiff.traditional.headline}
                         </p>
-                        <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between">
+                        <div className="mt-2.5 pt-2.5 border-t border-white/10 flex items-center justify-between">
                           <div>
-                            <h4 className="text-[11px] font-bold uppercase tracking-wider text-neutral-300">
+                            <h4 className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-neutral-300">
                               {currentDiff.traditional.tag}
                             </h4>
-                            <p className="text-[9px] text-neutral-400 font-mono">
+                            <p className="text-[8px] sm:text-[9px] text-neutral-400 font-mono">
                               {currentDiff.traditional.subheadline}
                             </p>
                           </div>
                         </div>
 
-                        <div className="mt-3 flex items-center justify-between p-2 rounded-lg bg-black/70 border border-white/10">
+                        <div className="mt-2.5 flex items-center justify-between p-1.5 sm:p-2 rounded-lg bg-black/75 border border-white/10">
                           <div className="flex items-center space-x-1.5">
-                            <AlertTriangle className="w-3 h-3 text-amber-500" />
-                            <span className="text-[10px] font-mono text-neutral-300">
+                            <AlertTriangle className="w-3 h-3 text-amber-500 shrink-0" />
+                            <span className="text-[9px] sm:text-[10px] font-mono text-neutral-300">
                               {currentDiff.traditional.status}
                             </span>
                           </div>
-                          <span className="text-[9px] font-mono text-neutral-500">Bitmap.jpg</span>
+                          <span className="text-[8px] sm:text-[9px] font-mono text-neutral-500">Bitmap.jpg</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-3 text-center">
-                    <h3 className="text-sm sm:text-base font-bold text-white tracking-wide">
+                  <div className="mt-2 sm:mt-2.5 text-center">
+                    <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide">
                       {currentDiff.traditional.footerTitle}
                     </h3>
-                    <p className="text-[11px] text-neutral-400 font-light">
+                    <p className="text-[10px] sm:text-[11px] text-neutral-400 font-light">
                       {currentDiff.traditional.footerDesc}
                     </p>
                   </div>
                 </div>
 
-                {/* Center 4-Dot Vertical Selector (Desktop) */}
-                <div className="hidden md:flex flex-col items-center justify-center space-y-3.5 py-3.5 px-2 rounded-full ios-glass border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_25px_rgba(0,0,0,0.7)]">
+                {/* Center 4-Dot Vertical Selector (Desktop 3D Glass Pill) */}
+                <div className="hidden md:flex flex-col items-center justify-center space-y-3 py-3.5 px-2 rounded-full ios-glass border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_25px_rgba(0,0,0,0.8)] backdrop-blur-xl">
                   {comparisonData.map((item, idx) => (
                     <button
                       key={item.id}
@@ -677,12 +693,12 @@ export const HorizontalExperience: React.FC = () => {
                       <span
                         className={`block rounded-full transition-all duration-300 ${
                           diffActiveTab === idx
-                            ? 'w-5 h-5 p-0.5 border-2 shadow-lg'
-                            : 'w-3.5 h-3.5 hover:scale-110'
+                            ? 'w-5 h-5 p-0.5 border-2 shadow-lg scale-110'
+                            : 'w-3.5 h-3.5 hover:scale-115 opacity-60 hover:opacity-100'
                         }`}
                         style={{
                           borderColor: diffActiveTab === idx ? item.color : 'transparent',
-                          boxShadow: diffActiveTab === idx ? `0 0 14px ${item.color}` : 'none',
+                          boxShadow: diffActiveTab === idx ? `0 0 16px ${item.color}` : 'none',
                         }}
                       >
                         <span
@@ -697,37 +713,43 @@ export const HorizontalExperience: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Right Card: ALTIMATE Turnkey */}
+                {/* Right Card: ALTIMATE Turnkey Reality */}
                 <div className="flex flex-col items-center">
-                  <div className="w-full max-w-[360px] rounded-[26px] p-2.5 sm:p-3 ios-glass border-t-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_20px_50px_rgba(234,88,12,0.2),0_0_30px_rgba(234,88,12,0.15)] relative group transition-all">
-                    <div className="w-full aspect-[4/5] rounded-[18px] overflow-hidden relative flex flex-col">
-                      <div className="bg-white text-black p-4 sm:p-5 flex flex-col justify-between">
-                        <p className="font-serif italic text-base sm:text-xl text-neutral-900 leading-tight font-medium">
+                  <div
+                    className="w-full max-w-[340px] rounded-[22px] sm:rounded-[26px] p-2 sm:p-2.5 ios-glass border relative group transition-all duration-500 hover:scale-[1.01]"
+                    style={{
+                      borderColor: `${currentDiff.color}50`,
+                      boxShadow: `inset 0 1px 1px rgba(255,255,255,0.25), 0 20px 45px rgba(0,0,0,0.8), 0 0 35px ${currentDiff.glowColor}`,
+                    }}
+                  >
+                    <div className="w-full h-[250px] sm:h-[285px] lg:h-[305px] rounded-[15px] sm:rounded-[18px] overflow-hidden relative flex flex-col">
+                      <div className="bg-white text-black p-3 sm:p-3.5 flex flex-col justify-between">
+                        <p className="font-serif italic text-xs sm:text-sm lg:text-base text-neutral-900 leading-snug font-medium line-clamp-2">
                           "{currentDiff.altimate.quote}"
                         </p>
-                        <div className="mt-3 flex items-center space-x-1.5">
-                          <span className="text-[#EA580C] text-sm font-bold">✦</span>
-                          <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-neutral-900">
+                        <div className="mt-2 flex items-center space-x-1.5">
+                          <Sparkles className="w-3 h-3 text-[#EA580C]" />
+                          <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase text-neutral-900">
                             {currentDiff.altimate.descriptor}
                           </span>
                         </div>
-                        <p className="text-[10px] text-neutral-500 font-sans">
+                        <p className="text-[9px] sm:text-[10px] text-neutral-500 font-sans mt-0.5">
                           {currentDiff.altimate.tagline}
                         </p>
                       </div>
 
                       <div
-                        className="flex-1 relative overflow-hidden flex items-end p-4 sm:p-5"
+                        className="flex-1 relative overflow-hidden flex items-end p-3 sm:p-4"
                         style={{ backgroundColor: currentDiff.color }}
                       >
                         <img
                           src={currentDiff.altimate.image}
                           alt="ALTIMATE execution"
-                          className="absolute inset-0 w-full h-full object-cover mix-blend-multiply filter contrast-110 brightness-90"
+                          className="absolute inset-0 w-full h-full object-cover mix-blend-multiply filter contrast-110 brightness-90 group-hover:scale-105 transition-transform duration-700"
                         />
-                        <div className="relative z-10 inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-lg">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                          <span className="text-[9px] font-mono tracking-wider uppercase font-semibold">
+                        <div className="relative z-10 inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white shadow-lg">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
+                          <span className="text-[8px] sm:text-[9px] font-mono tracking-wider uppercase font-semibold">
                             DUBAI MUNICIPALITY VERIFIED
                           </span>
                         </div>
@@ -735,11 +757,11 @@ export const HorizontalExperience: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="mt-3 text-center">
-                    <h3 className="text-sm sm:text-base font-bold text-white tracking-wide">
+                  <div className="mt-2 sm:mt-2.5 text-center">
+                    <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide">
                       {currentDiff.altimate.footerTitle}
                     </h3>
-                    <p className="text-[11px] text-neutral-400 font-light">
+                    <p className="text-[10px] sm:text-[11px] text-neutral-400 font-light">
                       {currentDiff.altimate.footerDesc}
                     </p>
                   </div>
@@ -1322,8 +1344,9 @@ export const HorizontalExperience: React.FC = () => {
                   key={proj.id}
                   className="absolute inset-0"
                   style={{
-                    opacity: activeProject === idx ? 1 : 0,
-                    transition: 'opacity 1000ms ease-in-out',
+                    transform: `translateX(${idx < activeProject ? -110 : idx > activeProject ? 110 : 0}%)`,
+                    transition: 'transform 680ms cubic-bezier(0.25, 0.1, 0.25, 1.0)',
+                    willChange: 'transform',
                   }}
                 >
                   <img
@@ -1527,32 +1550,35 @@ export const HorizontalExperience: React.FC = () => {
               />
             </div>
 
-            <div className="relative w-full max-w-6xl mx-auto my-auto z-10">
-              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-5 lg:gap-14">
+            <div className="relative w-full max-w-6xl mx-auto my-auto z-10 py-3 sm:py-6">
+              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-4 sm:gap-6 lg:gap-12">
                 
-                {/* ================= LEFT COLUMN: DYNAMIC CARDS ================= */}
-                <div className="space-y-4 sm:space-y-5">
+                {/* ================= LEFT COLUMN: DYNAMIC CARDS (Proportional Height, Never Clipped) ================= */}
+                <div className="space-y-3 sm:space-y-4">
                   {/* Top Card */}
-                  <div className="rounded-[24px] ios-glass border-t-white/30 overflow-hidden shadow-2xl relative group transition-all duration-500 hover:border-white/35 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
-                    <div className="w-full aspect-[16/9] overflow-hidden relative">
+                  <div className="rounded-[20px] sm:rounded-[24px] ios-glass border border-white/15 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.7)] relative group transition-all duration-500 hover:border-white/35 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
+                    <div className="w-full h-[155px] sm:h-[180px] lg:h-[195px] overflow-hidden relative">
                       <img
+                        key={`top-${spaceTab}`}
                         src={spaceCategories[spaceTab].cardTop.src}
                         alt={spaceCategories[spaceTab].cardTop.title}
-                        className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-all duration-700 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] pointer-events-none" />
                       
-                      <div className="absolute top-3.5 left-3.5">
-                        <span className="px-2.5 py-0.5 rounded text-[9px] font-mono tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#D6B779] border border-white/10">
-                          {spaceCategories[spaceTab].cardTop.tag}
+                      <div className="absolute top-3 left-3">
+                        <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-mono tracking-wider uppercase bg-black/75 backdrop-blur-md text-[#D6B779] border border-[#D6B779]/30 shadow-[0_0_12px_rgba(214,183,121,0.25)]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#D6B779] animate-pulse" />
+                          <span>{spaceCategories[spaceTab].cardTop.tag}</span>
                         </span>
                       </div>
 
-                      <div className="absolute bottom-3.5 left-3.5 right-3.5">
-                        <h3 className="text-base sm:text-lg font-bold text-white tracking-wide">
+                      <div className="absolute bottom-3 left-3.5 right-3.5">
+                        <h3 className="text-sm sm:text-base font-bold text-white tracking-wide">
                           {spaceCategories[spaceTab].cardTop.title}
                         </h3>
-                        <p className="text-[11px] sm:text-xs text-neutral-300 font-light mt-0.5 line-clamp-1">
+                        <p className="text-[10px] sm:text-[11px] text-neutral-300 font-light mt-0.5 line-clamp-1">
                           {spaceCategories[spaceTab].cardTop.desc}
                         </p>
                       </div>
@@ -1560,26 +1586,29 @@ export const HorizontalExperience: React.FC = () => {
                   </div>
 
                   {/* Bottom Card */}
-                  <div className="rounded-[24px] ios-glass border-t-white/30 overflow-hidden shadow-2xl relative group transition-all duration-500 hover:border-white/35 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
-                    <div className="w-full aspect-[16/9] overflow-hidden relative">
+                  <div className="rounded-[20px] sm:rounded-[24px] ios-glass border border-white/15 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.7)] relative group transition-all duration-500 hover:border-white/35 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
+                    <div className="w-full h-[155px] sm:h-[180px] lg:h-[195px] overflow-hidden relative">
                       <img
+                        key={`bottom-${spaceTab}`}
                         src={spaceCategories[spaceTab].cardBottom.src}
                         alt={spaceCategories[spaceTab].cardBottom.title}
-                        className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-all duration-700 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] pointer-events-none" />
                       
-                      <div className="absolute top-3.5 left-3.5">
-                        <span className="px-2.5 py-0.5 rounded text-[9px] font-mono tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#10B981] border border-white/10">
-                          {spaceCategories[spaceTab].cardBottom.tag}
+                      <div className="absolute top-3 left-3">
+                        <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-mono tracking-wider uppercase bg-black/75 backdrop-blur-md text-[#10B981] border border-[#10B981]/30 shadow-[0_0_12px_rgba(16,185,129,0.25)]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+                          <span>{spaceCategories[spaceTab].cardBottom.tag}</span>
                         </span>
                       </div>
 
-                      <div className="absolute bottom-3.5 left-3.5 right-3.5">
-                        <h3 className="text-base sm:text-lg font-bold text-white tracking-wide">
+                      <div className="absolute bottom-3 left-3.5 right-3.5">
+                        <h3 className="text-sm sm:text-base font-bold text-white tracking-wide">
                           {spaceCategories[spaceTab].cardBottom.title}
                         </h3>
-                        <p className="text-[11px] sm:text-xs text-neutral-300 font-light mt-0.5 line-clamp-1">
+                        <p className="text-[10px] sm:text-[11px] text-neutral-300 font-light mt-0.5 line-clamp-1">
                           {spaceCategories[spaceTab].cardBottom.desc}
                         </p>
                       </div>
@@ -1589,14 +1618,15 @@ export const HorizontalExperience: React.FC = () => {
 
                 {/* ================= RIGHT COLUMN: HEADLINE, CTAs & CATEGORY SELECTOR ================= */}
                 <div>
-                  <div className="mb-4">
-                    <h2 className="text-3xl sm:text-4xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.05]">
+                  <div className="mb-3 sm:mb-4">
+                    <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-white tracking-tight leading-[1.08]">
                       One vision.
                       <br />
                       <span className="relative inline-block text-white">
                         Every space.
                         <svg
                           className="absolute -bottom-2 left-0 w-full h-3 text-[#10B981] opacity-90"
+                          style={{ filter: 'drop-shadow(0 0 6px rgba(16,185,129,0.5))' }}
                           viewBox="0 0 160 16"
                           fill="none"
                           preserveAspectRatio="none"
@@ -1612,39 +1642,39 @@ export const HorizontalExperience: React.FC = () => {
                     </h2>
                   </div>
 
-                  <div className="flex items-center space-x-3 mb-6">
+                  <div className="flex items-center space-x-3 mb-4 sm:mb-5">
                     <a
                       href="#contact"
-                      className="px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all shadow-md"
+                      className="px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider bg-white/[0.08] hover:bg-white/[0.16] text-white border border-white/20 hover:border-white/35 transition-all shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_4px_15px_rgba(0,0,0,0.5)] active:scale-95"
                     >
                       Get started
                     </a>
                     <a
                       href="#contact"
-                      className="px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold text-white bg-gradient-to-r from-[#EA580C] to-[#F97316] shadow-[0_0_20px_rgba(234,88,12,0.45)] hover:brightness-110 transition-all"
+                      className="px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold text-white bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#EA580C] shadow-[0_0_22px_rgba(234,88,12,0.45),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:brightness-110 transition-all active:scale-95"
                     >
                       Contact sales
                     </a>
                   </div>
 
-                  {/* 4 Interactive Category Tiles */}
-                  <div className="space-y-2.5">
+                  {/* 4 Interactive Category Tiles (Polished Glass Glow) */}
+                  <div className="space-y-2 sm:space-y-2.5">
                     {spaceCategories.map((cat, idx) => (
                       <button
                         key={cat.id}
                         type="button"
                         onClick={() => setSpaceTab(idx)}
-                        className={`w-full flex items-center justify-between p-3 sm:p-3.5 rounded-2xl text-left transition-all duration-300 ios-glass-interactive ${
+                        className={`w-full flex items-center justify-between p-2.5 sm:p-3 rounded-2xl text-left transition-all duration-300 ios-glass-interactive ${
                           spaceTab === idx
-                            ? 'border-l-4 border-l-white border-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_0_30px_rgba(255,255,255,0.15)] bg-white/10'
-                            : 'border-l-4 border-l-transparent'
+                            ? 'bg-gradient-to-r from-white/[0.14] via-white/[0.08] to-emerald-500/[0.08] border-l-4 border-l-[#10B981] border-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_25px_rgba(16,185,129,0.2)] scale-[1.01]'
+                            : 'border-l-4 border-l-transparent hover:bg-white/[0.05]'
                         }`}
                       >
                         <div className="flex items-center space-x-3">
                           <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-colors ${
+                            className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-all duration-300 ${
                               spaceTab === idx
-                                ? 'bg-white/10 border-white/20 text-white'
+                                ? 'bg-[#10B981]/25 border-[#10B981]/50 text-[#10B981] shadow-[0_0_12px_rgba(16,185,129,0.4)]'
                                 : 'bg-black/40 border-white/10 text-neutral-400'
                             }`}
                           >
@@ -1665,7 +1695,7 @@ export const HorizontalExperience: React.FC = () => {
                         </div>
                         <ArrowRight
                           className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                            spaceTab === idx ? 'text-white translate-x-1' : 'text-neutral-500'
+                            spaceTab === idx ? 'text-[#10B981] translate-x-1.5' : 'text-neutral-500'
                           }`}
                         />
                       </button>
@@ -1674,8 +1704,7 @@ export const HorizontalExperience: React.FC = () => {
                 </div>
 
               </div>
-            </div>
-          </section>
+            </div>          </section>
 
         </div>
 
