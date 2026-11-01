@@ -852,7 +852,7 @@ export const HorizontalExperience: React.FC = () => {
                           <span className="text-[11px] font-bold uppercase tracking-wider text-white">
                             Material Kit
                           </span>
-                          <span className="text-[10px]">🔒</span>
+                          <Sparkles className="w-3 h-3 text-[#D6B779]" />
                         </div>
                         <span className="text-[9px] font-mono text-neutral-400">
                           altimate.ae/specs
@@ -1000,7 +1000,7 @@ export const HorizontalExperience: React.FC = () => {
                           Grand Living Salon
                         </h4>
                         <p className="text-[9px] text-neutral-400">
-                          Karim M. — Design Lead
+                          Karim M. · Design Lead
                         </p>
                       </div>
                     </div>
@@ -1077,7 +1077,7 @@ export const HorizontalExperience: React.FC = () => {
                       <div className="flex items-center justify-between pb-1.5 border-b border-white/10 mb-2">
                         <div className="flex items-center space-x-1">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-white">Material Kit</span>
-                          <span className="text-[9px]">🔒</span>
+                          <Sparkles className="w-2.5 h-2.5 text-[#D6B779]" />
                         </div>
                         <span className="text-[9px] font-mono text-neutral-400">altimate.ae/specs</span>
                       </div>

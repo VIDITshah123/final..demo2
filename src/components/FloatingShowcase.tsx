@@ -35,7 +35,7 @@ const stages: StageData[] = [
       {
         id: 's1-inner-left',
         src: '/images/P09.jpeg',
-        title: 'VILLA LUMIÈRE',
+        title: 'VILL· LUMIÈRE',
         subtitle: 'Palm Jumeirah Beachfront Estate',
         tag: 'ARCHITECTURE',
         positionStyle: { top: '30%', left: 'max(4%, calc(50% - 545px))' },
@@ -98,7 +98,7 @@ const stages: StageData[] = [
       {
         id: 's1-edge-bottom-mid',
         src: '/images/P13.jpeg',
-        title: 'CALACATTA GALLERY',
+        title: 'CALACATT· GALLERY',
         subtitle: 'Bookmatched Marble Entrance Foyer',
         tag: 'STONEWORK',
         positionStyle: { bottom: '-7%', left: '18%' },
@@ -161,7 +161,7 @@ const stages: StageData[] = [
       {
         id: 's2-inner-left',
         src: '/images/P22.jpeg',
-        title: 'MARINA SHORES',
+        title: 'MARIN· SHORES',
         subtitle: 'Contemporary Villa Living & Lounge Space',
         tag: 'LIVING ROOM',
         positionStyle: { top: '30%', left: 'max(4%, calc(50% - 545px))' },
@@ -263,7 +263,7 @@ const stages: StageData[] = [
       {
         id: 's2-edge-bottom-right',
         src: '/images/P49.jpeg',
-        title: 'CALACATTA OVAL',
+        title: 'CALACATT· OVAL',
         subtitle: 'Sculptural Dining Table & Custom FF&E',
         tag: 'FURNITURE',
         positionStyle: { bottom: '-6%', right: '3%' },
@@ -376,7 +376,7 @@ const stages: StageData[] = [
       {
         id: 's3-edge-top-right',
         src: '/images/P45.jpeg',
-        title: 'SPA BATHROOM',
+        title: 'SP· BATHROOM',
         subtitle: 'Bookmatched Nero Marquina & Freestanding Tub',
         tag: 'WELLNESS',
         positionStyle: { top: '-5%', right: '5%' },
@@ -465,7 +465,7 @@ export const FloatingShowcase: React.FC = () => {
         
         {/* ================= CINEMATIC AMBIENT ORB SYSTEM ================= */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-          {/* LAYER A — Stage-responsive amber/emerald top-left (independent drift) */}
+          {/* LAYER · — Stage-responsive amber/emerald top-left (independent drift) */}
           <div
             className="ambient-orb ambient-orb-amber-show transition-[background] duration-1000"
             style={{
@@ -525,9 +525,17 @@ export const FloatingShowcase: React.FC = () => {
         {/* ================= 9 PRECISELY POSITIONED FLOATING CARDS (DESKTOP ONLY: 768px+) ================= */}
         <div className="hidden md:block absolute inset-0 pointer-events-none z-10 overflow-hidden">
           {currentStage.cards.map((card, i) => {
-            // Parallax offset: subtle organic drift based on scroll
-            const driftY = (stageProgress - 0.5) * (i < 2 ? -18 : (i % 2 === 0 ? -12 : 12));
-            const driftX = (stageProgress - 0.5) * (i < 2 ? (i === 0 ? -16 : 16) : (i % 2 === 0 ? 12 : -12));
+            // Differential multi-layer parallax depth (Phase 4)
+            const isForeground = i < 2;
+            const driftY = (stageProgress - 0.5) * (isForeground ? -26 : (i % 2 === 0 ? -14 : 14));
+            const driftX = (stageProgress - 0.5) * (isForeground ? (i === 0 ? -22 : 22) : (i % 2 === 0 ? 14 : -14));
+
+            // Select independent organic floating oscillation
+            const floatAnimClass = i % 3 === 0
+              ? 'animate-card-float-a'
+              : i % 3 === 1
+              ? 'animate-card-float-b'
+              : 'animate-card-float-c';
 
             return (
               <div
@@ -538,13 +546,17 @@ export const FloatingShowcase: React.FC = () => {
                   width: `min(${card.width}, ${card.isEdgeCard ? '20vw' : '22vw'})`,
                   minWidth: card.isEdgeCard ? '160px' : '190px',
                   transform: `translate3d(${driftX}px, ${driftY}px, 0)`,
+                  zIndex: isForeground ? 20 : 10,
                 }}
               >
-                {/* Architectural Card Container with iOS Glass Edge & Refined Corners */}
+                {/* Architectural Card Container with iOS Glass Edge & Organic Floating Suspension */}
                 <div
-                  className="w-full rounded-2xl overflow-hidden ios-glass-card bg-[#11100E] relative group transition-all duration-700"
+                  className={`w-full rounded-2xl overflow-hidden ios-glass-card bg-[#11100E] relative group transition-all duration-700 ${floatAnimClass}`}
                   style={{
                     aspectRatio: card.aspectRatio,
+                    boxShadow: isForeground
+                      ? 'inset 0 1px 1px rgba(255,255,255,0.25), 0 20px 45px rgba(0,0,0,0.85), 0 0 30px rgba(214,183,121,0.1)'
+                      : 'inset 0 1px 1px rgba(255,255,255,0.15), 0 15px 35px rgba(0,0,0,0.75)',
                   }}
                 >
                   {/* High Quality Architectural Photograph */}
@@ -555,15 +567,18 @@ export const FloatingShowcase: React.FC = () => {
                     className="w-full h-full object-cover object-center filter brightness-[0.93] contrast-[1.04] group-hover:scale-105 group-hover:brightness-100 transition-transform duration-700 ease-out"
                   />
 
+                  {/* Glass Specular Reflection Highlight */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.1] pointer-events-none" />
+
                   {/* Corner Architectural Crosshair Accents */}
                   <div className="absolute top-2.5 left-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
                   <div className="absolute top-2.5 right-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
                   <div className="absolute bottom-2.5 left-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
                   <div className="absolute bottom-2.5 right-2.5 text-white/40 font-mono text-[11px] pointer-events-none">+</div>
 
-                  {/* Top Category Badge */}
+                  {/* Top Category Badge with Liquid Glass Glow */}
                   <div className="absolute top-3 left-3 z-10">
-                    <span className="px-2.5 py-0.5 rounded-[6px] text-[9px] font-mono tracking-wider uppercase ios-glass text-[#D6B779] shadow-sm">
+                    <span className="px-2.5 py-0.5 rounded-[6px] text-[9px] font-mono tracking-wider uppercase ios-glass text-[#D6B779] shadow-sm border border-white/10">
                       {card.tag}
                     </span>
                   </div>

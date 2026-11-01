@@ -5,6 +5,12 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 30);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,9 +44,11 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
+          mounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0'
+        } ${
           isScrolled
-            ? 'py-3.5 bg-[#080807]/70 backdrop-blur-2xl border-b border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.6)] shadow-black/60'
+            ? 'py-3.5 bg-[#080807]/75 backdrop-blur-2xl border-b border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.6)] shadow-black/60'
             : 'py-5 bg-transparent'
         }`}
       >
@@ -122,7 +130,7 @@ export const Navbar: React.FC = () => {
               Log in
             </a>
 
-            {/* Pill CTA button matching screenshot */}
+            {/* Pill CT· button matching screenshot */}
             <a
               href="#contact"
               className="inline-flex items-center space-x-2 text-[13px] px-5 py-2 rounded-full ios-glass-pill hover:bg-white/15 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"

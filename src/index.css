@@ -969,3 +969,37 @@
   75%  { transform: scale(1.10) translate(1.5%, 0.8%); }
   100% { transform: scale(1.06) translate(-1.0%, -0.5%); }
 }
+
+/* =========================================================================
+   CINEMATIC CARD FLOATING OSCILLATIONS (Phase 4 Multi-Layer Parallax)
+   ========================================================================= */
+@keyframes card-float-a {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.4deg); }
+}
+@keyframes card-float-b {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(7px) rotate(-0.5deg); }
+}
+@keyframes card-float-c {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-6px) scale(1.01); }
+}
+
+.animate-card-float-a {
+  animation: card-float-a 7.5s ease-in-out infinite;
+}
+.animate-card-float-b {
+  animation: card-float-b 9s ease-in-out infinite;
+}
+.animate-card-float-c {
+  animation: card-float-c 8.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-card-float-a,
+  .animate-card-float-b,
+  .animate-card-float-c {
+    animation: none !important;
+  }
+}

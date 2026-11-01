@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUp, Sparkles, Building2, Palette, ShieldCheck, ChevronDown, Check } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowUp, Sparkles, Building2, Palette, ChevronDown, Check } from 'lucide-react';
 
 interface PromptPreset {
   chip: string;
@@ -46,7 +46,15 @@ export const Hero: React.FC = () => {
   const [isTyping, setIsTyping] = useState(true);
   const [customInput, setCustomInput] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
   const currentPreset = presets[activePresetIndex];
+
+  // Coordinated entrance trigger
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Typing effect simulation
   useEffect(() => {
@@ -63,7 +71,6 @@ export const Hero: React.FC = () => {
         timeout = setTimeout(typeChar, 28);
       } else {
         setIsTyping(false);
-        // Wait before transitioning to next preset
         timeout = setTimeout(() => {
           setActivePresetIndex((prev) => (prev + 1) % presets.length);
         }, 5500);
@@ -89,7 +96,12 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-between items-center bg-[#070707] overflow-hidden pt-28 pb-10 px-4 sm:px-6 lg:px-8 select-none">
       {/* ================= CINEMATIC AMBIENT ORB SYSTEM — 5 independent layers ================= */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+      <div
+        className={`absolute inset-0 pointer-events-none overflow-hidden z-0 transition-opacity duration-1000 ease-out ${
+          isMounted ? 'opacity-100' : 'opacity-0'
+        }`}
+        aria-hidden="true"
+      >
         {/* LAYER A — Amber/Orange beacon, upper-left, slow sweeping drift */}
         <div
           className="ambient-orb ambient-orb-amber-hero"
@@ -169,7 +181,8 @@ export const Hero: React.FC = () => {
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse 900px 600px at center, rgba(7,7,7,0.76) 0%, rgba(7,7,7,0.42) 55%, transparent 95%)',
+            background:
+              'radial-gradient(ellipse 900px 600px at center, rgba(7,7,7,0.76) 0%, rgba(7,7,7,0.42) 55%, transparent 95%)',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/28 via-transparent to-[#070707]/58 pointer-events-none" />
@@ -178,12 +191,16 @@ export const Hero: React.FC = () => {
       {/* ================= HERO MAIN CONTENT ================= */}
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-4 sm:pt-8">
         
-        {/* ROW 1: HEADLINE WITH EMBEDDED INTERACTIVE PILLS (EXACT SCREENSHOT LAYOUT) */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-base sm:text-2xl md:text-3xl lg:text-[32px] font-medium text-white/95 tracking-tight mb-2">
+        {/* ROW 1: HEADLINE WITH EMBEDDED INTERACTIVE PILLS (Coordinated Blur-to-Sharp Reveal) */}
+        <div
+          className={`flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-base sm:text-2xl md:text-3xl lg:text-[32px] font-medium text-white/95 tracking-tight mb-2 transition-all duration-700 ease-out ${
+            isMounted ? 'opacity-100 translate-y-0 filter-none' : 'opacity-0 translate-y-4 blur-[6px]'
+          }`}
+        >
           <span className="font-sans font-light text-neutral-300">Let</span>
 
-          {/* Pill 1: Avatar Pill [ 👤 ALTIMATE ] */}
-          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg">
+          {/* Pill 1: Avatar Pill [ ALTIMATE Lead ] */}
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg hover:border-white/30 transition-all duration-300">
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-[#D6B779] to-[#EA580C] p-[1px] flex items-center justify-center overflow-hidden">
               <img
                 src="/images/P12.jpeg"
@@ -198,8 +215,8 @@ export const Hero: React.FC = () => {
 
           <span className="font-sans font-light text-neutral-300">from</span>
 
-          {/* Pill 2: Purple / Indigo Tinted Pill [ 👥 Architecture / Interiors ] */}
-          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#3B1D54]/75 border border-[#A855F7]/35 backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_rgba(168,85,247,0.25)]">
+          {/* Pill 2: Purple / Indigo Tinted Pill [ Architecture / Interiors ] */}
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#3B1D54]/75 border border-[#A855F7]/35 backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_rgba(168,85,247,0.25)] hover:border-[#A855F7]/50 transition-all duration-300">
             <Building2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#C084FC]" />
             <span className="text-xs sm:text-base md:text-lg font-semibold text-white tracking-normal">
               {currentPreset.team}
@@ -208,8 +225,8 @@ export const Hero: React.FC = () => {
 
           <span className="font-sans font-light text-neutral-300">create</span>
 
-          {/* Pill 3: Glass Pill [ 🖼️ Project Space ] */}
-          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg">
+          {/* Pill 3: Glass Pill [ Project Space ] */}
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg hover:border-white/30 transition-all duration-300">
             <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D6B779]" />
             <span className="text-xs sm:text-base md:text-lg font-semibold text-white tracking-normal truncate max-w-[150px] sm:max-w-[200px]">
               {currentPreset.project}
@@ -217,24 +234,32 @@ export const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* ROW 2: LARGE BOLD PUNCHLINE (EXACT SCREENSHOT: "On brand. Every time.") */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.08] mt-1 sm:mt-2">
+        {/* ROW 2: LARGE BOLD PUNCHLINE (Staggered Entrance) */}
+        <h1
+          className={`text-2xl sm:text-4xl md:text-5xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.08] mt-1 sm:mt-2 transition-all duration-700 delay-150 ease-out ${
+            isMounted ? 'opacity-100 translate-y-0 filter-none' : 'opacity-0 translate-y-4 blur-[6px]'
+          }`}
+        >
           Beyond ordinary. Every time.
         </h1>
 
-        {/* ================= ROW 3: INTERACTIVE DESIGN STUDIO CONSOLE BOX (EXACT SCREENSHOT) ================= */}
-        <div className="w-full max-w-2xl mt-8 sm:mt-10">
+        {/* ================= ROW 3: INTERACTIVE DESIGN STUDIO CONSOLE BOX ================= */}
+        <div
+          className={`w-full max-w-2xl mt-8 sm:mt-10 transition-all duration-800 delay-300 ease-out ${
+            isMounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-[0.98]'
+          }`}
+        >
           <form
             onSubmit={handleSubmit}
-            className="relative w-full rounded-[24px] sm:rounded-[32px] liquid-glass hover:border-white/30 transition-all duration-500 p-4 sm:p-7 flex flex-col justify-between min-h-[155px] sm:min-h-[195px] text-left group"
+            className="relative w-full rounded-[24px] sm:rounded-[32px] liquid-glass hover:border-white/30 transition-all duration-500 p-4 sm:p-7 flex flex-col justify-between min-h-[155px] sm:min-h-[195px] text-left group shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_20px_50px_rgba(0,0,0,0.85)]"
           >
             {/* Inner Content Area */}
             <div className="w-full pr-12">
               <div className="text-sm sm:text-base md:text-[17px] text-neutral-300 font-light leading-relaxed">
                 <span className="text-neutral-400">Opening concept for </span>
 
-                {/* Inline Orange Tag inside prompt [ 🟠 My Brand / Space ] */}
-                <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs sm:text-sm font-medium align-middle mx-1">
+                {/* Inline Orange Tag inside prompt */}
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs sm:text-sm font-medium align-middle mx-1 shadow-[0_0_12px_rgba(234,88,12,0.2)]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-pulse" />
                   <span>{currentPreset.chip}</span>
                 </span>
@@ -259,7 +284,7 @@ export const Hero: React.FC = () => {
                     onClick={() => handleSelectPreset(idx)}
                     className={`text-[11px] sm:text-xs px-2.5 py-1 rounded-full transition-all duration-200 whitespace-nowrap ${
                       activePresetIndex === idx
-                        ? 'bg-white/15 text-white border border-white/25'
+                        ? 'bg-white/15 text-white border border-white/25 shadow-sm'
                         : 'bg-white/5 text-neutral-400 hover:text-neutral-200 hover:bg-white/10 border border-transparent'
                     }`}
                   >
@@ -284,42 +309,49 @@ export const Hero: React.FC = () => {
           </form>
         </div>
 
-        {/* ================= ROW 4: SUPPORTING DESCRIPTION BENEATH CONSOLE ================= */}
-        <p className="mt-5 sm:mt-6 text-xs sm:text-[13px] md:text-sm text-neutral-400 max-w-xl mx-auto leading-relaxed font-normal">
-          Describe your space. ALTIMATE&apos;s luxury studio orchestrates the whole set: blueprints,
-          bespoke joinery, curated materials, 3D renders. Turnkey execution. Impeccably delivered in Dubai.
-        </p>
+        {/* ================= ROW 4 & 5: SUPPORTING DESCRIPTION & CTAs ================= */}
+        <div
+          className={`w-full flex flex-col items-center transition-all duration-700 delay-500 ease-out ${
+            isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
+          <p className="mt-5 sm:mt-6 text-xs sm:text-[13px] md:text-sm text-neutral-400 max-w-xl mx-auto leading-relaxed font-normal">
+            Describe your space. ALTIMATE&apos;s luxury studio orchestrates the whole set: blueprints,
+            bespoke joinery, curated materials, 3D renders. Turnkey execution. Impeccably delivered in Dubai.
+          </p>
 
-        {/* ================= ROW 5: CALL-TO-ACTION BUTTONS (EXACT SCREENSHOT STYLE) ================= */}
-        <div className="mt-7 sm:mt-8 flex items-center justify-center space-x-4 sm:space-x-5">
-          {/* Left Button: Translucent Pill "Get started" */}
-          <a
-            href="#showcase"
-            className="px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs sm:text-[13px] font-medium tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm backdrop-blur-md"
-          >
-            Get started
-          </a>
+          <div className="mt-7 sm:mt-8 flex items-center justify-center space-x-4 sm:space-x-5">
+            {/* Left Button: Translucent Pill "Get started" */}
+            <a
+              href="#showcase"
+              className="px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs sm:text-[13px] font-medium tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm backdrop-blur-md"
+            >
+              Get started
+            </a>
 
-          {/* Right Button: Vibrant Amber/Orange Pill "Contact sales" */}
-          <a
-            href="#contact"
-            className="px-6 sm:px-8 py-3 rounded-full bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#E58A3C] hover:brightness-110 text-white text-xs sm:text-[13px] font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_28px_rgba(234,88,12,0.45)] hover:shadow-[0_0_36px_rgba(234,88,12,0.65)]"
-          >
-            Contact sales
-          </a>
+            {/* Right Button: Vibrant Amber/Orange Pill "Contact sales" */}
+            <a
+              href="#contact"
+              className="px-6 sm:px-8 py-3 rounded-full bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#E58A3C] hover:brightness-110 text-white text-xs sm:text-[13px] font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_28px_rgba(234,88,12,0.45)] hover:shadow-[0_0_36px_rgba(234,88,12,0.65)]"
+            >
+              Contact sales
+            </a>
+          </div>
         </div>
       </div>
 
       {/* ================= ROW 6: BOTTOM SCROLL INDICATOR ================= */}
-      <div className="relative z-10 pt-4 flex flex-col items-center space-y-1">
+      <div
+        className={`relative z-10 pt-4 flex flex-col items-center space-y-1 transition-all duration-700 delay-700 ease-out ${
+          isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+        }`}
+      >
         <a
           href="#showcase"
           className="group flex flex-col items-center text-neutral-500 hover:text-[#EA580C] transition-colors focus:outline-none"
           aria-label="Scroll down to explore"
         >
-          <span className="text-xs sm:text-sm transition-transform duration-300 group-hover:translate-y-0.5">
-            ↓
-          </span>
+          <ChevronDown className="w-4 h-4 text-[#EA580C] animate-bounce transition-transform duration-300" />
           <span className="text-[11px] sm:text-xs tracking-wider text-neutral-400 group-hover:text-neutral-200 transition-colors">
             Scroll down to explore
           </span>

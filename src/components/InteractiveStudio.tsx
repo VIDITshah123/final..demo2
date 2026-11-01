@@ -167,6 +167,8 @@ export const InteractiveStudio: React.FC = () => {
           {/* ================= LEFT COLUMN: CANVAS (CHANGES ON SCROLL) ================= */}
           <div className="lg:col-span-7 w-full order-2 lg:order-1">
             <div className="relative w-full h-[220px] sm:h-[360px] lg:h-[460px] rounded-xl sm:rounded-[32px] ios-glass border border-white/15 border-t-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_30px_80px_rgba(0,0,0,0.85)] p-2.5 sm:p-5 lg:p-6 flex flex-col justify-between overflow-hidden group">
+              {/* Glass Specular Sheen */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.07] pointer-events-none rounded-xl sm:rounded-[32px]" />
               
               {/* Canvas Header Bar */}
               <div className="flex items-center justify-between pb-1.5 sm:pb-2.5 border-b border-white/5 z-20">
@@ -452,7 +454,7 @@ export const InteractiveStudio: React.FC = () => {
                     onClick={() => handleBoxClick(idx)}
                     className={`cursor-pointer rounded-xl sm:rounded-2xl transition-all duration-500 p-2.5 sm:p-4 lg:p-5 border relative overflow-hidden ${
                       isActive
-                        ? 'bg-[#141210]/95 border-white/20 shadow-[0_15px_40px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.18)] ring-1 ring-white/10'
+                        ? 'bg-gradient-to-r from-white/[0.09] via-white/[0.05] to-transparent border-white/25 shadow-[0_15px_40px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.22)] ring-1 ring-white/10 scale-[1.01]'
                         : 'bg-transparent border-white/5 hover:border-white/15 hover:bg-white/[0.02]'
                     }`}
                   >
