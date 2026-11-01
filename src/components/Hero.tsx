@@ -95,113 +95,100 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-between items-center bg-[#070707] overflow-hidden pt-28 pb-10 px-4 sm:px-6 lg:px-8 select-none">
-      {/* ================= CINEMATIC AMBIENT ORB SYSTEM — 5 independent layers ================= */}
+      
+      {/* ================= DYNAMIC NEON AURORA WAVE ENGINE (Vibrant Neon Orange & Emerald Green Shifts) ================= */}
       <div
         className={`absolute inset-0 pointer-events-none overflow-hidden z-0 transition-opacity duration-1000 ease-out ${
           isMounted ? 'opacity-100' : 'opacity-0'
         }`}
         aria-hidden="true"
       >
-        {/* LAYER A — Amber/Orange beacon, upper-left, slow sweeping drift */}
+        {/* WAVE 1 — Dynamic Emerald Green Wave (Shifts dynamically between states 0-3, matching Screenshots 6-9) */}
         <div
-          className="ambient-orb ambient-orb-amber-hero"
+          className="ambient-orb ambient-orb-emerald-hero transition-all duration-1000 ease-out"
           style={{
-            width: '78vw',
-            height: '78vw',
+            width: activePresetIndex === 0 ? '78vw' : activePresetIndex === 1 ? '58vw' : activePresetIndex === 2 ? '62vw' : '72vw',
+            height: activePresetIndex === 0 ? '78vw' : activePresetIndex === 1 ? '58vw' : activePresetIndex === 2 ? '62vw' : '72vw',
             maxWidth: 1040,
             maxHeight: 1040,
-            top: '-14%',
-            left: '-14%',
+            top: activePresetIndex === 0 ? '2%' : activePresetIndex === 1 ? '42%' : activePresetIndex === 2 ? '38%' : '8%',
+            left: activePresetIndex === 0 ? '-14%' : activePresetIndex === 1 ? '8%' : activePresetIndex === 2 ? '28%' : '-10%',
             background:
-              'radial-gradient(ellipse 72% 62% at 35% 30%, rgba(245,158,11,0.82) 0%, rgba(234,88,12,0.58) 34%, rgba(180,83,9,0.28) 60%, transparent 82%)',
+              'radial-gradient(ellipse 70% 60% at 35% 40%, rgba(0,245,155,0.88) 0%, rgba(0,255,163,0.58) 36%, rgba(16,185,129,0.25) 68%, transparent 84%)',
           }}
         />
 
-        {/* LAYER B — Emerald pool, lower-left, rising arc */}
+        {/* WAVE 2 — Dynamic Fiery Neon Orange Wave (Shifts dynamically between states 0-3, matching Screenshots 6-9) */}
         <div
-          className="ambient-orb ambient-orb-emerald-hero"
+          className="ambient-orb ambient-orb-amber-hero transition-all duration-1000 ease-out"
           style={{
-            width: '72vw',
-            height: '72vw',
-            maxWidth: 980,
-            maxHeight: 980,
-            bottom: '-20%',
-            left: '-10%',
+            width: activePresetIndex === 1 ? '82vw' : '72vw',
+            height: activePresetIndex === 1 ? '82vw' : '72vw',
+            maxWidth: 1080,
+            maxHeight: 1080,
+            top: activePresetIndex === 0 ? '-12%' : activePresetIndex === 1 ? '-16%' : activePresetIndex === 2 ? '-10%' : '-14%',
+            right: activePresetIndex === 0 ? '-10%' : activePresetIndex === 1 ? '6%' : activePresetIndex === 2 ? '-6%' : '-12%',
             background:
-              'radial-gradient(circle 640px at 38% 68%, rgba(16,185,129,0.64) 0%, rgba(5,150,105,0.40) 40%, rgba(4,120,87,0.16) 66%, transparent 84%)',
+              activePresetIndex === 1
+                ? 'radial-gradient(ellipse 80% 50% at 35% 35%, rgba(255,85,0,0.92) 0%, rgba(255,122,0,0.65) 36%, rgba(255,170,0,0.25) 65%, transparent 84%)'
+                : 'radial-gradient(circle 660px at 65% 35%, rgba(255,85,0,0.85) 0%, rgba(255,122,0,0.60) 36%, rgba(245,158,11,0.22) 65%, transparent 84%)',
           }}
         />
 
-        {/* LAYER C — Bronze/champagne, upper-right, counter to amber */}
+        {/* WAVE 3 — Sunburst Gold / Diagonal Beam (Like Linearity Screenshot 7 & 8) */}
         <div
-          className="ambient-orb ambient-orb-bronze-hero"
-          style={{
-            width: '70vw',
-            height: '70vw',
-            maxWidth: 960,
-            maxHeight: 960,
-            top: '-12%',
-            right: '-14%',
-            background:
-              'radial-gradient(circle 660px at 72% 32%, rgba(214,183,121,0.52) 0%, rgba(234,88,12,0.33) 46%, rgba(152,106,60,0.14) 70%, transparent 86%)',
-          }}
-        />
-
-        {/* LAYER D — Secondary green, lower-center, slow meander */}
-        <div
-          className="ambient-orb ambient-orb-green2-hero"
-          style={{
-            width: '56vw',
-            height: '56vw',
-            maxWidth: 720,
-            maxHeight: 720,
-            bottom: '-22%',
-            left: '18%',
-            background:
-              'radial-gradient(ellipse at center, rgba(20,158,110,0.34) 0%, rgba(16,185,129,0.18) 45%, transparent 80%)',
-          }}
-        />
-
-        {/* LAYER E — Warm central veil (text contrast preserved) */}
-        <div
-          className="ambient-orb ambient-orb-center-hero"
+          className="ambient-orb ambient-orb-bronze-hero transition-all duration-1000 ease-out"
           style={{
             width: '64vw',
             height: '64vw',
-            maxWidth: 820,
-            maxHeight: 820,
-            top: '8%',
-            left: '18%',
+            maxWidth: 880,
+            maxHeight: 880,
+            top: activePresetIndex === 2 ? '-8%' : '-15%',
+            left: activePresetIndex === 2 ? '15%' : '35%',
             background:
-              'radial-gradient(ellipse at center, rgba(180,83,9,0.14) 0%, rgba(214,140,50,0.08) 50%, transparent 78%)',
+              'radial-gradient(circle 620px at 50% 30%, rgba(255,170,0,0.78) 0%, rgba(234,88,12,0.48) 42%, rgba(180,83,9,0.18) 70%, transparent 86%)',
           }}
         />
 
-        {/* Deep center vignette — headline stays readable */}
+        {/* WAVE 4 — Secondary Neon Mint Pulse */}
+        <div
+          className="ambient-orb ambient-orb-green2-hero transition-all duration-1000 ease-out"
+          style={{
+            width: '56vw',
+            height: '56vw',
+            maxWidth: 740,
+            maxHeight: 740,
+            bottom: '-16%',
+            right: '-6%',
+            background:
+              'radial-gradient(ellipse at center, rgba(0,245,155,0.60) 0%, rgba(16,185,129,0.32) 46%, transparent 80%)',
+          }}
+        />
+
+        {/* Localized contrast mask — Keeps headline and console razor-sharp while allowing neon waves to blaze around */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 900px 600px at center, rgba(7,7,7,0.76) 0%, rgba(7,7,7,0.42) 55%, transparent 95%)',
+              'radial-gradient(ellipse 680px 340px at 50% 46%, rgba(7,7,7,0.65) 0%, rgba(7,7,7,0.15) 60%, transparent 100%)',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/28 via-transparent to-[#070707]/58 pointer-events-none" />
       </div>
 
       {/* ================= HERO MAIN CONTENT ================= */}
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-4 sm:pt-8">
         
-        {/* ROW 1: HEADLINE WITH EMBEDDED INTERACTIVE PILLS (Coordinated Blur-to-Sharp Reveal) */}
+        {/* ROW 1: HEADLINE WITH EMBEDDED GLOSSY INTERACTIVE PILLS (Matching Linearity Screenshot) */}
         <div
-          className={`flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-base sm:text-2xl md:text-3xl lg:text-[32px] font-medium text-white/95 tracking-tight mb-2 transition-all duration-700 ease-out ${
+          className={`flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-base sm:text-2xl md:text-3xl lg:text-[32px] font-medium text-white tracking-tight mb-2 transition-all duration-700 ease-out ${
             isMounted ? 'opacity-100 translate-y-0 filter-none' : 'opacity-0 translate-y-4 blur-[6px]'
           }`}
         >
           <span className="font-sans font-light text-neutral-300">Let</span>
 
-          {/* Pill 1: Avatar Pill [ ALTIMATE Lead ] */}
-          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg hover:border-white/30 transition-all duration-300">
-            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-[#D6B779] to-[#EA580C] p-[1px] flex items-center justify-center overflow-hidden">
+          {/* Pill 1: Avatar Pill [ ALTIMATE Lead ] with Neon Green Glow (Like 'Jonas' in screenshot) */}
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full neon-pill-green transition-all duration-300 hover:scale-105 cursor-pointer">
+            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-[#00F59B] to-[#10B981] p-[1px] flex items-center justify-center overflow-hidden shadow-[0_0_10px_rgba(0,245,155,0.8)]">
               <img
                 src="/images/P12.jpeg"
                 alt="ALTIMATE Lead"
@@ -215,9 +202,9 @@ export const Hero: React.FC = () => {
 
           <span className="font-sans font-light text-neutral-300">from</span>
 
-          {/* Pill 2: Purple / Indigo Tinted Pill [ Architecture / Interiors ] */}
-          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#3B1D54]/75 border border-[#A855F7]/35 backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_rgba(168,85,247,0.25)] hover:border-[#A855F7]/50 transition-all duration-300">
-            <Building2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#C084FC]" />
+          {/* Pill 2: Neon Orange / Amber Glowing Pill [ Department ] (Like 'Support' / 'Ecommerce' in screenshot) */}
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full neon-pill-orange transition-all duration-300 hover:scale-105 cursor-pointer">
+            <Building2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#FFA057]" />
             <span className="text-xs sm:text-base md:text-lg font-semibold text-white tracking-normal">
               {currentPreset.team}
             </span>
@@ -225,8 +212,8 @@ export const Hero: React.FC = () => {
 
           <span className="font-sans font-light text-neutral-300">create</span>
 
-          {/* Pill 3: Glass Pill [ Project Space ] */}
-          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full ios-glass-pill shadow-lg hover:border-white/30 transition-all duration-300">
+          {/* Pill 3: Glossy Glass Pill [ Project Space ] (Like 'Status Banner' in screenshot) */}
+          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full neon-btn-glass shadow-lg hover:border-white/40 transition-all duration-300 hover:scale-105 cursor-pointer">
             <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D6B779]" />
             <span className="text-xs sm:text-base md:text-lg font-semibold text-white tracking-normal truncate max-w-[150px] sm:max-w-[200px]">
               {currentPreset.project}
@@ -236,14 +223,14 @@ export const Hero: React.FC = () => {
 
         {/* ROW 2: LARGE BOLD PUNCHLINE (Staggered Entrance) */}
         <h1
-          className={`text-2xl sm:text-4xl md:text-5xl lg:text-[38px] font-bold text-white tracking-tight leading-[1.08] mt-1 sm:mt-2 transition-all duration-700 delay-150 ease-out ${
+          className={`text-2xl sm:text-4xl md:text-5xl lg:text-[40px] font-bold text-white tracking-tight leading-[1.08] mt-1 sm:mt-2 transition-all duration-700 delay-150 ease-out ${
             isMounted ? 'opacity-100 translate-y-0 filter-none' : 'opacity-0 translate-y-4 blur-[6px]'
           }`}
         >
           Beyond ordinary. Every time.
         </h1>
 
-        {/* ================= ROW 3: INTERACTIVE DESIGN STUDIO CONSOLE BOX ================= */}
+        {/* ================= ROW 3: ULTRA-GLOSSY DESIGN STUDIO CONSOLE BOX ================= */}
         <div
           className={`w-full max-w-2xl mt-8 sm:mt-10 transition-all duration-800 delay-300 ease-out ${
             isMounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-[0.98]'
@@ -251,16 +238,19 @@ export const Hero: React.FC = () => {
         >
           <form
             onSubmit={handleSubmit}
-            className="relative w-full rounded-[24px] sm:rounded-[32px] liquid-glass hover:border-white/30 transition-all duration-500 p-4 sm:p-7 flex flex-col justify-between min-h-[155px] sm:min-h-[195px] text-left group shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_20px_50px_rgba(0,0,0,0.85)]"
+            className="relative w-full rounded-[24px] sm:rounded-[32px] liquid-glass hover:border-white/40 transition-all duration-500 p-4 sm:p-7 flex flex-col justify-between min-h-[155px] sm:min-h-[195px] text-left group shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.4),0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(255,107,0,0.18)]"
           >
+            {/* Top Specular Sheen Stripe */}
+            <div className="absolute top-0 inset-x-0 h-10 bg-gradient-to-b from-white/[0.14] to-transparent pointer-events-none rounded-t-[24px] sm:rounded-t-[32px]" />
+
             {/* Inner Content Area */}
-            <div className="w-full pr-12">
+            <div className="w-full pr-12 relative z-10">
               <div className="text-sm sm:text-base md:text-[17px] text-neutral-300 font-light leading-relaxed">
                 <span className="text-neutral-400">Opening concept for </span>
 
-                {/* Inline Orange Tag inside prompt */}
-                <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs sm:text-sm font-medium align-middle mx-1 shadow-[0_0_12px_rgba(234,88,12,0.2)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-pulse" />
+                {/* Inline Glowing Orange Tag inside prompt (Like 'My Brand' in screenshot) */}
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#FF5500]/25 border border-[#FF7A00]/60 text-[#FFA057] text-xs sm:text-sm font-medium align-middle mx-1 shadow-[0_0_16px_rgba(255,85,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.4)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00] animate-pulse" />
                   <span>{currentPreset.chip}</span>
                 </span>
 
@@ -268,13 +258,13 @@ export const Hero: React.FC = () => {
                   {customInput ? customInput : typedText.replace(currentPreset.chip, '')}
                 </span>
 
-                {/* Blinking Cursor */}
-                <span className="inline-block w-[2px] h-4 sm:h-5 bg-[#EA580C] ml-1 align-middle animate-pulse" />
+                {/* Blinking Neon Orange Cursor */}
+                <span className="inline-block w-[2px] h-4 sm:h-5 bg-[#FF7A00] ml-1 align-middle animate-pulse shadow-[0_0_8px_#FF7A00]" />
               </div>
             </div>
 
             {/* Bottom Row inside Console Box: Presets & Action Button */}
-            <div className="flex items-center justify-between pt-4 mt-auto">
+            <div className="flex items-center justify-between pt-4 mt-auto relative z-10">
               {/* Preset suggestion chips */}
               <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar py-1">
                 {presets.map((preset, idx) => (
@@ -282,10 +272,10 @@ export const Hero: React.FC = () => {
                     key={preset.chip}
                     type="button"
                     onClick={() => handleSelectPreset(idx)}
-                    className={`text-[11px] sm:text-xs px-2.5 py-1 rounded-full transition-all duration-200 whitespace-nowrap ${
+                    className={`text-[11px] sm:text-xs px-3 py-1 rounded-full transition-all duration-300 whitespace-nowrap ${
                       activePresetIndex === idx
-                        ? 'bg-white/15 text-white border border-white/25 shadow-sm'
-                        : 'bg-white/5 text-neutral-400 hover:text-neutral-200 hover:bg-white/10 border border-transparent'
+                        ? 'bg-white/20 text-white border border-white/40 shadow-[0_0_14px_rgba(255,255,255,0.3),inset_0_1px_1px_rgba(255,255,255,0.5)]'
+                        : 'bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 border border-white/5'
                     }`}
                   >
                     {preset.chip}
@@ -293,11 +283,11 @@ export const Hero: React.FC = () => {
                 ))}
               </div>
 
-              {/* Circular Action Button in Bottom-Right (Vibrant Orange Up-Arrow) */}
+              {/* High-Gloss Circular Neon Orange Submit Button */}
               <button
                 type="submit"
                 aria-label="Generate Architectural Concept"
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-tr from-[#EA580C] via-[#F97316] to-[#FB923C] flex items-center justify-center text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_0_25px_rgba(234,88,12,0.6)] transition-transform duration-300 hover:scale-110 active:scale-95 flex-shrink-0 ml-3 focus:outline-none"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full neon-btn-orange flex items-center justify-center text-white flex-shrink-0 ml-3 focus:outline-none"
               >
                 {submitted ? (
                   <Check className="w-5 h-5 text-white" />
@@ -309,7 +299,7 @@ export const Hero: React.FC = () => {
           </form>
         </div>
 
-        {/* ================= ROW 4 & 5: SUPPORTING DESCRIPTION & CTAs ================= */}
+        {/* ================= ROW 4 & 5: SUPPORTING DESCRIPTION & HIGH-GLOSS CTAs ================= */}
         <div
           className={`w-full flex flex-col items-center transition-all duration-700 delay-500 ease-out ${
             isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -321,18 +311,18 @@ export const Hero: React.FC = () => {
           </p>
 
           <div className="mt-7 sm:mt-8 flex items-center justify-center space-x-4 sm:space-x-5">
-            {/* Left Button: Translucent Pill "Get started" */}
+            {/* Left Button: Ultra-Glossy Glass Pill "Get started" */}
             <a
               href="#showcase"
-              className="px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs sm:text-[13px] font-medium tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm backdrop-blur-md"
+              className="px-6 sm:px-8 py-3 rounded-full neon-btn-glass text-xs sm:text-[13px] font-medium tracking-wide"
             >
               Get started
             </a>
 
-            {/* Right Button: Vibrant Amber/Orange Pill "Contact sales" */}
+            {/* Right Button: Ultra-Glossy Neon Orange Pill "Contact sales" (Matching Screenshot) */}
             <a
               href="#contact"
-              className="px-6 sm:px-8 py-3 rounded-full bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#E58A3C] hover:brightness-110 text-white text-xs sm:text-[13px] font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_28px_rgba(234,88,12,0.45)] hover:shadow-[0_0_36px_rgba(234,88,12,0.65)]"
+              className="px-6 sm:px-8 py-3 rounded-full neon-btn-orange text-xs sm:text-[13px] font-semibold tracking-wide"
             >
               Contact sales
             </a>
@@ -348,10 +338,10 @@ export const Hero: React.FC = () => {
       >
         <a
           href="#showcase"
-          className="group flex flex-col items-center text-neutral-500 hover:text-[#EA580C] transition-colors focus:outline-none"
+          className="group flex flex-col items-center text-neutral-500 hover:text-[#FF7A00] transition-colors focus:outline-none"
           aria-label="Scroll down to explore"
         >
-          <ChevronDown className="w-4 h-4 text-[#EA580C] animate-bounce transition-transform duration-300" />
+          <ChevronDown className="w-4 h-4 text-[#FF7A00] animate-bounce transition-transform duration-300" />
           <span className="text-[11px] sm:text-xs tracking-wider text-neutral-400 group-hover:text-neutral-200 transition-colors">
             Scroll down to explore
           </span>

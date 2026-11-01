@@ -510,17 +510,19 @@ export const HorizontalExperience: React.FC = () => {
                 y2="500"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0%" stopColor="#10B981" stopOpacity="0.95" />
-                <stop offset="35%" stopColor="#059669" stopOpacity="0.95" />
-                <stop offset="70%" stopColor="#047857" stopOpacity="0.85" />
-                <stop offset="100%" stopColor="#047857" stopOpacity="0" />
+                <stop offset="0%" stopColor="#00F59B" stopOpacity="1" />
+                <stop offset="30%" stopColor="#00FFA3" stopOpacity="1" />
+                <stop offset="65%" stopColor="#10B981" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#059669" stopOpacity="0" />
               </linearGradient>
 
-              {/* Enhanced Soft Glow Filter */}
-              <filter id="ribbonGlow" x="-10%" y="-10%" width="120%" height="120%">
-                <feGaussianBlur stdDeviation="10" result="glow" />
+              {/* Enhanced Dual-Tier Luminous Neon Glow Filter */}
+              <filter id="ribbonGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="24" result="outerGlow" />
+                <feGaussianBlur stdDeviation="8" result="innerGlow" />
                 <feMerge>
-                  <feMergeNode in="glow" />
+                  <feMergeNode in="outerGlow" />
+                  <feMergeNode in="innerGlow" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>

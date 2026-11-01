@@ -12,6 +12,17 @@ interface ShowcaseCard {
   isEdgeCard?: boolean;
 }
 
+const getBadgeClass = (tag: string): string => {
+  const t = tag.toUpperCase();
+  if (t.includes('ARCH') || t.includes('STONE') || t.includes('FACADE') || t.includes('PENTHOUSE')) {
+    return 'neon-badge-green';
+  }
+  if (t.includes('FIT') || t.includes('INTERIOR') || t.includes('BESPOKE') || t.includes('JOINERY')) {
+    return 'neon-badge-orange';
+  }
+  return 'neon-badge-gold';
+};
+
 interface StageData {
   eyebrow: string;
   highlightWord: string;
@@ -453,81 +464,91 @@ function smoothstep(t: number): number {
           {/* ================= PINNED STICKY CONTAINER ================= */}
           <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#070707] select-none px-4">
 
-            {/* ================= ATMOSPHERIC AMBIENT GLOW SYSTEM (Matching Reference Image) ================= */}
+            {/* ================= DYNAMIC NEON AURORA WAVE ENGINE (Matching Linearity Screenshot 5) ================= */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-              {/* Top-Left Teal / Emerald Glow */}
+              {/* TOP-LEFT: Blazing Neon Emerald Wave (Illuminates Top-Left & Wild at Heart card) */}
               <div
-                className="ambient-orb transition-[background] duration-700"
+                className="ambient-orb ambient-orb-emerald-show"
                 style={{
-                  width: '64vw',
-                  height: '64vw',
-                  maxWidth: 850,
-                  maxHeight: 850,
-                  top: '-15%',
-                  left: '-12%',
+                  width: '74vw',
+                  height: '74vw',
+                  maxWidth: 1040,
+                  maxHeight: 1040,
+                  top: '-18%',
+                  left: '-14%',
                   background:
-                    activeStageIndex === 0
-                        ? 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(16,185,129,0.48) 0%, rgba(5,150,105,0.22) 45%, transparent 75%)'
-                        : activeStageIndex === 1
-                          ? 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(234,88,12,0.45) 0%, rgba(16,185,129,0.20) 48%, transparent 75%)'
-                  : 'radial-gradient(ellipse 66% 58% at 36% 30%, rgba(217,120,41,0.45) 0%, rgba(234,88,12,0.22) 48%, transparent 75%)',
-            }}
-          />
+                    'radial-gradient(ellipse 70% 60% at 35% 35%, rgba(0,245,155,0.85) 0%, rgba(0,255,163,0.55) 36%, rgba(16,185,129,0.25) 65%, transparent 84%)',
+                }}
+              />
 
-              {/* Top-Center / Right Warm Amber / Red-Orange Glow */}
+              {/* TOP-RIGHT: Fiery Neon Orange Wave (Illuminates Top-Right & AI Security card) */}
               <div
-                className="ambient-orb"
+                className="ambient-orb ambient-orb-amber-show"
+                style={{
+                  width: '68vw',
+                  height: '68vw',
+                  maxWidth: 960,
+                  maxHeight: 960,
+                  top: '-14%',
+                  right: '-10%',
+                  background:
+                    'radial-gradient(circle 650px at 65% 35%, rgba(255,85,0,0.85) 0%, rgba(255,122,0,0.58) 36%, rgba(255,170,0,0.22) 65%, transparent 84%)',
+                }}
+              />
+
+              {/* FAR-LEFT BLEED: Neon Mint & Cyan Wave (Illuminates Pulse can & Edge Bleed) */}
+              <div
+                className="ambient-orb ambient-orb-mint-show"
+                style={{
+                  width: '54vw',
+                  height: '54vw',
+                  maxWidth: 760,
+                  maxHeight: 760,
+                  top: '28%',
+                  left: '-16%',
+                  background:
+                    'radial-gradient(circle at center, rgba(0,245,155,0.70) 0%, rgba(6,182,212,0.40) 45%, transparent 80%)',
+                }}
+              />
+
+              {/* BOTTOM-LEFT: Radiant Warm Sunset & Gold Wave (Illuminates Oasis bottle card) */}
+              <div
+                className="ambient-orb ambient-orb-amber-show"
                 style={{
                   width: '58vw',
                   height: '58vw',
+                  maxWidth: 820,
+                  maxHeight: 820,
+                  bottom: '-16%',
+                  left: '6%',
+                  background:
+                    'radial-gradient(ellipse at center, rgba(255,107,0,0.65) 0%, rgba(245,158,11,0.38) 46%, transparent 80%)',
+                }}
+              />
+
+              {/* BOTTOM-RIGHT: Violet / Cyan & Orange Accent (Illuminates Glow Your Own Way card) */}
+              <div
+                className="ambient-orb ambient-orb-bronze-show"
+                style={{
+                  width: '56vw',
+                  height: '56vw',
                   maxWidth: 780,
                   maxHeight: 780,
-                  top: '-12%',
-                  right: '-6%',
-                  background:
-                  'radial-gradient(circle at 68% 30%, rgba(234,88,12,0.38) 0%, rgba(245,158,11,0.22) 44%, transparent 80%)',
-                }}
-              />
-
-              {/* Bottom-Left Warm Sunset Glow */}
-              <div
-                className="ambient-orb"
-                style={{
-                  width: '52vw',
-                  height: '52vw',
-                  maxWidth: 700,
-                  maxHeight: 700,
-                  bottom: '-16%',
-                  left: '12%',
-                  background:
-                  'radial-gradient(ellipse at center, rgba(217,120,41,0.32) 0%, rgba(234,88,12,0.16) 48%, transparent 75%)',
-                }}
-              />
-
-              {/* Bottom-Right Violet / Indigo Glow */}
-              <div
-                className="ambient-orb"
-                style={{
-                  width: '48vw',
-                  height: '48vw',
-                  maxWidth: 640,
-                  maxHeight: 640,
                   bottom: '-14%',
                   right: '-8%',
                   background:
-                    'radial-gradient(circle at center, rgba(124,58,237,0.28) 0%, rgba(99,102,241,0.15) 50%, transparent 78%)',
+                    'radial-gradient(circle at center, rgba(139,92,246,0.50) 0%, rgba(59,130,246,0.30) 42%, rgba(255,85,0,0.20) 68%, transparent 84%)',
                 }}
               />
 
-              {/* Deep center vignette so the white typography & cards pop */}
+              {/* Localized typography vignette — protects text readability without dulling the cards */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                  'radial-gradient(ellipse 920px 620px at center, rgba(7,7,7,0.85) 0%, rgba(7,7,7,0.40) 55%, transparent 95%)',
+                    'radial-gradient(ellipse 640px 400px at center, rgba(7,7,7,0.72) 0%, rgba(7,7,7,0.18) 60%, transparent 100%)',
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/30 via-transparent to-[#070707]/60 pointer-events-none" />
             </div>
 
             {/* ================= 8-CARD CONSTELLATION AS GPU SLIDER LAYERS (DESKTOP 768px+) ================= */}
@@ -556,7 +577,7 @@ function smoothstep(t: number): number {
                             }}
                           >
                                   <div
-                                    className="w-full rounded-2xl overflow-hidden bg-[#141311] border border-white/10 relative group shadow-[0_16px_40px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.18)]"
+                                    className="w-full rounded-2xl overflow-hidden liquid-glass border border-white/20 border-t-white/80 relative group shadow-[0_22px_55px_rgba(0,0,0,0.88),inset_0_1.5px_2px_rgba(255,255,255,0.65),0_0_20px_rgba(0,245,155,0.12)] hover:border-white/50 hover:shadow-[0_28px_65px_rgba(0,0,0,0.95),0_0_35px_rgba(255,107,0,0.45),inset_0_2px_3px_rgba(255,255,255,0.9)] transition-all duration-500"
                                     style={{ aspectRatio: card.aspectRatio }}
                                   >
                                     <img
@@ -566,18 +587,19 @@ function smoothstep(t: number): number {
                                       className="w-full h-full object-cover object-center filter brightness-[0.95] contrast-[1.03] group-hover:scale-105 transition-transform duration-700 ease-out"
                                     />
 
-                                    {/* Specular sheen highlight */}
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.08] pointer-events-none" />
+                                    {/* Double Specular Sheen Highlight */}
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.18] pointer-events-none z-10" />
+                                    <div className="absolute top-0 inset-x-0 h-10 bg-gradient-to-b from-white/[0.16] to-transparent pointer-events-none z-10" />
 
                                     {/* Corner Crosshair Accents */}
-                                    <div className="absolute top-2.5 left-2.5 text-white/30 font-mono text-[10px] pointer-events-none">+</div>
-                                    <div className="absolute top-2.5 right-2.5 text-white/30 font-mono text-[10px] pointer-events-none">+</div>
-                                    <div className="absolute bottom-2.5 left-2.5 text-white/30 font-mono text-[10px] pointer-events-none">+</div>
-                                    <div className="absolute bottom-2.5 right-2.5 text-white/30 font-mono text-[10px] pointer-events-none">+</div>
+                                    <div className="absolute top-2.5 left-2.5 text-white/40 font-mono text-[10px] pointer-events-none z-10">+</div>
+                                    <div className="absolute top-2.5 right-2.5 text-white/40 font-mono text-[10px] pointer-events-none z-10">+</div>
+                                    <div className="absolute bottom-2.5 left-2.5 text-white/40 font-mono text-[10px] pointer-events-none z-10">+</div>
+                                    <div className="absolute bottom-2.5 right-2.5 text-white/40 font-mono text-[10px] pointer-events-none z-10">+</div>
 
-                                    {/* Top Category Badge */}
-                                    <div className="absolute top-3 left-3 z-10">
-                                      <span className="px-2.5 py-0.5 rounded-[6px] text-[9px] font-mono tracking-wider uppercase bg-black/60 text-[#D6B779] shadow-sm border border-white/10">
+                                    {/* Top Category Badge with High-Gloss Neon Glow */}
+                                    <div className="absolute top-3 left-3 z-20">
+                                      <span className={`px-2.5 py-0.5 rounded-[7px] text-[9px] font-mono tracking-wider uppercase font-semibold ${getBadgeClass(card.tag)}`}>
                                         {card.tag}
                                       </span>
                                     </div>
@@ -624,11 +646,13 @@ function smoothstep(t: number): number {
                     >
                       <path
                         d="M 2 8 C 25 15, 55 1, 85 9 C 102 14, 112 5, 118 7"
-                        stroke="#10B981"
+                        stroke="#00F59B"
                         strokeWidth="4"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="filter drop-shadow-[0_0_12px_rgba(16,185,129,0.9)]"
+                        style={{
+                          filter: 'drop-shadow(0 0 8px rgba(0,245,155,1)) drop-shadow(0 0 20px rgba(0,245,155,0.8))',
+                        }}
                       />
                     </svg>
                   </span>
@@ -678,7 +702,7 @@ function smoothstep(t: number): number {
                     {stage.cards.slice(0, 2).map((card) => (
                       <div
                         key={`mobile-${card.id}`}
-                        className="w-[170px] sm:w-[195px] shrink-0 snap-center rounded-2xl overflow-hidden bg-[#141311] border border-white/10 shadow-lg"
+                        className="w-[170px] sm:w-[195px] shrink-0 snap-center rounded-2xl overflow-hidden liquid-glass border border-white/20 border-t-white/80 shadow-[0_15px_35px_rgba(0,0,0,0.85),inset_0_1px_1.5px_rgba(255,255,255,0.6)]"
                       >
                         <div className="w-full aspect-[4/3] relative">
                           <img
@@ -686,8 +710,11 @@ function smoothstep(t: number): number {
                             alt={card.title}
                             className="w-full h-full object-cover"
                           />
-                          <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-[8px] font-mono tracking-wider uppercase bg-black/60 text-[#D6B779] border border-white/10">
-                            {card.tag}
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.18] pointer-events-none" />
+                          <div className="absolute top-2 left-2">
+                            <span className={`px-2 py-0.5 rounded-[6px] text-[8px] font-mono tracking-wider uppercase font-semibold ${getBadgeClass(card.tag)}`}>
+                              {card.tag}
+                            </span>
                           </div>
                         </div>
                         <div className="p-2.5 bg-gradient-to-t from-black via-black/80 to-transparent text-left">

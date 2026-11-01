@@ -133,7 +133,7 @@ export const Navbar: React.FC = () => {
             {/* Pill CT· button matching screenshot */}
             <a
               href="#contact"
-              className="inline-flex items-center space-x-2 text-[13px] px-5 py-2 rounded-full ios-glass-pill hover:bg-white/15 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+              className="inline-flex items-center space-x-2 text-[13px] px-5 py-2 rounded-full neon-btn-glass text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
             >
               <span>Get started</span>
             </a>

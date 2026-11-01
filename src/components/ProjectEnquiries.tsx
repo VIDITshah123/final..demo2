@@ -162,7 +162,7 @@ export const ProjectEnquiries: React.FC = () => {
             </h3>
           </div>
 
-          <div className="divide-y divide-white/10 border-y border-white/10 rounded-2xl ios-glass p-6 sm:p-8 border border-white/10 border-t-white/25 shadow-2xl">
+          <div className="divide-y divide-white/10 rounded-2xl liquid-glass p-6 sm:p-8 border border-white/20 border-t-white/80 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.6),0_25px_60px_rgba(0,0,0,0.85)]">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
 
@@ -224,12 +224,12 @@ export const ProjectEnquiries: React.FC = () => {
               key={card.id}
               className={`reveal-up reveal-delay-${index + 1} snap-start shrink-0 sm:shrink w-[78vw] sm:w-auto rounded-2xl flex flex-col justify-between transition-all duration-500 relative group overflow-hidden cursor-pointer ${
                 card.isPopular
-                  ? 'border border-[#EA580C]/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_0_35px_rgba(234,88,12,0.25),0_20px_50px_rgba(0,0,0,0.85)]'
-                  : 'border border-white/[0.12] border-t-white/25 hover:border-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),0_15px_40px_rgba(0,0,0,0.6)]'
+                  ? 'border border-[#FF7A00] shadow-[inset_0_2px_3px_rgba(255,255,255,0.7),0_0_40px_rgba(255,85,0,0.45),0_25px_60px_rgba(0,0,0,0.9)]'
+                  : 'liquid-glass border border-white/20 border-t-white/80 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.55),0_15px_40px_rgba(0,0,0,0.7)] hover:border-white/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_25px_rgba(0,245,155,0.2)]'
               }`}
               style={{
                 background: card.isPopular
-                  ? 'linear-gradient(to bottom, rgba(34,27,21,0.95), rgba(20,18,16,0.97))'
+                  ? 'linear-gradient(to bottom, rgba(38,26,16,0.96), rgba(20,16,14,0.98))'
                   : 'linear-gradient(to bottom, rgba(22,20,18,0.90), rgba(14,12,10,0.95))',
               }}
             >
@@ -246,7 +246,7 @@ export const ProjectEnquiries: React.FC = () => {
 
               {card.isPopular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
-                  <span className="px-3 py-0.5 rounded-full text-[9px] font-mono tracking-widest uppercase bg-[#EA580C] text-white font-bold shadow-md">
+                  <span className="px-3.5 py-1 rounded-full text-[9px] font-mono tracking-widest uppercase neon-badge-orange font-bold shadow-[0_0_16px_rgba(255,107,0,0.8)]">
                     MOST REQUESTED
                   </span>
                 </div>

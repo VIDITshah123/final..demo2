@@ -123,40 +123,44 @@ export const InteractiveStudio: React.FC = () => {
       {/* ================= PINNED STICKY VIEWPORT CONTAINER ================= */}
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden bg-[#070707] select-none px-3 sm:px-6 lg:px-12 border-t border-white/5">
         
-        {/* ================= BACKGROUND ATMOSPHERIC LIGHTING ================= */}
+        {/* ================= DYNAMIC NEON AURORA WAVE ENGINE (Interactive Studio) ================= */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-          {/* Left Warm Amber/Orange Bloom */}
+          {/* Left Neon Orange Wave */}
           <div
-            className="absolute top-[20%] -left-[10%] w-[55vw] h-[55vw] max-w-[700px] max-h-[700px] rounded-full ambient-glow-lg transition-all duration-700"
+            className="ambient-orb ambient-orb-amber-hero"
             style={{
+              width: '68vw',
+              height: '68vw',
+              maxWidth: 920,
+              maxHeight: 920,
+              top: '5%',
+              left: '-14%',
               background:
-                activeTabIndex === 0
-                  ? 'radial-gradient(circle, rgba(214, 183, 121, 0.35) 0%, rgba(196, 130, 63, 0.2) 40%, transparent 75%)'
-                  : activeTabIndex === 1
-                  ? 'radial-gradient(circle, rgba(234, 88, 12, 0.38) 0%, rgba(217, 119, 6, 0.22) 40%, transparent 75%)'
-                  : 'radial-gradient(circle, rgba(16, 185, 129, 0.32) 0%, rgba(5, 150, 105, 0.18) 40%, transparent 75%)',
+                'radial-gradient(ellipse 70% 60% at 35% 35%, rgba(255,85,0,0.85) 0%, rgba(255,122,0,0.55) 36%, rgba(245,158,11,0.22) 65%, transparent 84%)',
             }}
           />
 
-          {/* Right Emerald/Teal Ambient Glow */}
+          {/* Right Neon Emerald Wave */}
           <div
-            className="absolute top-[30%] -right-[12%] w-[55vw] h-[55vw] max-w-[700px] max-h-[700px] rounded-full ambient-glow-lg transition-all duration-700"
+            className="ambient-orb ambient-orb-emerald-hero"
             style={{
+              width: '66vw',
+              height: '66vw',
+              maxWidth: 900,
+              maxHeight: 900,
+              bottom: '-10%',
+              right: '-10%',
               background:
-                activeTabIndex === 0
-                  ? 'radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(27, 44, 45, 0.2) 45%, transparent 75%)'
-                  : activeTabIndex === 1
-                  ? 'radial-gradient(circle, rgba(234, 88, 12, 0.25) 0%, rgba(152, 106, 60, 0.15) 45%, transparent 75%)'
-                  : 'radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(4, 120, 87, 0.25) 45%, transparent 75%)',
+                'radial-gradient(circle 650px at 65% 65%, rgba(0,245,155,0.85) 0%, rgba(0,255,163,0.55) 36%, rgba(16,185,129,0.22) 65%, transparent 84%)',
             }}
           />
 
-          {/* Center Contrast Vignette */}
+          {/* Subtle center vignette */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                'radial-gradient(ellipse at center, rgba(7, 7, 7, 0.4) 0%, rgba(7, 7, 7, 0.92) 100%)',
+                'radial-gradient(ellipse 680px 380px at center, rgba(7,7,7,0.65) 0%, rgba(7,7,7,0.15) 60%, transparent 100%)',
             }}
           />
         </div>
@@ -166,7 +170,7 @@ export const InteractiveStudio: React.FC = () => {
           
           {/* ================= LEFT COLUMN: CANVAS (CHANGES ON SCROLL) ================= */}
           <div className="lg:col-span-7 w-full order-2 lg:order-1">
-            <div className="relative w-full h-[220px] sm:h-[360px] lg:h-[460px] rounded-xl sm:rounded-[32px] ios-glass border border-white/15 border-t-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_30px_80px_rgba(0,0,0,0.85)] p-2.5 sm:p-5 lg:p-6 flex flex-col justify-between overflow-hidden group">
+            <div className="relative w-full h-[220px] sm:h-[360px] lg:h-[460px] rounded-xl sm:rounded-[32px] liquid-glass border border-white/20 border-t-white/80 shadow-[inset_0_2px_3px_rgba(255,255,255,0.65),0_30px_80px_rgba(0,0,0,0.85),0_0_30px_rgba(0,245,155,0.15)] p-2.5 sm:p-5 lg:p-6 flex flex-col justify-between overflow-hidden group">
               {/* Glass Specular Sheen */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.07] pointer-events-none rounded-xl sm:rounded-[32px]" />
               
@@ -430,14 +434,14 @@ export const InteractiveStudio: React.FC = () => {
             <div className="flex items-center space-x-2.5 sm:space-x-4 mb-3 sm:mb-5 lg:mb-7">
               <a
                 href="#contact"
-                className="px-3.5 sm:px-6 py-1.5 sm:py-2.5 rounded-full ios-glass-interactive text-white text-[10px] sm:text-xs font-medium tracking-wide shadow-md hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+                className="px-3.5 sm:px-6 py-1.5 sm:py-2.5 rounded-full neon-btn-glass text-white text-[10px] sm:text-xs font-medium tracking-wide"
               >
                 Get started
               </a>
 
               <a
                 href="#contact"
-                className="px-3.5 sm:px-6 py-1.5 sm:py-2.5 rounded-full bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#E58A3C] hover:brightness-110 text-white text-[10px] sm:text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_0_25px_rgba(234,88,12,0.5)]"
+                className="px-3.5 sm:px-6 py-1.5 sm:py-2.5 rounded-full neon-btn-orange text-white text-[10px] sm:text-xs font-semibold tracking-wide"
               >
                 Contact sales
               </a>
