@@ -354,6 +354,7 @@ export const HorizontalExperience: React.FC = () => {
 
   // Slide 4 State — Signature Works auto-advance
   const [activeProject, setActiveProject] = useState<number>(0);
+  const [slide4Progress, setSlide4Progress] = useState<number>(0); // 0=before, 0.5=centered, 1=after
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -425,6 +426,15 @@ export const HorizontalExperience: React.FC = () => {
           const progress = Math.max(0, Math.min(1, currentScroll / totalScrollable));
 
           setScrollProgress(progress);
+
+          // Slide 4 parallax progress: active when progress is ~0.60–0.80
+          // translateX goes 0→400vw total (5 slides). Slide 4 center ≈ 300vw = progress ~0.75
+          // We want slide4Progress = 0 when slide enters, 0.5 when centered, 1 when leaving
+          const slide4Center = 0.75;
+          const slide4HalfWidth = 0.13; // how wide the "active" window is
+          const raw4 = (progress - (slide4Center - slide4HalfWidth)) / (slide4HalfWidth * 2);
+          setSlide4Progress(Math.max(0, Math.min(1, raw4)));
+
           ticking = false;
         });
         ticking = true;
@@ -1283,33 +1293,51 @@ export const HorizontalExperience: React.FC = () => {
              ========================================================================= */}
           <section className="w-screen min-w-[100vw] h-screen shrink-0 relative flex items-center justify-center overflow-hidden select-none">
 
-            {/* Dynamic ambient glow that shifts with active project */}
+            {/* Dynamic ambient glow — position shifts with scroll parallax */}
             <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
               <div
-                className="absolute inset-0 transition-all duration-1000"
+                className="absolute inset-0 transition-colors duration-1000"
                 style={{
-                  background: `radial-gradient(ellipse 80% 60% at 30% 50%, ${signatureProjects[activeProject].glow} 0%, transparent 70%)`,
+                  background: `radial-gradient(ellipse 80% 60% at ${20 + slide4Progress * 20}% ${55 - slide4Progress * 10}%, ${signatureProjects[activeProject].glow} 0%, transparent 70%)`,
+                  willChange: 'background',
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#070707]/0 via-[#070707]/60 to-[#070707]/95" />
             </div>
 
-            {/* ── FULL-BLEED BACKGROUND IMAGE (fills left ~60%) ── */}
-            <div className="absolute inset-0 z-0">
+            {/* ── FULL-BLEED BACKGROUND IMAGE — Ken Burns + horizontal counter-parallax ── */}
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                /* Counter-scroll at 60% speed: when slide enters from right,
+                   image moves left slower than the container → depth illusion */
+                transform: `translateX(${(0.5 - slide4Progress) * 6}%)`,
+                willChange: 'transform',
+                transition: 'transform 0.05s linear',
+                overflow: 'hidden',
+              }}
+            >
               {signatureProjects.map((proj, idx) => (
                 <div
                   key={proj.id}
-                  className="absolute inset-0 transition-all duration-1000 ease-in-out"
+                  className="absolute inset-0"
                   style={{
                     opacity: activeProject === idx ? 1 : 0,
-                    transform: activeProject === idx ? 'scale(1.00)' : 'scale(1.04)',
+                    transition: 'opacity 1000ms ease-in-out',
                   }}
                 >
                   <img
                     src={proj.image}
                     alt={proj.title}
                     className="w-full h-full object-cover object-center"
-                    style={{ filter: 'brightness(0.55) contrast(1.08)' }}
+                    style={{
+                      filter: 'brightness(0.55) contrast(1.08)',
+                      /* Ken Burns: each image drifts in a unique direction */
+                      animation: idx % 2 === 0
+                        ? 'sig-kb-a 18s ease-in-out infinite alternate'
+                        : 'sig-kb-b 22s ease-in-out infinite alternate',
+                      willChange: 'transform',
+                    }}
                   />
                 </div>
               ))}
@@ -1321,8 +1349,16 @@ export const HorizontalExperience: React.FC = () => {
             {/* ── CONTENT LAYER ── */}
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-end lg:items-center justify-between gap-8 h-full py-16">
 
-              {/* Left — Editorial project title overlay (visible on image) */}
-              <div className="flex-1 flex flex-col justify-end lg:justify-center pb-8 lg:pb-0">
+              {/* Left — Editorial project title overlay — parallax: drifts upward as slide advances */}
+              <div
+                className="flex-1 flex flex-col justify-end lg:justify-center pb-8 lg:pb-0"
+                style={{
+                  transform: `translateY(${(slide4Progress - 0.5) * 28}px) translateX(${(0.5 - slide4Progress) * 18}px)`,
+                  opacity: slide4Progress < 0.08 ? slide4Progress * 12 : slide4Progress > 0.92 ? (1 - slide4Progress) * 12 : 1,
+                  transition: 'transform 0.05s linear, opacity 0.3s ease',
+                  willChange: 'transform, opacity',
+                }}
+              >
                 <div
                   className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full border mb-5 w-fit transition-all duration-700"
                   style={{ borderColor: `${signatureProjects[activeProject].accent}55`, background: `${signatureProjects[activeProject].accent}18` }}
@@ -1366,8 +1402,16 @@ export const HorizontalExperience: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right — Project details panel */}
-              <div className="w-full lg:w-[420px] shrink-0">
+              {/* Right — Project details panel — parallax: moves slightly faster (pops forward) */}
+              <div
+                className="w-full lg:w-[420px] shrink-0"
+                style={{
+                  transform: `translateY(${(slide4Progress - 0.5) * -18}px) translateX(${(slide4Progress - 0.5) * 22}px)`,
+                  opacity: slide4Progress < 0.06 ? slide4Progress * 16 : slide4Progress > 0.94 ? (1 - slide4Progress) * 16 : 1,
+                  transition: 'transform 0.05s linear, opacity 0.3s ease',
+                  willChange: 'transform, opacity',
+                }}
+              >
                 <div
                   className="rounded-3xl border p-6 sm:p-8 backdrop-blur-xl transition-all duration-700"
                   style={{

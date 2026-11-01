@@ -955,3 +955,17 @@
   will-change: transform, opacity;
 }
 
+
+/* ── Signature Works Slide 4 — Ken Burns image drift keyframes ── */
+@keyframes sig-kb-a {
+  0%   { transform: scale(1.06) translate(0%, 0%); }
+  33%  { transform: scale(1.10) translate(-1.5%, 0.8%); }
+  66%  { transform: scale(1.08) translate(1.2%, -0.6%); }
+  100% { transform: scale(1.05) translate(-0.8%, 1.2%); }
+}
+@keyframes sig-kb-b {
+  0%   { transform: scale(1.08) translate(1.2%, 0.5%); }
+  40%  { transform: scale(1.05) translate(-0.5%, -1.0%); }
+  75%  { transform: scale(1.10) translate(1.5%, 0.8%); }
+  100% { transform: scale(1.06) translate(-1.0%, -0.5%); }
+}
